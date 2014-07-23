@@ -1,6 +1,6 @@
 print "start"
 import os
-os.chdir("/Users/noah/Documents/3d_hst")
+os.chdir("/Volumes/TOSHIBA EXT/3d_hst")
 from astropy.io import ascii
 import numpy as np
 import astropy.units as u
@@ -38,6 +38,10 @@ massed1 = newArray1[:10]
 massed2 = newArray2[:10]
 massed3 = newArray3[:10]
 massed4 = newArray4[:10]
+massed1 = sorted(massed1, key = operator.itemgetter(0))
+massed2 = sorted(massed2, key = operator.itemgetter(0))
+massed3 = sorted(massed3, key = operator.itemgetter(0))
+massed4 = sorted(massed4, key = operator.itemgetter(0))
 
 lmass1 = []
 for row in massed1:

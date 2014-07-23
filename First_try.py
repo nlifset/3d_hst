@@ -1,6 +1,6 @@
 print "start"
 import os
-os.chdir('/Users/noah/Documents/3d_hst')
+os.chdir('/Volumes/TOSHIBA EXT/3d_hst')
 from astropy.io import ascii
 import numpy as np
 from astropy.io import fits

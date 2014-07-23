@@ -1,9 +1,11 @@
 print "start"
 import os
-os.chdir("/Users/noah/Documents/3d_hst")
+os.chdir("/Volumes/TOSHIBA EXT/3d_hst")
 from astropy.io import ascii
 import numpy as np
 from astropy.io import fits
+import astropy.units as u
+import astropy.constants
 import matplotlib.pyplot as plt
 import pylab
 import operator 
@@ -36,31 +38,23 @@ massed1 = newArray1[:10]
 massed2 = newArray2[:10]
 massed3 = newArray3[:10]
 massed4 = newArray4[:10]
+massed1 = sorted(massed1, key = operator.itemgetter(0))
+massed2 = sorted(massed2, key = operator.itemgetter(0))
+massed3 = sorted(massed3, key = operator.itemgetter(0))
+massed4 = sorted(massed4, key = operator.itemgetter(0))
 
 lmass1 = []
 for row in massed1:
 	lmass1.append(row[6])
-lsfr1 = []
-for row in massed1:
-	lsfr1.append(row[7])
 lmass2 = []
 for row in massed2:
 	lmass2.append(row[6])
-lsfr2 = []
-for row in massed2:
-	lsfr2.append(row[7])
 lmass3 = []
 for row in massed3:
 	lmass3.append(row[6])
-lsfr3 = []
-for row in massed3:
-	lsfr3.append(row[7])
 lmass4 = []
 for row in massed4:
 	lmass4.append(row[6])
-lsfr4 = []
-for row in massed4:
-	lsfr4.append(row[7])
 
 	
 z_1 = data_z_flagged[(data_z_flagged["z"] < 0.5)]
