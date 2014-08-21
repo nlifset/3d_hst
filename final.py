@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 import pylab
 import operator 
 import math
+import pandas as pd
 np.set_printoptions(threshold="inf")
 def z_mass():
 	
@@ -25,11 +26,11 @@ def z_mass():
 	data_flagged1 = data_flag1[idx_1]
 	data_z_flagged1 = data_z_flag1[idx_1]
 	
-	chunk1_a = data_fast_flagged1[(data_z_flagged1["z"] < 1)]
-	chunk2_a = data_fast_flagged1[(data_z_flagged1["z"] >= 1) & (data_z_flagged1["z"] < 1.5)]
-	chunk3_a = data_fast_flagged1[(data_z_flagged1["z"] >= 1.5) & (data_z_flagged1["z"] < 2)]
-	chunk4_a = data_fast_flagged1[(data_z_flagged1["z"] >= 2) & (data_z_flagged1["z"] <2.5)]
-	chunk5_a = data_fast_flagged1[(data_z_flagged1["z"] >= 2.5)]
+	chunk1_a = data_fast_flagged1[(data_z_flagged1["z_peak"] < 1)]
+	chunk2_a = data_fast_flagged1[(data_z_flagged1["z_peak"] >= 1) & (data_z_flagged1["z_peak"] < 1.5)]
+	chunk3_a = data_fast_flagged1[(data_z_flagged1["z_peak"] >= 1.5) & (data_z_flagged1["z_peak"] < 2)]
+	chunk4_a = data_fast_flagged1[(data_z_flagged1["z_peak"] >= 2) & (data_z_flagged1["z_peak"] <2.5)]
+	chunk5_a = data_fast_flagged1[(data_z_flagged1["z_peak"] >= 2.5)]
 	
 	massed1_a = chunk1_a[(chunk1_a["lmass"] >= 11)]
 	massed2_a = chunk2_a[(chunk2_a["lmass"] >= 11)]
@@ -45,11 +46,11 @@ def z_mass():
 	lmass5_a = massed5_a["lmass"]
 	lunmass_a = unmassed_a["lmass"]
 	
-	chunk_1_a = data_z_flagged1[(data_z_flagged1["z"] < 1)]
-	chunk_2_a = data_z_flagged1[(data_z_flagged1["z"] >= 1) & (data_z_flagged1["z"] < 1.5)]
-	chunk_3_a = data_z_flagged1[(data_z_flagged1["z"] >= 1.5) & (data_z_flagged1["z"] < 2)]
-	chunk_4_a = data_z_flagged1[(data_z_flagged1["z"] >= 2) & (data_z_flagged1["z"] <2.5)]
-	chunk_5_a = data_z_flagged1[(data_z_flagged1["z"] >= 2.5)]
+	chunk_1_a = data_z_flagged1[(data_z_flagged1["z_peak"] < 1)]
+	chunk_2_a = data_z_flagged1[(data_z_flagged1["z_peak"] >= 1) & (data_z_flagged1["z_peak"] < 1.5)]
+	chunk_3_a = data_z_flagged1[(data_z_flagged1["z_peak"] >= 1.5) & (data_z_flagged1["z_peak"] < 2)]
+	chunk_4_a = data_z_flagged1[(data_z_flagged1["z_peak"] >= 2) & (data_z_flagged1["z_peak"] <2.5)]
+	chunk_5_a = data_z_flagged1[(data_z_flagged1["z_peak"] >= 2.5)]
 	
 	massed_1_a = chunk_1_a[(chunk1_a["lmass"] >= 11)]
 	massed_2_a = chunk_2_a[(chunk2_a["lmass"] >= 11)]
@@ -58,12 +59,12 @@ def z_mass():
 	massed_5_a = chunk_5_a[(chunk5_a["lmass"] >= 11)]
 	unmassed_a_ = data_z_flagged1[(data_fast_flagged1["lmass"] < 11)]
 	
-	z1_a = massed_1_a["z"]
-	z2_a = massed_2_a["z"]
-	z3_a = massed_3_a["z"]
-	z4_a = massed_4_a["z"]
-	z5_a = massed_5_a["z"]
-	unz_a = unmassed_a_["z"]
+	z1_a = massed_1_a["z_peak"]
+	z2_a = massed_2_a["z_peak"]
+	z3_a = massed_3_a["z_peak"]
+	z4_a = massed_4_a["z_peak"]
+	z5_a = massed_5_a["z_peak"]
+	unz_a = unmassed_a_["z_peak"]
 	
 	
 	
@@ -81,11 +82,11 @@ def z_mass():
 	data_flagged2 = data_flag2[idx_2]
 	data_z_flagged2 = data_z_flag2[idx_2]
 	
-	chunk1_c = data_fast_flagged2[(data_z_flagged2["z"] < 1)]
-	chunk2_c = data_fast_flagged2[(data_z_flagged2["z"] >= 1) & (data_z_flagged2["z"] < 1.5)]
-	chunk3_c = data_fast_flagged2[(data_z_flagged2["z"] >= 1.5) & (data_z_flagged2["z"] < 2)]
-	chunk4_c = data_fast_flagged2[(data_z_flagged2["z"] >= 2) & (data_z_flagged2["z"] <2.5)]
-	chunk5_c = data_fast_flagged2[(data_z_flagged2["z"] >= 2.5)]
+	chunk1_c = data_fast_flagged2[(data_z_flagged2["z_peak"] < 1)]
+	chunk2_c = data_fast_flagged2[(data_z_flagged2["z_peak"] >= 1) & (data_z_flagged2["z_peak"] < 1.5)]
+	chunk3_c = data_fast_flagged2[(data_z_flagged2["z_peak"] >= 1.5) & (data_z_flagged2["z_peak"] < 2)]
+	chunk4_c = data_fast_flagged2[(data_z_flagged2["z_peak"] >= 2) & (data_z_flagged2["z_peak"] <2.5)]
+	chunk5_c = data_fast_flagged2[(data_z_flagged2["z_peak"] >= 2.5)]
 	
 	massed1_c = chunk1_c[(chunk1_c["lmass"] >= 11)]
 	massed2_c = chunk2_c[(chunk2_c["lmass"] >= 11)]
@@ -101,11 +102,11 @@ def z_mass():
 	lmass5_c = massed5_c["lmass"]
 	lunmass_c = unmassed_c["lmass"]
 	
-	chunk_1_c = data_z_flagged2[(data_z_flagged2["z"] < 1)]
-	chunk_2_c = data_z_flagged2[(data_z_flagged2["z"] >= 1) & (data_z_flagged2["z"] < 1.5)]
-	chunk_3_c = data_z_flagged2[(data_z_flagged2["z"] >= 1.5) & (data_z_flagged2["z"] < 2)]
-	chunk_4_c = data_z_flagged2[(data_z_flagged2["z"] >= 2) & (data_z_flagged2["z"] <2.5)]
-	chunk_5_c = data_z_flagged2[(data_z_flagged2["z"] >= 2.5)]
+	chunk_1_c = data_z_flagged2[(data_z_flagged2["z_peak"] < 1)]
+	chunk_2_c = data_z_flagged2[(data_z_flagged2["z_peak"] >= 1) & (data_z_flagged2["z_peak"] < 1.5)]
+	chunk_3_c = data_z_flagged2[(data_z_flagged2["z_peak"] >= 1.5) & (data_z_flagged2["z_peak"] < 2)]
+	chunk_4_c = data_z_flagged2[(data_z_flagged2["z_peak"] >= 2) & (data_z_flagged2["z_peak"] <2.5)]
+	chunk_5_c = data_z_flagged2[(data_z_flagged2["z_peak"] >= 2.5)]
 	
 	massed_1_c = chunk_1_c[(chunk1_c["lmass"] >= 11)]
 	massed_2_c = chunk_2_c[(chunk2_c["lmass"] >= 11)]
@@ -114,12 +115,12 @@ def z_mass():
 	massed_5_c = chunk_5_c[(chunk5_c["lmass"] >= 11)]
 	unmassed_c_ = data_z_flagged2[(data_fast_flagged2["lmass"] < 11)]
 	
-	z1_c = massed_1_c["z"]
-	z2_c = massed_2_c["z"]
-	z3_c = massed_3_c["z"]
-	z4_c = massed_4_c["z"]
-	z5_c = massed_5_c["z"]
-	unz_c = unmassed_c_["z"]
+	z1_c = massed_1_c["z_peak"]
+	z2_c = massed_2_c["z_peak"]
+	z3_c = massed_3_c["z_peak"]
+	z4_c = massed_4_c["z_peak"]
+	z5_c = massed_5_c["z_peak"]
+	unz_c = unmassed_c_["z_peak"]
 	
 	
 	
@@ -138,11 +139,11 @@ def z_mass():
 	data_flagged3 = data_flag3[idx_3]
 	data_z_flagged3 = data_z_flag3[idx_3]
 	
-	chunk1_n = data_fast_flagged3[(data_z_flagged3["z"] < 1)]
-	chunk2_n = data_fast_flagged3[(data_z_flagged3["z"] >= 1) & (data_z_flagged3["z"] < 1.5)]
-	chunk3_n = data_fast_flagged3[(data_z_flagged3["z"] >= 1.5) & (data_z_flagged3["z"] < 2)]
-	chunk4_n = data_fast_flagged3[(data_z_flagged3["z"] >= 2) & (data_z_flagged3["z"] <2.5)]
-	chunk5_n = data_fast_flagged3[(data_z_flagged3["z"] >= 2.5)]
+	chunk1_n = data_fast_flagged3[(data_z_flagged3["z_peak"] < 1)]
+	chunk2_n = data_fast_flagged3[(data_z_flagged3["z_peak"] >= 1) & (data_z_flagged3["z_peak"] < 1.5)]
+	chunk3_n = data_fast_flagged3[(data_z_flagged3["z_peak"] >= 1.5) & (data_z_flagged3["z_peak"] < 2)]
+	chunk4_n = data_fast_flagged3[(data_z_flagged3["z_peak"] >= 2) & (data_z_flagged3["z_peak"] <2.5)]
+	chunk5_n = data_fast_flagged3[(data_z_flagged3["z_peak"] >= 2.5)]
 	
 	massed1_n = chunk1_n[(chunk1_n["lmass"] >= 11)]
 	massed2_n = chunk2_n[(chunk2_n["lmass"] >= 11)]
@@ -158,11 +159,11 @@ def z_mass():
 	lmass5_n = massed5_n["lmass"]
 	lunmass_n = unmassed_n["lmass"]
 	
-	chunk_1_n = data_z_flagged3[(data_z_flagged3["z"] < 1)]
-	chunk_2_n = data_z_flagged3[(data_z_flagged3["z"] >= 1) & (data_z_flagged3["z"] < 1.5)]
-	chunk_3_n = data_z_flagged3[(data_z_flagged3["z"] >= 1.5) & (data_z_flagged3["z"] < 2)]
-	chunk_4_n = data_z_flagged3[(data_z_flagged3["z"] >= 2) & (data_z_flagged3["z"] <2.5)]
-	chunk_5_n = data_z_flagged3[(data_z_flagged3["z"] >= 2.5)]
+	chunk_1_n = data_z_flagged3[(data_z_flagged3["z_peak"] < 1)]
+	chunk_2_n = data_z_flagged3[(data_z_flagged3["z_peak"] >= 1) & (data_z_flagged3["z_peak"] < 1.5)]
+	chunk_3_n = data_z_flagged3[(data_z_flagged3["z_peak"] >= 1.5) & (data_z_flagged3["z_peak"] < 2)]
+	chunk_4_n = data_z_flagged3[(data_z_flagged3["z_peak"] >= 2) & (data_z_flagged3["z_peak"] <2.5)]
+	chunk_5_n = data_z_flagged3[(data_z_flagged3["z_peak"] >= 2.5)]
 	
 	massed_1_n = chunk_1_n[(chunk1_n["lmass"] >= 11)]
 	massed_2_n = chunk_2_n[(chunk2_n["lmass"] >= 11)]
@@ -171,12 +172,12 @@ def z_mass():
 	massed_5_n = chunk_5_n[(chunk5_n["lmass"] >= 11)]
 	unmassed_n_ = data_z_flagged3[(data_fast_flagged3["lmass"] < 11)]
 	
-	z1_n = massed_1_n["z"]
-	z2_n = massed_2_n["z"]
-	z3_n = massed_3_n["z"]
-	z4_n = massed_4_n["z"]
-	z5_n = massed_5_n["z"]
-	unz_n = unmassed_n_["z"]
+	z1_n = massed_1_n["z_peak"]
+	z2_n = massed_2_n["z_peak"]
+	z3_n = massed_3_n["z_peak"]
+	z4_n = massed_4_n["z_peak"]
+	z5_n = massed_5_n["z_peak"]
+	unz_n = unmassed_n_["z_peak"]
 	
 	
 	
@@ -195,11 +196,11 @@ def z_mass():
 	data_flagged4 = data_flag4[idx_4]
 	data_z_flagged4 = data_z_flag4[idx_4]
 	
-	chunk1_s = data_fast_flagged4[(data_z_flagged4["z"] < 1)]
-	chunk2_s = data_fast_flagged4[(data_z_flagged4["z"] >= 1) & (data_z_flagged4["z"] < 1.5)]
-	chunk3_s = data_fast_flagged4[(data_z_flagged4["z"] >= 1.5) & (data_z_flagged4["z"] < 2)]
-	chunk4_s = data_fast_flagged4[(data_z_flagged4["z"] >= 2) & (data_z_flagged4["z"] <2.5)]
-	chunk5_s = data_fast_flagged4[(data_z_flagged4["z"] >= 2.5)]
+	chunk1_s = data_fast_flagged4[(data_z_flagged4["z_peak"] < 1)]
+	chunk2_s = data_fast_flagged4[(data_z_flagged4["z_peak"] >= 1) & (data_z_flagged4["z_peak"] < 1.5)]
+	chunk3_s = data_fast_flagged4[(data_z_flagged4["z_peak"] >= 1.5) & (data_z_flagged4["z_peak"] < 2)]
+	chunk4_s = data_fast_flagged4[(data_z_flagged4["z_peak"] >= 2) & (data_z_flagged4["z_peak"] <2.5)]
+	chunk5_s = data_fast_flagged4[(data_z_flagged4["z_peak"] >= 2.5)]
 	
 	massed1_s = chunk1_s[(chunk1_s["lmass"] >= 11)]
 	massed2_s = chunk2_s[(chunk2_s["lmass"] >= 11)]
@@ -215,11 +216,11 @@ def z_mass():
 	lmass5_s = massed5_s["lmass"]
 	lunmass_s = unmassed_s["lmass"]
 	
-	chunk_1_s = data_z_flagged4[(data_z_flagged4["z"] < 1)]
-	chunk_2_s = data_z_flagged4[(data_z_flagged4["z"] >= 1) & (data_z_flagged4["z"] < 1.5)]
-	chunk_3_s = data_z_flagged4[(data_z_flagged4["z"] >= 1.5) & (data_z_flagged4["z"] < 2)]
-	chunk_4_s = data_z_flagged4[(data_z_flagged4["z"] >= 2) & (data_z_flagged4["z"] <2.5)]
-	chunk_5_s = data_z_flagged4[(data_z_flagged4["z"] >= 2.5)]
+	chunk_1_s = data_z_flagged4[(data_z_flagged4["z_peak"] < 1)]
+	chunk_2_s = data_z_flagged4[(data_z_flagged4["z_peak"] >= 1) & (data_z_flagged4["z_peak"] < 1.5)]
+	chunk_3_s = data_z_flagged4[(data_z_flagged4["z_peak"] >= 1.5) & (data_z_flagged4["z_peak"] < 2)]
+	chunk_4_s = data_z_flagged4[(data_z_flagged4["z_peak"] >= 2) & (data_z_flagged4["z_peak"] <2.5)]
+	chunk_5_s = data_z_flagged4[(data_z_flagged4["z_peak"] >= 2.5)]
 	
 	massed_1_s = chunk_1_s[(chunk1_s["lmass"] >= 11)]
 	massed_2_s = chunk_2_s[(chunk2_s["lmass"] >= 11)]
@@ -228,12 +229,12 @@ def z_mass():
 	massed_5_s = chunk_5_s[(chunk5_s["lmass"] >= 11)]
 	unmassed_s_ = data_z_flagged4[(data_fast_flagged4["lmass"] < 11)]
 	
-	z1_s = massed_1_s["z"]
-	z2_s = massed_2_s["z"]
-	z3_s = massed_3_s["z"]
-	z4_s = massed_4_s["z"]
-	z5_s = massed_5_s["z"]
-	unz_s = unmassed_s_["z"]
+	z1_s = massed_1_s["z_peak"]
+	z2_s = massed_2_s["z_peak"]
+	z3_s = massed_3_s["z_peak"]
+	z4_s = massed_4_s["z_peak"]
+	z5_s = massed_5_s["z_peak"]
+	unz_s = unmassed_s_["z_peak"]
 	
 	
 	
@@ -253,11 +254,11 @@ def z_mass():
 	data_flagged5 = data_flag5[idx_5]
 	data_z_flagged5 = data_z_flag5[idx_5]
 	
-	chunk1_u = data_fast_flagged5[(data_z_flagged5["z"] < 1)]
-	chunk2_u = data_fast_flagged5[(data_z_flagged5["z"] >= 1) & (data_z_flagged5["z"] < 1.5)]
-	chunk3_u = data_fast_flagged5[(data_z_flagged5["z"] >= 1.5) & (data_z_flagged5["z"] < 2)]
-	chunk4_u = data_fast_flagged5[(data_z_flagged5["z"] >= 2) & (data_z_flagged5["z"] <2.5)]
-	chunk5_u = data_fast_flagged5[(data_z_flagged5["z"] >= 2.5)]
+	chunk1_u = data_fast_flagged5[(data_z_flagged5["z_peak"] < 1)]
+	chunk2_u = data_fast_flagged5[(data_z_flagged5["z_peak"] >= 1) & (data_z_flagged5["z_peak"] < 1.5)]
+	chunk3_u = data_fast_flagged5[(data_z_flagged5["z_peak"] >= 1.5) & (data_z_flagged5["z_peak"] < 2)]
+	chunk4_u = data_fast_flagged5[(data_z_flagged5["z_peak"] >= 2) & (data_z_flagged5["z_peak"] <2.5)]
+	chunk5_u = data_fast_flagged5[(data_z_flagged5["z_peak"] >= 2.5)]
 	
 	massed1_u = chunk1_u[(chunk1_u["lmass"] >= 11)]
 	massed2_u = chunk2_u[(chunk2_u["lmass"] >= 11)]
@@ -273,11 +274,11 @@ def z_mass():
 	lmass5_u = massed5_u["lmass"]
 	lunmass_u = unmassed_u["lmass"]
 	
-	chunk_1_u = data_z_flagged5[(data_z_flagged5["z"] < 1)]
-	chunk_2_u = data_z_flagged5[(data_z_flagged5["z"] >= 1) & (data_z_flagged5["z"] < 1.5)]
-	chunk_3_u = data_z_flagged5[(data_z_flagged5["z"] >= 1.5) & (data_z_flagged5["z"] < 2)]
-	chunk_4_u = data_z_flagged5[(data_z_flagged5["z"] >= 2) & (data_z_flagged5["z"] <2.5)]
-	chunk_5_u = data_z_flagged5[(data_z_flagged5["z"] >= 2.5)]
+	chunk_1_u = data_z_flagged5[(data_z_flagged5["z_peak"] < 1)]
+	chunk_2_u = data_z_flagged5[(data_z_flagged5["z_peak"] >= 1) & (data_z_flagged5["z_peak"] < 1.5)]
+	chunk_3_u = data_z_flagged5[(data_z_flagged5["z_peak"] >= 1.5) & (data_z_flagged5["z_peak"] < 2)]
+	chunk_4_u = data_z_flagged5[(data_z_flagged5["z_peak"] >= 2) & (data_z_flagged5["z_peak"] <2.5)]
+	chunk_5_u = data_z_flagged5[(data_z_flagged5["z_peak"] >= 2.5)]
 	
 	massed_1_u = chunk_1_u[(chunk1_u["lmass"] >= 11)]
 	massed_2_u = chunk_2_u[(chunk2_u["lmass"] >= 11)]
@@ -286,50 +287,50 @@ def z_mass():
 	massed_5_u = chunk_5_u[(chunk5_u["lmass"] >= 11)]
 	unmassed_u_ = data_z_flagged5[(data_fast_flagged5["lmass"] < 11)]
 	
-	z1_u = massed_1_u["z"]
-	z2_u = massed_2_u["z"]
-	z3_u = massed_3_u["z"]
-	z4_u = massed_4_u["z"]
-	z5_u = massed_5_u["z"]
-	unz_u = unmassed_u_["z"]
+	z1_u = massed_1_u["z_peak"]
+	z2_u = massed_2_u["z_peak"]
+	z3_u = massed_3_u["z_peak"]
+	z4_u = massed_4_u["z_peak"]
+	z5_u = massed_5_u["z_peak"]
+	unz_u = unmassed_u_["z_peak"]
 	
 	
 	
 	
-	pylab.scatter(z1_a, lmass1_a, color="0.7", alpha=0.5, edgecolor="none")
-	pylab.scatter(z2_a, lmass2_a, color="b", label="chunk1 points, 1 < z < 1.5", alpha=0.7, edgecolor="none")
-	pylab.scatter(z3_a, lmass3_a, color="g", label="chunk2 points, 1.5 < z < 2", alpha=0.7, edgecolor="none")
-	pylab.scatter(z4_a, lmass4_a, color="purple", label="chunk3 points, 2 < z < 2.5", alpha=0.7, edgecolor="none")
-	pylab.scatter(z5_a, lmass5_a, color="0.7", alpha=0.5, edgecolor="none")
-	pylab.scatter(unz_a, lunmass_a, color="0.7", alpha=0.5, edgecolor="none", label="unused points")
+	pylab.scatter(z1_a, lmass1_a, color="0.7", alpha=0.3, markeredgecolor="none", edgecolor="none")
+	pylab.scatter(z2_a, lmass2_a, color="b", label="chunk1 points, 1 < z < 1.5", alpha=0.7, markeredgecolor="none", edgecolor="none")
+	pylab.scatter(z3_a, lmass3_a, color="g", label="chunk2 points, 1.5 < z < 2", alpha=0.7, markeredgecolor="none", edgecolor="none")
+	pylab.scatter(z4_a, lmass4_a, color="purple", label="chunk3 points, 2 < z < 2.5", alpha=0.7, markeredgecolor="none", edgecolor="none")
+	pylab.scatter(z5_a, lmass5_a, color="0.7", alpha=0.3, markeredgecolor="none", edgecolor="none")
+	pylab.scatter(unz_a, lunmass_a, color="0.7", alpha=0.3, markeredgecolor="none", edgecolor="none", label="unused points")
 	
-	pylab.scatter(z1_c, lmass1_c, color="0.7", alpha=0.5, edgecolor="none")
-	pylab.scatter(z2_c, lmass2_c, color="b", alpha=0.7, edgecolor="none")
-	pylab.scatter(z3_c, lmass3_c, color="g", alpha=0.7, edgecolor="none")
-	pylab.scatter(z4_c, lmass4_c, color="purple", alpha=0.7, edgecolor="none")
-	pylab.scatter(z5_c, lmass5_c, color="0.7", alpha=0.5, edgecolor="none")
-	pylab.scatter(unz_c, lunmass_c, color="0.7", alpha=0.5, edgecolor="none")
+	pylab.scatter(z1_c, lmass1_c, color="0.7", alpha=0.3, markeredgecolor="none", edgecolor="none")
+	pylab.scatter(z2_c, lmass2_c, color="b", alpha=0.7, markeredgecolor="none", edgecolor="none")
+	pylab.scatter(z3_c, lmass3_c, color="g", alpha=0.7, markeredgecolor="none", edgecolor="none")
+	pylab.scatter(z4_c, lmass4_c, color="purple", alpha=0.7, markeredgecolor="none", edgecolor="none")
+	pylab.scatter(z5_c, lmass5_c, color="0.7", alpha=0.3, markeredgecolor="none", edgecolor="none")
+	pylab.scatter(unz_c, lunmass_c, color="0.7", alpha=0.3, markeredgecolor="none", edgecolor="none")
 	
-	pylab.scatter(z1_n, lmass1_n, color="0.7", alpha=0.5, edgecolor="none")
-	pylab.scatter(z2_n, lmass2_n, color="b", alpha=0.7, edgecolor="none")
-	pylab.scatter(z3_n, lmass3_n, color="g", alpha=0.7, edgecolor="none")
-	pylab.scatter(z4_n, lmass4_n, color="purple", alpha=0.7, edgecolor="none")
-	pylab.scatter(z5_n, lmass5_n, color="0.7", alpha=0.5, edgecolor="none")
-	pylab.scatter(unz_n, lunmass_n, color="0.7", alpha=0.5, edgecolor="none")
+	pylab.scatter(z1_n, lmass1_n, color="0.7", alpha=0.3, markeredgecolor="none", edgecolor="none")
+	pylab.scatter(z2_n, lmass2_n, color="b", alpha=0.7, markeredgecolor="none", edgecolor="none")
+	pylab.scatter(z3_n, lmass3_n, color="g", alpha=0.7, markeredgecolor="none", edgecolor="none")
+	pylab.scatter(z4_n, lmass4_n, color="purple", alpha=0.7, markeredgecolor="none", edgecolor="none")
+	pylab.scatter(z5_n, lmass5_n, color="0.7", alpha=0.3, markeredgecolor="none", edgecolor="none")
+	pylab.scatter(unz_n, lunmass_n, color="0.7", alpha=0.3, markeredgecolor="none", edgecolor="none")
 	
-	pylab.scatter(z1_s, lmass1_s, color="0.7", alpha=0.5, edgecolor="none")
-	pylab.scatter(z2_s, lmass2_s, color="b", alpha=0.7, edgecolor="none")
-	pylab.scatter(z3_s, lmass3_s, color="g", alpha=0.7, edgecolor="none")
-	pylab.scatter(z4_s, lmass4_s, color="purple", alpha=0.7, edgecolor="none")
-	pylab.scatter(z5_s, lmass5_s, color="0.7", alpha=0.5, edgecolor="none")
-	pylab.scatter(unz_s, lunmass_s, color="0.7", alpha=0.5, edgecolor="none")
+	pylab.scatter(z1_s, lmass1_s, color="0.7", alpha=0.3, markeredgecolor="none", edgecolor="none")
+	pylab.scatter(z2_s, lmass2_s, color="b", alpha=0.7, markeredgecolor="none", edgecolor="none")
+	pylab.scatter(z3_s, lmass3_s, color="g", alpha=0.7, markeredgecolor="none", edgecolor="none")
+	pylab.scatter(z4_s, lmass4_s, color="purple", alpha=0.7, markeredgecolor="none", edgecolor="none")
+	pylab.scatter(z5_s, lmass5_s, color="0.7", alpha=0.3, markeredgecolor="none", edgecolor="none")
+	pylab.scatter(unz_s, lunmass_s, color="0.7", alpha=0.3, markeredgecolor="none", edgecolor="none")
 	
-	pylab.scatter(z1_u, lmass1_u, color="0.7", alpha=0.5, edgecolor="none")
-	pylab.scatter(z2_u, lmass2_u, color="b", alpha=0.7, edgecolor="none")
-	pylab.scatter(z3_u, lmass3_u, color="g", alpha=0.7, edgecolor="none")
-	pylab.scatter(z4_u, lmass4_u, color="purple", alpha=0.7, edgecolor="none")
-	pylab.scatter(z5_u, lmass5_u, color="0.7", alpha=0.5, edgecolor="none")
-	pylab.scatter(unz_u, lunmass_u, color="0.7", alpha=0.5, edgecolor="none")
+	pylab.scatter(z1_u, lmass1_u, color="0.7", alpha=0.3, markeredgecolor="none", edgecolor="none")
+	pylab.scatter(z2_u, lmass2_u, color="b", alpha=0.7, markeredgecolor="none", edgecolor="none")
+	pylab.scatter(z3_u, lmass3_u, color="g", alpha=0.7, markeredgecolor="none", edgecolor="none")
+	pylab.scatter(z4_u, lmass4_u, color="purple", alpha=0.7, markeredgecolor="none", edgecolor="none")
+	pylab.scatter(z5_u, lmass5_u, color="0.7", alpha=0.3, markeredgecolor="none", edgecolor="none")
+	pylab.scatter(unz_u, lunmass_u, color="0.7", alpha=0.3, markeredgecolor="none", edgecolor="none")
 	
 	pylab.xlabel("z")
 	pylab.ylabel("log mass")
@@ -363,9 +364,9 @@ def age_mass():
 	data_flagged1 = data_flag1[idx_1]
 	data_z_flagged1 = data_z_flag1[idx_1]
 	
-	chunk2_a = data_fast_flagged1[(data_z_flagged1["z"] >= 1) & (data_z_flagged1["z"] < 1.5)]
-	chunk3_a = data_fast_flagged1[(data_z_flagged1["z"] >= 1.5) & (data_z_flagged1["z"] < 2)]
-	chunk4_a = data_fast_flagged1[(data_z_flagged1["z"] >= 2) & (data_z_flagged1["z"] <2.5)]
+	chunk2_a = data_fast_flagged1[(data_z_flagged1["z_peak"] >= 1) & (data_z_flagged1["z_peak"] < 1.5)]
+	chunk3_a = data_fast_flagged1[(data_z_flagged1["z_peak"] >= 1.5) & (data_z_flagged1["z_peak"] < 2)]
+	chunk4_a = data_fast_flagged1[(data_z_flagged1["z_peak"] >= 2) & (data_z_flagged1["z_peak"] <2.5)]
 	
 	massed2_a = chunk2_a[(chunk2_a["lmass"] >= 11)]
 	massed3_a = chunk3_a[(chunk3_a["lmass"] >= 11)]
@@ -396,9 +397,9 @@ def age_mass():
 	data_flagged2 = data_flag2[idx_2]
 	data_z_flagged2 = data_z_flag2[idx_2]
 	
-	chunk2_c = data_fast_flagged2[(data_z_flagged2["z"] >= 1) & (data_z_flagged2["z"] < 1.5)]
-	chunk3_c = data_fast_flagged2[(data_z_flagged2["z"] >= 1.5) & (data_z_flagged2["z"] < 2)]
-	chunk4_c = data_fast_flagged2[(data_z_flagged2["z"] >= 2) & (data_z_flagged2["z"] <2.5)]
+	chunk2_c = data_fast_flagged2[(data_z_flagged2["z_peak"] >= 1) & (data_z_flagged2["z_peak"] < 1.5)]
+	chunk3_c = data_fast_flagged2[(data_z_flagged2["z_peak"] >= 1.5) & (data_z_flagged2["z_peak"] < 2)]
+	chunk4_c = data_fast_flagged2[(data_z_flagged2["z_peak"] >= 2) & (data_z_flagged2["z_peak"] <2.5)]
 	
 	massed2_c = chunk2_c[(chunk2_c["lmass"] >= 11)]
 	massed3_c = chunk3_c[(chunk3_c["lmass"] >= 11)]
@@ -429,9 +430,9 @@ def age_mass():
 	data_flagged3 = data_flag3[idx_3]
 	data_z_flagged3 = data_z_flag3[idx_3]
 	
-	chunk2_n = data_fast_flagged3[(data_z_flagged3["z"] >= 1) & (data_z_flagged3["z"] < 1.5)]
-	chunk3_n = data_fast_flagged3[(data_z_flagged3["z"] >= 1.5) & (data_z_flagged3["z"] < 2)]
-	chunk4_n = data_fast_flagged3[(data_z_flagged3["z"] >= 2) & (data_z_flagged3["z"] <2.5)]
+	chunk2_n = data_fast_flagged3[(data_z_flagged3["z_peak"] >= 1) & (data_z_flagged3["z_peak"] < 1.5)]
+	chunk3_n = data_fast_flagged3[(data_z_flagged3["z_peak"] >= 1.5) & (data_z_flagged3["z_peak"] < 2)]
+	chunk4_n = data_fast_flagged3[(data_z_flagged3["z_peak"] >= 2) & (data_z_flagged3["z_peak"] <2.5)]
 	
 	massed2_n = chunk2_n[(chunk2_n["lmass"] >= 11)]
 	massed3_n = chunk3_n[(chunk3_n["lmass"] >= 11)]
@@ -462,9 +463,9 @@ def age_mass():
 	data_flagged4 = data_flag4[idx_4]
 	data_z_flagged4 = data_z_flag4[idx_4]
 	
-	chunk2_s = data_fast_flagged4[(data_z_flagged4["z"] >= 1) & (data_z_flagged4["z"] < 1.5)]
-	chunk3_s = data_fast_flagged4[(data_z_flagged4["z"] >= 1.5) & (data_z_flagged4["z"] < 2)]
-	chunk4_s = data_fast_flagged4[(data_z_flagged4["z"] >= 2) & (data_z_flagged4["z"] <2.5)]
+	chunk2_s = data_fast_flagged4[(data_z_flagged4["z_peak"] >= 1) & (data_z_flagged4["z_peak"] < 1.5)]
+	chunk3_s = data_fast_flagged4[(data_z_flagged4["z_peak"] >= 1.5) & (data_z_flagged4["z_peak"] < 2)]
+	chunk4_s = data_fast_flagged4[(data_z_flagged4["z_peak"] >= 2) & (data_z_flagged4["z_peak"] <2.5)]
 	
 	massed2_s = chunk2_s[(chunk2_s["lmass"] >= 11)]
 	massed3_s = chunk3_s[(chunk3_s["lmass"] >= 11)]
@@ -495,9 +496,9 @@ def age_mass():
 	data_flagged5 = data_flag5[idx_5]
 	data_z_flagged5 = data_z_flag5[idx_5]
 	
-	chunk2_u = data_fast_flagged5[(data_z_flagged5["z"] >= 1) & (data_z_flagged5["z"] < 1.5)]
-	chunk3_u = data_fast_flagged5[(data_z_flagged5["z"] >= 1.5) & (data_z_flagged5["z"] < 2)]
-	chunk4_u = data_fast_flagged5[(data_z_flagged5["z"] >= 2) & (data_z_flagged5["z"] <2.5)]
+	chunk2_u = data_fast_flagged5[(data_z_flagged5["z_peak"] >= 1) & (data_z_flagged5["z_peak"] < 1.5)]
+	chunk3_u = data_fast_flagged5[(data_z_flagged5["z_peak"] >= 1.5) & (data_z_flagged5["z_peak"] < 2)]
+	chunk4_u = data_fast_flagged5[(data_z_flagged5["z_peak"] >= 2) & (data_z_flagged5["z_peak"] <2.5)]
 	
 	massed2_u = chunk2_u[(chunk2_u["lmass"] >= 11)]
 	massed3_u = chunk3_u[(chunk3_u["lmass"] >= 11)]
@@ -518,25 +519,25 @@ def age_mass():
 	a2 = pylab.axes[1]
 	a3 = pylab.axes[2]
 	
-	a1.scatter(lage2_a, lmass2_a, color="b", label="chunk1 points, 1 < z < 1.5", alpha=0.7)
-	a2.scatter(lage3_a, lmass3_a, color="g", label="chunk2 points, 1.5 < z < 2", alpha=0.7)
-	a3.scatter(lage4_a, lmass4_a, color="purple", label="chunk3 points, 2 < z < 2.5", alpha=0.7)
+	a1.scatter(lage2_a, lmass2_a, color="b", label="chunk1 points, 1 < z < 1.5", alpha=0.7, markeredgecolor="none")
+	a2.scatter(lage3_a, lmass3_a, color="g", label="chunk2 points, 1.5 < z < 2", alpha=0.7, markeredgecolor="none")
+	a3.scatter(lage4_a, lmass4_a, color="purple", label="chunk3 points, 2 < z < 2.5", alpha=0.7, markeredgecolor="none")
 	
-	a1.scatter(lage2_c, lmass2_c, color="b", alpha=0.7)
-	a2.scatter(lage3_c, lmass3_c, color="g", alpha=0.7)
-	a3.scatter(lage4_c, lmass4_c, color="purple", alpha=0.7)
+	a1.scatter(lage2_c, lmass2_c, color="b", alpha=0.7, markeredgecolor="none")
+	a2.scatter(lage3_c, lmass3_c, color="g", alpha=0.7, markeredgecolor="none")
+	a3.scatter(lage4_c, lmass4_c, color="purple", alpha=0.7, markeredgecolor="none")
 	
-	a1.scatter(lage2_n, lmass2_n, color="b", alpha=0.7)
-	a2.scatter(lage3_n, lmass3_n, color="g", alpha=0.7)
-	a3.scatter(lage4_n, lmass4_n, color="purple", alpha=0.7)
+	a1.scatter(lage2_n, lmass2_n, color="b", alpha=0.7, markeredgecolor="none")
+	a2.scatter(lage3_n, lmass3_n, color="g", alpha=0.7, markeredgecolor="none")
+	a3.scatter(lage4_n, lmass4_n, color="purple", alpha=0.7, markeredgecolor="none")
 	
-	a1.scatter(lage2_s, lmass2_s, color="b", alpha=0.7)
-	a2.scatter(lage3_s, lmass3_s, color="g", alpha=0.7)
-	a3.scatter(lage4_s, lmass4_s, color="purple", alpha=0.7)
+	a1.scatter(lage2_s, lmass2_s, color="b", alpha=0.7, markeredgecolor="none")
+	a2.scatter(lage3_s, lmass3_s, color="g", alpha=0.7, markeredgecolor="none")
+	a3.scatter(lage4_s, lmass4_s, color="purple", alpha=0.7, markeredgecolor="none")
 	
-	a1.scatter(lage2_u, lmass2_u, color="b", alpha=0.7)
-	a2.scatter(lage3_u, lmass3_u, color="g", alpha=0.7)
-	a3.scatter(lage4_u, lmass4_u, color="purple", alpha=0.7)
+	a1.scatter(lage2_u, lmass2_u, color="b", alpha=0.7, markeredgecolor="none")
+	a2.scatter(lage3_u, lmass3_u, color="g", alpha=0.7, markeredgecolor="none")
+	a3.scatter(lage4_u, lmass4_u, color="purple", alpha=0.7, markeredgecolor="none")
 	
 
 	
@@ -574,9 +575,9 @@ def sersic_mass():
 	data_z_flagged1 = data_z_flag1[idx_1]
 	dataz_flagged1 = dataz_flag1[idx_1]
 	
-	chunk2_a = data_fast_flagged1[(data_z_flagged1["z"] >= 1) & (data_z_flagged1["z"] < 1.5)]
-	chunk3_a = data_fast_flagged1[(data_z_flagged1["z"] >= 1.5) & (data_z_flagged1["z"] < 2)]
-	chunk4_a = data_fast_flagged1[(data_z_flagged1["z"] >= 2) & (data_z_flagged1["z"] <2.5)]
+	chunk2_a = data_fast_flagged1[(data_z_flagged1["z_peak"] >= 1) & (data_z_flagged1["z_peak"] < 1.5)]
+	chunk3_a = data_fast_flagged1[(data_z_flagged1["z_peak"] >= 1.5) & (data_z_flagged1["z_peak"] < 2)]
+	chunk4_a = data_fast_flagged1[(data_z_flagged1["z_peak"] >= 2) & (data_z_flagged1["z_peak"] <2.5)]
 	
 	massed2_a = chunk2_a[(chunk2_a["lmass"] >= 11)]
 	massed3_a = chunk3_a[(chunk3_a["lmass"] >= 11)]
@@ -586,9 +587,9 @@ def sersic_mass():
 	lmass3_a = massed3_a["lmass"]
 	lmass4_a = massed4_a["lmass"]
 	
-	chunk_2_a = dataz_flagged1[(data_z_flagged1["z"] >= 1) & (data_z_flagged1["z"] < 1.5)]
-	chunk_3_a = dataz_flagged1[(data_z_flagged1["z"] >= 1.5) & (data_z_flagged1["z"] < 2)]
-	chunk_4_a = dataz_flagged1[(data_z_flagged1["z"] >= 2) & (data_z_flagged1["z"] <2.5)]
+	chunk_2_a = dataz_flagged1[(data_z_flagged1["z_peak"] >= 1) & (data_z_flagged1["z_peak"] < 1.5)]
+	chunk_3_a = dataz_flagged1[(data_z_flagged1["z_peak"] >= 1.5) & (data_z_flagged1["z_peak"] < 2)]
+	chunk_4_a = dataz_flagged1[(data_z_flagged1["z_peak"] >= 2) & (data_z_flagged1["z_peak"] <2.5)]
 	
 	massed_2_a = chunk_2_a[(chunk2_a["lmass"] >= 11)]
 	massed_3_a = chunk_3_a[(chunk3_a["lmass"] >= 11)]
@@ -619,9 +620,9 @@ def sersic_mass():
 	data_z_flagged2 = data_z_flag2[idx_2]
 	dataz_flagged2 = dataz_flag2[idx_2]
 	
-	chunk2_c = data_fast_flagged2[(data_z_flagged2["z"] >= 1) & (data_z_flagged2["z"] < 1.5)]
-	chunk3_c = data_fast_flagged2[(data_z_flagged2["z"] >= 1.5) & (data_z_flagged2["z"] < 2)]
-	chunk4_c = data_fast_flagged2[(data_z_flagged2["z"] >= 2) & (data_z_flagged2["z"] <2.5)]
+	chunk2_c = data_fast_flagged2[(data_z_flagged2["z_peak"] >= 1) & (data_z_flagged2["z_peak"] < 1.5)]
+	chunk3_c = data_fast_flagged2[(data_z_flagged2["z_peak"] >= 1.5) & (data_z_flagged2["z_peak"] < 2)]
+	chunk4_c = data_fast_flagged2[(data_z_flagged2["z_peak"] >= 2) & (data_z_flagged2["z_peak"] <2.5)]
 	
 	massed2_c = chunk2_c[(chunk2_c["lmass"] >= 11)]
 	massed3_c = chunk3_c[(chunk3_c["lmass"] >= 11)]
@@ -631,9 +632,9 @@ def sersic_mass():
 	lmass3_c = massed3_c["lmass"]
 	lmass4_c = massed4_c["lmass"]
 
-	chunk_2_c = dataz_flagged2[(data_z_flagged2["z"] >= 1) & (data_z_flagged2["z"] < 1.5)]
-	chunk_3_c = dataz_flagged2[(data_z_flagged2["z"] >= 1.5) & (data_z_flagged2["z"] < 2)]
-	chunk_4_c = dataz_flagged2[(data_z_flagged2["z"] >= 2) & (data_z_flagged2["z"] <2.5)]
+	chunk_2_c = dataz_flagged2[(data_z_flagged2["z_peak"] >= 1) & (data_z_flagged2["z_peak"] < 1.5)]
+	chunk_3_c = dataz_flagged2[(data_z_flagged2["z_peak"] >= 1.5) & (data_z_flagged2["z_peak"] < 2)]
+	chunk_4_c = dataz_flagged2[(data_z_flagged2["z_peak"] >= 2) & (data_z_flagged2["z_peak"] <2.5)]
 	
 	massed_2_c = chunk_2_c[(chunk2_c["lmass"] >= 11)]
 	massed_3_c = chunk_3_c[(chunk3_c["lmass"] >= 11)]
@@ -664,9 +665,9 @@ def sersic_mass():
 	data_z_flagged3 = data_z_flag3[idx_3]
 	dataz_flagged3 = dataz_flag3[idx_3]
 	
-	chunk2_n = data_fast_flagged3[(data_z_flagged3["z"] >= 1) & (data_z_flagged3["z"] < 1.5)]
-	chunk3_n = data_fast_flagged3[(data_z_flagged3["z"] >= 1.5) & (data_z_flagged3["z"] < 2)]
-	chunk4_n = data_fast_flagged3[(data_z_flagged3["z"] >= 2) & (data_z_flagged3["z"] <2.5)]
+	chunk2_n = data_fast_flagged3[(data_z_flagged3["z_peak"] >= 1) & (data_z_flagged3["z_peak"] < 1.5)]
+	chunk3_n = data_fast_flagged3[(data_z_flagged3["z_peak"] >= 1.5) & (data_z_flagged3["z_peak"] < 2)]
+	chunk4_n = data_fast_flagged3[(data_z_flagged3["z_peak"] >= 2) & (data_z_flagged3["z_peak"] <2.5)]
 	
 	massed2_n = chunk2_n[(chunk2_n["lmass"] >= 11)]
 	massed3_n = chunk3_n[(chunk3_n["lmass"] >= 11)]
@@ -676,9 +677,9 @@ def sersic_mass():
 	lmass3_n = massed3_n["lmass"]
 	lmass4_n = massed4_n["lmass"]
 
-	chunk_2_n = dataz_flagged3[(data_z_flagged3["z"] >= 1) & (data_z_flagged3["z"] < 1.5)]
-	chunk_3_n = dataz_flagged3[(data_z_flagged3["z"] >= 1.5) & (data_z_flagged3["z"] < 2)]
-	chunk_4_n = dataz_flagged3[(data_z_flagged3["z"] >= 2) & (data_z_flagged3["z"] <2.5)]
+	chunk_2_n = dataz_flagged3[(data_z_flagged3["z_peak"] >= 1) & (data_z_flagged3["z_peak"] < 1.5)]
+	chunk_3_n = dataz_flagged3[(data_z_flagged3["z_peak"] >= 1.5) & (data_z_flagged3["z_peak"] < 2)]
+	chunk_4_n = dataz_flagged3[(data_z_flagged3["z_peak"] >= 2) & (data_z_flagged3["z_peak"] <2.5)]
 	
 	massed_2_n = chunk_2_n[(chunk2_n["lmass"] >= 11)]
 	massed_3_n = chunk_3_n[(chunk3_n["lmass"] >= 11)]
@@ -709,9 +710,9 @@ def sersic_mass():
 	data_z_flagged4 = data_z_flag4[idx_4]
 	dataz_flagged4 = dataz_flag4[idx_4]
 	
-	chunk2_s = data_fast_flagged4[(data_z_flagged4["z"] >= 1) & (data_z_flagged4["z"] < 1.5)]
-	chunk3_s = data_fast_flagged4[(data_z_flagged4["z"] >= 1.5) & (data_z_flagged4["z"] < 2)]
-	chunk4_s = data_fast_flagged4[(data_z_flagged4["z"] >= 2) & (data_z_flagged4["z"] <2.5)]
+	chunk2_s = data_fast_flagged4[(data_z_flagged4["z_peak"] >= 1) & (data_z_flagged4["z_peak"] < 1.5)]
+	chunk3_s = data_fast_flagged4[(data_z_flagged4["z_peak"] >= 1.5) & (data_z_flagged4["z_peak"] < 2)]
+	chunk4_s = data_fast_flagged4[(data_z_flagged4["z_peak"] >= 2) & (data_z_flagged4["z_peak"] <2.5)]
 	
 	massed2_s = chunk2_s[(chunk2_s["lmass"] >= 11)]
 	massed3_s = chunk3_s[(chunk3_s["lmass"] >= 11)]
@@ -721,9 +722,9 @@ def sersic_mass():
 	lmass3_s = massed3_s["lmass"]
 	lmass4_s = massed4_s["lmass"]
 
-	chunk_2_s = dataz_flagged4[(data_z_flagged4["z"] >= 1) & (data_z_flagged4["z"] < 1.5)]
-	chunk_3_s = dataz_flagged4[(data_z_flagged4["z"] >= 1.5) & (data_z_flagged4["z"] < 2)]
-	chunk_4_s = dataz_flagged4[(data_z_flagged4["z"] >= 2) & (data_z_flagged4["z"] <2.5)]
+	chunk_2_s = dataz_flagged4[(data_z_flagged4["z_peak"] >= 1) & (data_z_flagged4["z_peak"] < 1.5)]
+	chunk_3_s = dataz_flagged4[(data_z_flagged4["z_peak"] >= 1.5) & (data_z_flagged4["z_peak"] < 2)]
+	chunk_4_s = dataz_flagged4[(data_z_flagged4["z_peak"] >= 2) & (data_z_flagged4["z_peak"] <2.5)]
 	
 	massed_2_s = chunk_2_s[(chunk2_s["lmass"] >= 11)]
 	massed_3_s = chunk_3_s[(chunk3_s["lmass"] >= 11)]
@@ -754,9 +755,9 @@ def sersic_mass():
 	data_z_flagged5 = data_z_flag5[idx_5]
 	dataz_flagged5 = dataz_flag5[idx_5]
 	
-	chunk2_u = data_fast_flagged5[(data_z_flagged5["z"] >= 1) & (data_z_flagged5["z"] < 1.5)]
-	chunk3_u = data_fast_flagged5[(data_z_flagged5["z"] >= 1.5) & (data_z_flagged5["z"] < 2)]
-	chunk4_u = data_fast_flagged5[(data_z_flagged5["z"] >= 2) & (data_z_flagged5["z"] <2.5)]
+	chunk2_u = data_fast_flagged5[(data_z_flagged5["z_peak"] >= 1) & (data_z_flagged5["z_peak"] < 1.5)]
+	chunk3_u = data_fast_flagged5[(data_z_flagged5["z_peak"] >= 1.5) & (data_z_flagged5["z_peak"] < 2)]
+	chunk4_u = data_fast_flagged5[(data_z_flagged5["z_peak"] >= 2) & (data_z_flagged5["z_peak"] <2.5)]
 	
 	massed2_u = chunk2_u[(chunk2_u["lmass"] >= 11)]
 	massed3_u = chunk3_u[(chunk3_u["lmass"] >= 11)]
@@ -766,9 +767,9 @@ def sersic_mass():
 	lmass3_u = massed3_u["lmass"]
 	lmass4_u = massed4_u["lmass"]
 
-	chunk_2_u = dataz_flagged5[(data_z_flagged5["z"] >= 1) & (data_z_flagged5["z"] < 1.5)]
-	chunk_3_u = dataz_flagged5[(data_z_flagged5["z"] >= 1.5) & (data_z_flagged5["z"] < 2)]
-	chunk_4_u = dataz_flagged5[(data_z_flagged5["z"] >= 2) & (data_z_flagged5["z"] <2.5)]
+	chunk_2_u = dataz_flagged5[(data_z_flagged5["z_peak"] >= 1) & (data_z_flagged5["z_peak"] < 1.5)]
+	chunk_3_u = dataz_flagged5[(data_z_flagged5["z_peak"] >= 1.5) & (data_z_flagged5["z_peak"] < 2)]
+	chunk_4_u = dataz_flagged5[(data_z_flagged5["z_peak"] >= 2) & (data_z_flagged5["z_peak"] <2.5)]
 	
 	massed_2_u = chunk_2_u[(chunk2_u["lmass"] >= 11)]
 	massed_3_u = chunk_3_u[(chunk3_u["lmass"] >= 11)]
@@ -785,25 +786,25 @@ def sersic_mass():
 	a2 = pylab.axes[1]
 	a3 = pylab.axes[2]
 	
-	a1.scatter(n2_a, lmass2_a, color="b", label="chunk1 points, 1 < z < 1.5", alpha=0.7)
-	a2.scatter(n3_a, lmass3_a, color="g", label="chunk2 points, 1.5 < z < 2", alpha=0.7)
-	a3.scatter(n4_a, lmass4_a, color="purple", label="chunk3 points, 2 < z < 2.5", alpha=0.7)
+	a1.scatter(n2_a, lmass2_a, color="b", label="chunk1 points, 1 < z < 1.5", alpha=0.7, markeredgecolor="none")
+	a2.scatter(n3_a, lmass3_a, color="g", label="chunk2 points, 1.5 < z < 2", alpha=0.7, markeredgecolor="none")
+	a3.scatter(n4_a, lmass4_a, color="purple", label="chunk3 points, 2 < z < 2.5", alpha=0.7, markeredgecolor="none")
 	
-	a1.scatter(n2_c, lmass2_c, color="b", alpha=0.7)
-	a2.scatter(n3_c, lmass3_c, color="g", alpha=0.7)
-	a3.scatter(n4_c, lmass4_c, color="purple", alpha=0.7)
+	a1.scatter(n2_c, lmass2_c, color="b", alpha=0.7, markeredgecolor="none")
+	a2.scatter(n3_c, lmass3_c, color="g", alpha=0.7, markeredgecolor="none")
+	a3.scatter(n4_c, lmass4_c, color="purple", alpha=0.7, markeredgecolor="none")
 	
-	a1.scatter(n2_n, lmass2_n, color="b", alpha=0.7)
-	a2.scatter(n3_n, lmass3_n, color="g", alpha=0.7)
-	a3.scatter(n4_n, lmass4_n, color="purple", alpha=0.7)
+	a1.scatter(n2_n, lmass2_n, color="b", alpha=0.7, markeredgecolor="none")
+	a2.scatter(n3_n, lmass3_n, color="g", alpha=0.7, markeredgecolor="none")
+	a3.scatter(n4_n, lmass4_n, color="purple", alpha=0.7, markeredgecolor="none")
 	
-	a1.scatter(n2_s, lmass2_s, color="b", alpha=0.7)
-	a2.scatter(n3_s, lmass3_s, color="g", alpha=0.7)
-	a3.scatter(n4_s, lmass4_s, color="purple", alpha=0.7)
+	a1.scatter(n2_s, lmass2_s, color="b", alpha=0.7, markeredgecolor="none")
+	a2.scatter(n3_s, lmass3_s, color="g", alpha=0.7, markeredgecolor="none")
+	a3.scatter(n4_s, lmass4_s, color="purple", alpha=0.7, markeredgecolor="none")
 	
-	a1.scatter(n2_u, lmass2_u, color="b", alpha=0.7)
-	a2.scatter(n3_u, lmass3_u, color="g", alpha=0.7)
-	a3.scatter(n4_u, lmass4_u, color="purple", alpha=0.7)
+	a1.scatter(n2_u, lmass2_u, color="b", alpha=0.7, markeredgecolor="none")
+	a2.scatter(n3_u, lmass3_u, color="g", alpha=0.7, markeredgecolor="none")
+	a3.scatter(n4_u, lmass4_u, color="purple", alpha=0.7, markeredgecolor="none")
 	
 
 	
@@ -845,9 +846,9 @@ def size_mass():
 	data_z_flagged1 = data_z_flag1[idx_1]
 	dataz_flagged1 = dataz_flag1[idx_1]
 	
-	chunk2_a = data_fast_flagged1[(data_z_flagged1["z"] >= 1) & (data_z_flagged1["z"] < 1.5)]
-	chunk3_a = data_fast_flagged1[(data_z_flagged1["z"] >= 1.5) & (data_z_flagged1["z"] < 2)]
-	chunk4_a = data_fast_flagged1[(data_z_flagged1["z"] >= 2) & (data_z_flagged1["z"] <2.5)]
+	chunk2_a = data_fast_flagged1[(data_z_flagged1["z_peak"] >= 1) & (data_z_flagged1["z_peak"] < 1.5)]
+	chunk3_a = data_fast_flagged1[(data_z_flagged1["z_peak"] >= 1.5) & (data_z_flagged1["z_peak"] < 2)]
+	chunk4_a = data_fast_flagged1[(data_z_flagged1["z_peak"] >= 2) & (data_z_flagged1["z_peak"] <2.5)]
 	
 	massed2_a = chunk2_a[(chunk2_a["lmass"] >= 11)]
 	massed3_a = chunk3_a[(chunk3_a["lmass"] >= 11)]
@@ -857,9 +858,9 @@ def size_mass():
 	lmass3_a = massed3_a["lmass"]
 	lmass4_a = massed4_a["lmass"]
 	
-	chunk_2_a = dataz_flagged1[(data_z_flagged1["z"] >= 1) & (data_z_flagged1["z"] < 1.5)]
-	chunk_3_a = dataz_flagged1[(data_z_flagged1["z"] >= 1.5) & (data_z_flagged1["z"] < 2)]
-	chunk_4_a = dataz_flagged1[(data_z_flagged1["z"] >= 2) & (data_z_flagged1["z"] <2.5)]
+	chunk_2_a = dataz_flagged1[(data_z_flagged1["z_peak"] >= 1) & (data_z_flagged1["z_peak"] < 1.5)]
+	chunk_3_a = dataz_flagged1[(data_z_flagged1["z_peak"] >= 1.5) & (data_z_flagged1["z_peak"] < 2)]
+	chunk_4_a = dataz_flagged1[(data_z_flagged1["z_peak"] >= 2) & (data_z_flagged1["z_peak"] <2.5)]
 	
 	massed_2_a = chunk_2_a[(chunk2_a["lmass"] >= 11)]
 	massed_3_a = chunk_3_a[(chunk3_a["lmass"] >= 11)]
@@ -890,9 +891,9 @@ def size_mass():
 	data_z_flagged2 = data_z_flag2[idx_2]
 	dataz_flagged2 = dataz_flag2[idx_2]
 	
-	chunk2_c = data_fast_flagged2[(data_z_flagged2["z"] >= 1) & (data_z_flagged2["z"] < 1.5)]
-	chunk3_c = data_fast_flagged2[(data_z_flagged2["z"] >= 1.5) & (data_z_flagged2["z"] < 2)]
-	chunk4_c = data_fast_flagged2[(data_z_flagged2["z"] >= 2) & (data_z_flagged2["z"] <2.5)]
+	chunk2_c = data_fast_flagged2[(data_z_flagged2["z_peak"] >= 1) & (data_z_flagged2["z_peak"] < 1.5)]
+	chunk3_c = data_fast_flagged2[(data_z_flagged2["z_peak"] >= 1.5) & (data_z_flagged2["z_peak"] < 2)]
+	chunk4_c = data_fast_flagged2[(data_z_flagged2["z_peak"] >= 2) & (data_z_flagged2["z_peak"] <2.5)]
 	
 	massed2_c = chunk2_c[(chunk2_c["lmass"] >= 11)]
 	massed3_c = chunk3_c[(chunk3_c["lmass"] >= 11)]
@@ -902,9 +903,9 @@ def size_mass():
 	lmass3_c = massed3_c["lmass"]
 	lmass4_c = massed4_c["lmass"]
 
-	chunk_2_c = dataz_flagged2[(data_z_flagged2["z"] >= 1) & (data_z_flagged2["z"] < 1.5)]
-	chunk_3_c = dataz_flagged2[(data_z_flagged2["z"] >= 1.5) & (data_z_flagged2["z"] < 2)]
-	chunk_4_c = dataz_flagged2[(data_z_flagged2["z"] >= 2) & (data_z_flagged2["z"] <2.5)]
+	chunk_2_c = dataz_flagged2[(data_z_flagged2["z_peak"] >= 1) & (data_z_flagged2["z_peak"] < 1.5)]
+	chunk_3_c = dataz_flagged2[(data_z_flagged2["z_peak"] >= 1.5) & (data_z_flagged2["z_peak"] < 2)]
+	chunk_4_c = dataz_flagged2[(data_z_flagged2["z_peak"] >= 2) & (data_z_flagged2["z_peak"] <2.5)]
 	
 	massed_2_c = chunk_2_c[(chunk2_c["lmass"] >= 11)]
 	massed_3_c = chunk_3_c[(chunk3_c["lmass"] >= 11)]
@@ -935,9 +936,9 @@ def size_mass():
 	data_z_flagged3 = data_z_flag3[idx_3]
 	dataz_flagged3 = dataz_flag3[idx_3]
 	
-	chunk2_n = data_fast_flagged3[(data_z_flagged3["z"] >= 1) & (data_z_flagged3["z"] < 1.5)]
-	chunk3_n = data_fast_flagged3[(data_z_flagged3["z"] >= 1.5) & (data_z_flagged3["z"] < 2)]
-	chunk4_n = data_fast_flagged3[(data_z_flagged3["z"] >= 2) & (data_z_flagged3["z"] <2.5)]
+	chunk2_n = data_fast_flagged3[(data_z_flagged3["z_peak"] >= 1) & (data_z_flagged3["z_peak"] < 1.5)]
+	chunk3_n = data_fast_flagged3[(data_z_flagged3["z_peak"] >= 1.5) & (data_z_flagged3["z_peak"] < 2)]
+	chunk4_n = data_fast_flagged3[(data_z_flagged3["z_peak"] >= 2) & (data_z_flagged3["z_peak"] <2.5)]
 	
 	massed2_n = chunk2_n[(chunk2_n["lmass"] >= 11)]
 	massed3_n = chunk3_n[(chunk3_n["lmass"] >= 11)]
@@ -947,9 +948,9 @@ def size_mass():
 	lmass3_n = massed3_n["lmass"]
 	lmass4_n = massed4_n["lmass"]
 
-	chunk_2_n = dataz_flagged3[(data_z_flagged3["z"] >= 1) & (data_z_flagged3["z"] < 1.5)]
-	chunk_3_n = dataz_flagged3[(data_z_flagged3["z"] >= 1.5) & (data_z_flagged3["z"] < 2)]
-	chunk_4_n = dataz_flagged3[(data_z_flagged3["z"] >= 2) & (data_z_flagged3["z"] <2.5)]
+	chunk_2_n = dataz_flagged3[(data_z_flagged3["z_peak"] >= 1) & (data_z_flagged3["z_peak"] < 1.5)]
+	chunk_3_n = dataz_flagged3[(data_z_flagged3["z_peak"] >= 1.5) & (data_z_flagged3["z_peak"] < 2)]
+	chunk_4_n = dataz_flagged3[(data_z_flagged3["z_peak"] >= 2) & (data_z_flagged3["z_peak"] <2.5)]
 	
 	massed_2_n = chunk_2_n[(chunk2_n["lmass"] >= 11)]
 	massed_3_n = chunk_3_n[(chunk3_n["lmass"] >= 11)]
@@ -980,9 +981,9 @@ def size_mass():
 	data_z_flagged4 = data_z_flag4[idx_4]
 	dataz_flagged4 = dataz_flag4[idx_4]
 	
-	chunk2_s = data_fast_flagged4[(data_z_flagged4["z"] >= 1) & (data_z_flagged4["z"] < 1.5)]
-	chunk3_s = data_fast_flagged4[(data_z_flagged4["z"] >= 1.5) & (data_z_flagged4["z"] < 2)]
-	chunk4_s = data_fast_flagged4[(data_z_flagged4["z"] >= 2) & (data_z_flagged4["z"] <2.5)]
+	chunk2_s = data_fast_flagged4[(data_z_flagged4["z_peak"] >= 1) & (data_z_flagged4["z_peak"] < 1.5)]
+	chunk3_s = data_fast_flagged4[(data_z_flagged4["z_peak"] >= 1.5) & (data_z_flagged4["z_peak"] < 2)]
+	chunk4_s = data_fast_flagged4[(data_z_flagged4["z_peak"] >= 2) & (data_z_flagged4["z_peak"] <2.5)]
 	
 	massed2_s = chunk2_s[(chunk2_s["lmass"] >= 11)]
 	massed3_s = chunk3_s[(chunk3_s["lmass"] >= 11)]
@@ -992,9 +993,9 @@ def size_mass():
 	lmass3_s = massed3_s["lmass"]
 	lmass4_s = massed4_s["lmass"]
 
-	chunk_2_s = dataz_flagged4[(data_z_flagged4["z"] >= 1) & (data_z_flagged4["z"] < 1.5)]
-	chunk_3_s = dataz_flagged4[(data_z_flagged4["z"] >= 1.5) & (data_z_flagged4["z"] < 2)]
-	chunk_4_s = dataz_flagged4[(data_z_flagged4["z"] >= 2) & (data_z_flagged4["z"] <2.5)]
+	chunk_2_s = dataz_flagged4[(data_z_flagged4["z_peak"] >= 1) & (data_z_flagged4["z_peak"] < 1.5)]
+	chunk_3_s = dataz_flagged4[(data_z_flagged4["z_peak"] >= 1.5) & (data_z_flagged4["z_peak"] < 2)]
+	chunk_4_s = dataz_flagged4[(data_z_flagged4["z_peak"] >= 2) & (data_z_flagged4["z_peak"] <2.5)]
 	
 	massed_2_s = chunk_2_s[(chunk2_s["lmass"] >= 11)]
 	massed_3_s = chunk_3_s[(chunk3_s["lmass"] >= 11)]
@@ -1025,9 +1026,9 @@ def size_mass():
 	data_z_flagged5 = data_z_flag5[idx_5]
 	dataz_flagged5 = dataz_flag5[idx_5]
 	
-	chunk2_u = data_fast_flagged5[(data_z_flagged5["z"] >= 1) & (data_z_flagged5["z"] < 1.5)]
-	chunk3_u = data_fast_flagged5[(data_z_flagged5["z"] >= 1.5) & (data_z_flagged5["z"] < 2)]
-	chunk4_u = data_fast_flagged5[(data_z_flagged5["z"] >= 2) & (data_z_flagged5["z"] <2.5)]
+	chunk2_u = data_fast_flagged5[(data_z_flagged5["z_peak"] >= 1) & (data_z_flagged5["z_peak"] < 1.5)]
+	chunk3_u = data_fast_flagged5[(data_z_flagged5["z_peak"] >= 1.5) & (data_z_flagged5["z_peak"] < 2)]
+	chunk4_u = data_fast_flagged5[(data_z_flagged5["z_peak"] >= 2) & (data_z_flagged5["z_peak"] <2.5)]
 	
 	massed2_u = chunk2_u[(chunk2_u["lmass"] >= 11)]
 	massed3_u = chunk3_u[(chunk3_u["lmass"] >= 11)]
@@ -1037,9 +1038,9 @@ def size_mass():
 	lmass3_u = massed3_u["lmass"]
 	lmass4_u = massed4_u["lmass"]
 
-	chunk_2_u = dataz_flagged5[(data_z_flagged5["z"] >= 1) & (data_z_flagged5["z"] < 1.5)]
-	chunk_3_u = dataz_flagged5[(data_z_flagged5["z"] >= 1.5) & (data_z_flagged5["z"] < 2)]
-	chunk_4_u = dataz_flagged5[(data_z_flagged5["z"] >= 2) & (data_z_flagged5["z"] <2.5)]
+	chunk_2_u = dataz_flagged5[(data_z_flagged5["z_peak"] >= 1) & (data_z_flagged5["z_peak"] < 1.5)]
+	chunk_3_u = dataz_flagged5[(data_z_flagged5["z_peak"] >= 1.5) & (data_z_flagged5["z_peak"] < 2)]
+	chunk_4_u = dataz_flagged5[(data_z_flagged5["z_peak"] >= 2) & (data_z_flagged5["z_peak"] <2.5)]
 	
 	massed_2_u = chunk_2_u[(chunk2_u["lmass"] >= 11)]
 	massed_3_u = chunk_3_u[(chunk3_u["lmass"] >= 11)]
@@ -1058,25 +1059,25 @@ def size_mass():
 	a3 = pylab.axes[2]
 	
 	
-	a1.scatter(n2_a, lmass2_a, color="b", label="chunk1 points, 1 < z < 1.5", alpha=0.7)
-	a2.scatter(n3_a, lmass3_a, color="g", label="chunk2 points, 1.5 < z < 2", alpha=0.7)
-	a3.scatter(n4_a, lmass4_a, color="purple", label="chunk3 points, 2 < z < 2.5", alpha=0.7)
+	a1.scatter(n2_a, lmass2_a, color="b", label="chunk1 points, 1 < z < 1.5", alpha=0.7, markeredgecolor="none")
+	a2.scatter(n3_a, lmass3_a, color="g", label="chunk2 points, 1.5 < z < 2", alpha=0.7, markeredgecolor="none")
+	a3.scatter(n4_a, lmass4_a, color="purple", label="chunk3 points, 2 < z < 2.5", alpha=0.7, markeredgecolor="none")
 	
-	a1.scatter(n2_c, lmass2_c, color="b", alpha=0.7)
-	a2.scatter(n3_c, lmass3_c, color="g", alpha=0.7)
-	a3.scatter(n4_c, lmass4_c, color="purple", alpha=0.7)
+	a1.scatter(n2_c, lmass2_c, color="b", alpha=0.7, markeredgecolor="none")
+	a2.scatter(n3_c, lmass3_c, color="g", alpha=0.7, markeredgecolor="none")
+	a3.scatter(n4_c, lmass4_c, color="purple", alpha=0.7, markeredgecolor="none")
 	
-	a1.scatter(n2_n, lmass2_n, color="b", alpha=0.7)
-	a2.scatter(n3_n, lmass3_n, color="g", alpha=0.7)
-	a3.scatter(n4_n, lmass4_n, color="purple", alpha=0.7)
+	a1.scatter(n2_n, lmass2_n, color="b", alpha=0.7, markeredgecolor="none")
+	a2.scatter(n3_n, lmass3_n, color="g", alpha=0.7, markeredgecolor="none")
+	a3.scatter(n4_n, lmass4_n, color="purple", alpha=0.7, markeredgecolor="none")
 	
-	a1.scatter(n2_s, lmass2_s, color="b", alpha=0.7)
-	a2.scatter(n3_s, lmass3_s, color="g", alpha=0.7)
-	a3.scatter(n4_s, lmass4_s, color="purple", alpha=0.7)
+	a1.scatter(n2_s, lmass2_s, color="b", alpha=0.7, markeredgecolor="none")
+	a2.scatter(n3_s, lmass3_s, color="g", alpha=0.7, markeredgecolor="none")
+	a3.scatter(n4_s, lmass4_s, color="purple", alpha=0.7, markeredgecolor="none")
 	
-	a1.scatter(n2_u, lmass2_u, color="b", alpha=0.7)
-	a2.scatter(n3_u, lmass3_u, color="g", alpha=0.7)
-	a3.scatter(n4_u, lmass4_u, color="purple", alpha=0.7)
+	a1.scatter(n2_u, lmass2_u, color="b", alpha=0.7, markeredgecolor="none")
+	a2.scatter(n3_u, lmass3_u, color="g", alpha=0.7, markeredgecolor="none")
+	a3.scatter(n4_u, lmass4_u, color="purple", alpha=0.7, markeredgecolor="none")
 	
 
 	
@@ -1117,9 +1118,9 @@ def sfr_mass():
 	data_flagged1 = data_flag1[idx_1]
 	data_z_flagged1 = data_z_flag1[idx_1]
 	
-	chunk2_a = data_fast_flagged1[(data_z_flagged1["z"] >= 1) & (data_z_flagged1["z"] < 1.5)]
-	chunk3_a = data_fast_flagged1[(data_z_flagged1["z"] >= 1.5) & (data_z_flagged1["z"] < 2)]
-	chunk4_a = data_fast_flagged1[(data_z_flagged1["z"] >= 2) & (data_z_flagged1["z"] <2.5)]
+	chunk2_a = data_fast_flagged1[(data_z_flagged1["z_peak"] >= 1) & (data_z_flagged1["z_peak"] < 1.5)]
+	chunk3_a = data_fast_flagged1[(data_z_flagged1["z_peak"] >= 1.5) & (data_z_flagged1["z_peak"] < 2)]
+	chunk4_a = data_fast_flagged1[(data_z_flagged1["z_peak"] >= 2) & (data_z_flagged1["z_peak"] <2.5)]
 	
 	massed2_a = chunk2_a[(chunk2_a["lmass"] >= 11)]
 	massed3_a = chunk3_a[(chunk3_a["lmass"] >= 11)]
@@ -1129,9 +1130,9 @@ def sfr_mass():
 	lmass3_a = massed3_a["lmass"]
 	lmass4_a = massed4_a["lmass"]
 	
-	chunk_2_a = data_z_flagged1[(data_z_flagged1["z"] >= 1) & (data_z_flagged1["z"] < 1.5)]
-	chunk_3_a = data_z_flagged1[(data_z_flagged1["z"] >= 1.5) & (data_z_flagged1["z"] < 2)]
-	chunk_4_a = data_z_flagged1[(data_z_flagged1["z"] >= 2) & (data_z_flagged1["z"] <2.5)]
+	chunk_2_a = data_z_flagged1[(data_z_flagged1["z_peak"] >= 1) & (data_z_flagged1["z_peak"] < 1.5)]
+	chunk_3_a = data_z_flagged1[(data_z_flagged1["z_peak"] >= 1.5) & (data_z_flagged1["z_peak"] < 2)]
+	chunk_4_a = data_z_flagged1[(data_z_flagged1["z_peak"] >= 2) & (data_z_flagged1["z_peak"] <2.5)]
 	
 	massed_2_a = chunk_2_a[(chunk2_a["lmass"] >= 11)]
 	massed_3_a = chunk_3_a[(chunk3_a["lmass"] >= 11)]
@@ -1158,9 +1159,9 @@ def sfr_mass():
 	data_flagged2 = data_flag2[idx_2]
 	data_z_flagged2 = data_z_flag2[idx_2]
 	
-	chunk2_c = data_fast_flagged2[(data_z_flagged2["z"] >= 1) & (data_z_flagged2["z"] < 1.5)]
-	chunk3_c = data_fast_flagged2[(data_z_flagged2["z"] >= 1.5) & (data_z_flagged2["z"] < 2)]
-	chunk4_c = data_fast_flagged2[(data_z_flagged2["z"] >= 2) & (data_z_flagged2["z"] <2.5)]
+	chunk2_c = data_fast_flagged2[(data_z_flagged2["z_peak"] >= 1) & (data_z_flagged2["z_peak"] < 1.5)]
+	chunk3_c = data_fast_flagged2[(data_z_flagged2["z_peak"] >= 1.5) & (data_z_flagged2["z_peak"] < 2)]
+	chunk4_c = data_fast_flagged2[(data_z_flagged2["z_peak"] >= 2) & (data_z_flagged2["z_peak"] <2.5)]
 	
 	massed2_c = chunk2_c[(chunk2_c["lmass"] >= 11)]
 	massed3_c = chunk3_c[(chunk3_c["lmass"] >= 11)]
@@ -1170,9 +1171,9 @@ def sfr_mass():
 	lmass3_c = massed3_c["lmass"]
 	lmass4_c = massed4_c["lmass"]
 	
-	chunk_2_c = data_z_flagged2[(data_z_flagged2["z"] >= 1) & (data_z_flagged2["z"] < 1.5)]
-	chunk_3_c = data_z_flagged2[(data_z_flagged2["z"] >= 1.5) & (data_z_flagged2["z"] < 2)]
-	chunk_4_c = data_z_flagged2[(data_z_flagged2["z"] >= 2) & (data_z_flagged2["z"] <2.5)]
+	chunk_2_c = data_z_flagged2[(data_z_flagged2["z_peak"] >= 1) & (data_z_flagged2["z_peak"] < 1.5)]
+	chunk_3_c = data_z_flagged2[(data_z_flagged2["z_peak"] >= 1.5) & (data_z_flagged2["z_peak"] < 2)]
+	chunk_4_c = data_z_flagged2[(data_z_flagged2["z_peak"] >= 2) & (data_z_flagged2["z_peak"] <2.5)]
 	
 	massed_2_c = chunk_2_c[(chunk2_c["lmass"] >= 11)]
 	massed_3_c = chunk_3_c[(chunk3_c["lmass"] >= 11)]
@@ -1199,9 +1200,9 @@ def sfr_mass():
 	data_flagged3 = data_flag3[idx_3]
 	data_z_flagged3 = data_z_flag3[idx_3]
 	
-	chunk2_n = data_fast_flagged3[(data_z_flagged3["z"] >= 1) & (data_z_flagged3["z"] < 1.5)]
-	chunk3_n = data_fast_flagged3[(data_z_flagged3["z"] >= 1.5) & (data_z_flagged3["z"] < 2)]
-	chunk4_n = data_fast_flagged3[(data_z_flagged3["z"] >= 2) & (data_z_flagged3["z"] <2.5)]
+	chunk2_n = data_fast_flagged3[(data_z_flagged3["z_peak"] >= 1) & (data_z_flagged3["z_peak"] < 1.5)]
+	chunk3_n = data_fast_flagged3[(data_z_flagged3["z_peak"] >= 1.5) & (data_z_flagged3["z_peak"] < 2)]
+	chunk4_n = data_fast_flagged3[(data_z_flagged3["z_peak"] >= 2) & (data_z_flagged3["z_peak"] <2.5)]
 	
 	massed2_n = chunk2_n[(chunk2_n["lmass"] >= 11)]
 	massed3_n = chunk3_n[(chunk3_n["lmass"] >= 11)]
@@ -1211,9 +1212,9 @@ def sfr_mass():
 	lmass3_n = massed3_n["lmass"]
 	lmass4_n = massed4_n["lmass"]
 	
-	chunk_2_n = data_z_flagged3[(data_z_flagged3["z"] >= 1) & (data_z_flagged3["z"] < 1.5)]
-	chunk_3_n = data_z_flagged3[(data_z_flagged3["z"] >= 1.5) & (data_z_flagged3["z"] < 2)]
-	chunk_4_n = data_z_flagged3[(data_z_flagged3["z"] >= 2) & (data_z_flagged3["z"] <2.5)]
+	chunk_2_n = data_z_flagged3[(data_z_flagged3["z_peak"] >= 1) & (data_z_flagged3["z_peak"] < 1.5)]
+	chunk_3_n = data_z_flagged3[(data_z_flagged3["z_peak"] >= 1.5) & (data_z_flagged3["z_peak"] < 2)]
+	chunk_4_n = data_z_flagged3[(data_z_flagged3["z_peak"] >= 2) & (data_z_flagged3["z_peak"] <2.5)]
 	
 	massed_2_n = chunk_2_n[(chunk2_n["lmass"] >= 11)]
 	massed_3_n = chunk_3_n[(chunk3_n["lmass"] >= 11)]
@@ -1240,9 +1241,9 @@ def sfr_mass():
 	data_flagged4 = data_flag4[idx_4]
 	data_z_flagged4 = data_z_flag4[idx_4]
 	
-	chunk2_s = data_fast_flagged4[(data_z_flagged4["z"] >= 1) & (data_fast_flagged4["z"] < 1.5)]
-	chunk3_s = data_fast_flagged4[(data_fast_flagged4["z"] >= 1.5) & (data_z_flagged4["z"] < 2)]
-	chunk4_s = data_fast_flagged4[(data_z_flagged4["z"] >= 2) & (data_z_flagged4["z"] <2.5)]
+	chunk2_s = data_fast_flagged4[(data_z_flagged4["z_peak"] >= 1) & (data_fast_flagged4["z_peak"] < 1.5)]
+	chunk3_s = data_fast_flagged4[(data_fast_flagged4["z_peak"] >= 1.5) & (data_z_flagged4["z_peak"] < 2)]
+	chunk4_s = data_fast_flagged4[(data_z_flagged4["z_peak"] >= 2) & (data_z_flagged4["z_peak"] <2.5)]
 	
 	massed2_s = chunk2_s[(chunk2_s["lmass"] >= 11)]
 	massed3_s = chunk3_s[(chunk3_s["lmass"] >= 11)]
@@ -1252,9 +1253,9 @@ def sfr_mass():
 	lmass3_s = massed3_s["lmass"]
 	lmass4_s = massed4_s["lmass"]
 	
-	chunk_2_s = data_z_flagged4[(data_z_flagged4["z"] >= 1) & (data_fast_flagged4["z"] < 1.5)]
-	chunk_3_s = data_z_flagged4[(data_fast_flagged4["z"] >= 1.5) & (data_z_flagged4["z"] < 2)]
-	chunk_4_s = data_z_flagged4[(data_z_flagged4["z"] >= 2) & (data_z_flagged4["z"] <2.5)]
+	chunk_2_s = data_z_flagged4[(data_z_flagged4["z_peak"] >= 1) & (data_fast_flagged4["z_peak"] < 1.5)]
+	chunk_3_s = data_z_flagged4[(data_fast_flagged4["z_peak"] >= 1.5) & (data_z_flagged4["z_peak"] < 2)]
+	chunk_4_s = data_z_flagged4[(data_z_flagged4["z_peak"] >= 2) & (data_z_flagged4["z_peak"] <2.5)]
 	
 	massed_2_s = chunk_2_s[(chunk2_s["lmass"] >= 11)]
 	massed_3_s = chunk_3_s[(chunk3_s["lmass"] >= 11)]
@@ -1281,9 +1282,9 @@ def sfr_mass():
 	data_flagged5 = data_flag5[idx_5]
 	data_z_flagged5 = data_z_flag5[idx_5]
 	
-	chunk2_u = data_fast_flagged5[(data_z_flagged5["z"] >= 1) & (data_z_flagged5["z"] < 1.5)]
-	chunk3_u = data_fast_flagged5[(data_z_flagged5["z"] >= 1.5) & (data_z_flagged5["z"] < 2)]
-	chunk4_u = data_fast_flagged5[(data_z_flagged5["z"] >= 2) & (data_z_flagged5["z"] <2.5)]
+	chunk2_u = data_fast_flagged5[(data_z_flagged5["z_peak"] >= 1) & (data_z_flagged5["z_peak"] < 1.5)]
+	chunk3_u = data_fast_flagged5[(data_z_flagged5["z_peak"] >= 1.5) & (data_z_flagged5["z_peak"] < 2)]
+	chunk4_u = data_fast_flagged5[(data_z_flagged5["z_peak"] >= 2) & (data_z_flagged5["z_peak"] <2.5)]
 	
 	massed2_u = chunk2_u[(chunk2_u["lmass"] >= 11)]
 	massed3_u = chunk3_u[(chunk3_u["lmass"] >= 11)]
@@ -1293,9 +1294,9 @@ def sfr_mass():
 	lmass3_u = massed3_u["lmass"]
 	lmass4_u = massed4_u["lmass"]
 	
-	chunk_2_u = data_z_flagged5[(data_z_flagged5["z"] >= 1) & (data_z_flagged5["z"] < 1.5)]
-	chunk_3_u = data_z_flagged5[(data_z_flagged5["z"] >= 1.5) & (data_z_flagged5["z"] < 2)]
-	chunk_4_u = data_z_flagged5[(data_z_flagged5["z"] >= 2) & (data_z_flagged5["z"] <2.5)]
+	chunk_2_u = data_z_flagged5[(data_z_flagged5["z_peak"] >= 1) & (data_z_flagged5["z_peak"] < 1.5)]
+	chunk_3_u = data_z_flagged5[(data_z_flagged5["z_peak"] >= 1.5) & (data_z_flagged5["z_peak"] < 2)]
+	chunk_4_u = data_z_flagged5[(data_z_flagged5["z_peak"] >= 2) & (data_z_flagged5["z_peak"] <2.5)]
 	
 	massed_2_u = chunk_2_u[(chunk2_u["lmass"] >= 11)]
 	massed_3_u = chunk_3_u[(chunk3_u["lmass"] >= 11)]
@@ -1313,25 +1314,25 @@ def sfr_mass():
 	a2 = pylab.axes[1]
 	a3 = pylab.axes[2]
 	
-	a1.scatter(lage2_a, lmass2_a, color="b", label="chunk1 points, 1 < z < 1.5", alpha=0.7)
-	a2.scatter(lage3_a, lmass3_a, color="g", label="chunk2 points, 1.5 < z < 2", alpha=0.7)
-	a3.scatter(lage4_a, lmass4_a, color="purple", label="chunk3 points, 2 < z < 2.5", alpha=0.7)
+	a1.scatter(lage2_a, lmass2_a, color="b", label="chunk1 points, 1 < z < 1.5", alpha=0.7, markeredgecolor="none")
+	a2.scatter(lage3_a, lmass3_a, color="g", label="chunk2 points, 1.5 < z < 2", alpha=0.7, markeredgecolor="none")
+	a3.scatter(lage4_a, lmass4_a, color="purple", label="chunk3 points, 2 < z < 2.5", alpha=0.7, markeredgecolor="none")
 	
-	a1.scatter(lage2_c, lmass2_c, color="b", alpha=0.7)
-	a2.scatter(lage3_c, lmass3_c, color="g", alpha=0.7)
-	a3.scatter(lage4_c, lmass4_c, color="purple", alpha=0.7)
+	a1.scatter(lage2_c, lmass2_c, color="b", alpha=0.7, markeredgecolor="none")
+	a2.scatter(lage3_c, lmass3_c, color="g", alpha=0.7, markeredgecolor="none")
+	a3.scatter(lage4_c, lmass4_c, color="purple", alpha=0.7, markeredgecolor="none")
 	
-	a1.scatter(lage2_n, lmass2_n, color="b", alpha=0.7)
-	a2.scatter(lage3_n, lmass3_n, color="g", alpha=0.7)
-	a3.scatter(lage4_n, lmass4_n, color="purple", alpha=0.7)
+	a1.scatter(lage2_n, lmass2_n, color="b", alpha=0.7, markeredgecolor="none")
+	a2.scatter(lage3_n, lmass3_n, color="g", alpha=0.7, markeredgecolor="none")
+	a3.scatter(lage4_n, lmass4_n, color="purple", alpha=0.7, markeredgecolor="none")
 	
-	a1.scatter(lage2_s, lmass2_s, color="b", alpha=0.7)
-	a2.scatter(lage3_s, lmass3_s, color="g", alpha=0.7)
-	a3.scatter(lage4_s, lmass4_s, color="purple", alpha=0.7)
+	a1.scatter(lage2_s, lmass2_s, color="b", alpha=0.7, markeredgecolor="none")
+	a2.scatter(lage3_s, lmass3_s, color="g", alpha=0.7, markeredgecolor="none")
+	a3.scatter(lage4_s, lmass4_s, color="purple", alpha=0.7, markeredgecolor="none")
 	
-	a1.scatter(lage2_u, lmass2_u, color="b", alpha=0.7)
-	a2.scatter(lage3_u, lmass3_u, color="g", alpha=0.7)
-	a3.scatter(lage4_u, lmass4_u, color="purple", alpha=0.7)
+	a1.scatter(lage2_u, lmass2_u, color="b", alpha=0.7, markeredgecolor="none")
+	a2.scatter(lage3_u, lmass3_u, color="g", alpha=0.7, markeredgecolor="none")
+	a3.scatter(lage4_u, lmass4_u, color="purple", alpha=0.7, markeredgecolor="none")
 	
 
 	
@@ -1373,9 +1374,9 @@ def size():
 	data_flagged1 = data_flag1[idx_1]
 	data_z_flagged1 = data_z_flag1[idx_1]
 	
-	chunk2_a = data_fast_flagged1[(data_z_flagged1["z"] >= 1) & (data_z_flagged1["z"] < 1.5)]
-	chunk3_a = data_fast_flagged1[(data_z_flagged1["z"] >= 1.5) & (data_z_flagged1["z"] < 2)]
-	chunk4_a = data_fast_flagged1[(data_z_flagged1["z"] >= 2) & (data_z_flagged1["z"] <2.5)]
+	chunk2_a = data_fast_flagged1[(data_z_flagged1["z_peak"] >= 1) & (data_z_flagged1["z_peak"] < 1.5)]
+	chunk3_a = data_fast_flagged1[(data_z_flagged1["z_peak"] >= 1.5) & (data_z_flagged1["z_peak"] < 2)]
+	chunk4_a = data_fast_flagged1[(data_z_flagged1["z_peak"] >= 2) & (data_z_flagged1["z_peak"] <2.5)]
 	
 	massed2_a = chunk2_a[(chunk2_a["lmass"] >= 11)]
 	massed3_a = chunk3_a[(chunk3_a["lmass"] >= 11)]
@@ -1419,9 +1420,9 @@ def size():
 	data_flagged2 = data_flag2[idx_2]
 	data_z_flagged2 = data_z_flag2[idx_2]
 	
-	chunk2_c = data_fast_flagged2[(data_z_flagged2["z"] >= 1) & (data_z_flagged2["z"] < 1.5)]
-	chunk3_c = data_fast_flagged2[(data_z_flagged2["z"] >= 1.5) & (data_z_flagged2["z"] < 2)]
-	chunk4_c = data_fast_flagged2[(data_z_flagged2["z"] >= 2) & (data_z_flagged2["z"] <2.5)]
+	chunk2_c = data_fast_flagged2[(data_z_flagged2["z_peak"] >= 1) & (data_z_flagged2["z_peak"] < 1.5)]
+	chunk3_c = data_fast_flagged2[(data_z_flagged2["z_peak"] >= 1.5) & (data_z_flagged2["z_peak"] < 2)]
+	chunk4_c = data_fast_flagged2[(data_z_flagged2["z_peak"] >= 2) & (data_z_flagged2["z_peak"] <2.5)]
 	
 	massed2_c = chunk2_c[(chunk2_c["lmass"] >= 11)]
 	massed3_c = chunk3_c[(chunk3_c["lmass"] >= 11)]
@@ -1465,9 +1466,9 @@ def size():
 	data_flagged3 = data_flag3[idx_3]
 	data_z_flagged3 = data_z_flag3[idx_3]
 	
-	chunk2_n = data_fast_flagged3[(data_z_flagged3["z"] >= 1) & (data_z_flagged3["z"] < 1.5)]
-	chunk3_n = data_fast_flagged3[(data_z_flagged3["z"] >= 1.5) & (data_z_flagged3["z"] < 2)]
-	chunk4_n = data_fast_flagged3[(data_z_flagged3["z"] >= 2) & (data_z_flagged3["z"] <2.5)]
+	chunk2_n = data_fast_flagged3[(data_z_flagged3["z_peak"] >= 1) & (data_z_flagged3["z_peak"] < 1.5)]
+	chunk3_n = data_fast_flagged3[(data_z_flagged3["z_peak"] >= 1.5) & (data_z_flagged3["z_peak"] < 2)]
+	chunk4_n = data_fast_flagged3[(data_z_flagged3["z_peak"] >= 2) & (data_z_flagged3["z_peak"] <2.5)]
 	
 	massed2_n = chunk2_n[(chunk2_n["lmass"] >= 11)]
 	massed3_n = chunk3_n[(chunk3_n["lmass"] >= 11)]
@@ -1511,9 +1512,9 @@ def size():
 	data_flagged4 = data_flag4[idx_4]
 	data_z_flagged4 = data_z_flag4[idx_4]
 	
-	chunk2_s = data_fast_flagged4[(data_z_flagged4["z"] >= 1) & (data_z_flagged4["z"] < 1.5)]
-	chunk3_s = data_fast_flagged4[(data_z_flagged4["z"] >= 1.5) & (data_z_flagged4["z"] < 2)]
-	chunk4_s = data_fast_flagged4[(data_z_flagged4["z"] >= 2) & (data_z_flagged4["z"] <2.5)]
+	chunk2_s = data_fast_flagged4[(data_z_flagged4["z_peak"] >= 1) & (data_z_flagged4["z_peak"] < 1.5)]
+	chunk3_s = data_fast_flagged4[(data_z_flagged4["z_peak"] >= 1.5) & (data_z_flagged4["z_peak"] < 2)]
+	chunk4_s = data_fast_flagged4[(data_z_flagged4["z_peak"] >= 2) & (data_z_flagged4["z_peak"] <2.5)]
 	
 	massed2_s = chunk2_s[(chunk2_s["lmass"] >= 11)]
 	massed3_s = chunk3_s[(chunk3_s["lmass"] >= 11)]
@@ -1556,9 +1557,9 @@ def size():
 	data_flagged5 = data_flag5[idx_5]
 	data_z_flagged5 = data_z_flag5[idx_5]
 	
-	chunk2_u = data_fast_flagged5[(data_z_flagged5["z"] >= 1) & (data_z_flagged5["z"] < 1.5)]
-	chunk3_u = data_fast_flagged5[(data_z_flagged5["z"] >= 1.5) & (data_z_flagged5["z"] < 2)]
-	chunk4_u = data_fast_flagged5[(data_z_flagged5["z"] >= 2) & (data_z_flagged5["z"] <2.5)]
+	chunk2_u = data_fast_flagged5[(data_z_flagged5["z_peak"] >= 1) & (data_z_flagged5["z_peak"] < 1.5)]
+	chunk3_u = data_fast_flagged5[(data_z_flagged5["z_peak"] >= 1.5) & (data_z_flagged5["z_peak"] < 2)]
+	chunk4_u = data_fast_flagged5[(data_z_flagged5["z_peak"] >= 2) & (data_z_flagged5["z_peak"] <2.5)]
 	
 	massed2_u = chunk2_u[(chunk2_u["lmass"] >= 11)]
 	massed3_u = chunk3_u[(chunk3_u["lmass"] >= 11)]
@@ -1605,9 +1606,9 @@ def U_V():
 	data_z_flagged1 = data_z_flag1[idx_1]
 	dataz_flagged1 = dataz_flag1[idx_1]
 	
-	chunk2_a = data_z_flagged1[(dataz_flagged1["z"] >= 1) & (dataz_flagged1["z"] < 1.5) & (data_fast_flagged1["lmass"] > 11)]
-	chunk3_a = data_z_flagged1[(dataz_flagged1["z"] >= 1.5) & (dataz_flagged1["z"] < 2) & (data_fast_flagged1["lmass"] > 11)]
-	chunk4_a = data_z_flagged1[(dataz_flagged1["z"] >= 2) & (dataz_flagged1["z"] < 2.5) & (data_fast_flagged1["lmass"] > 11)]
+	chunk2_a = data_z_flagged1[(dataz_flagged1["z_peak"] >= 1) & (dataz_flagged1["z_peak"] < 1.5) & (data_fast_flagged1["lmass"] > 11)]
+	chunk3_a = data_z_flagged1[(dataz_flagged1["z_peak"] >= 1.5) & (dataz_flagged1["z_peak"] < 2) & (data_fast_flagged1["lmass"] > 11)]
+	chunk4_a = data_z_flagged1[(dataz_flagged1["z_peak"] >= 2) & (dataz_flagged1["z_peak"] < 2.5) & (data_fast_flagged1["lmass"] > 11)]
 	
 	U2_a = chunk2_a["L153"]
 	U3_a = chunk3_a["L153"]
@@ -1647,9 +1648,9 @@ def U_V():
 	data_z_flagged2 = data_z_flag2[idx_2]
 	dataz_flagged2 = dataz_flag2[idx_2]
 	
-	chunk2_c = data_z_flagged2[(dataz_flagged2["z"] >= 1) & (dataz_flagged2["z"] < 1.5) & (data_fast_flagged2["lmass"] > 11)]
-	chunk3_c = data_z_flagged2[(dataz_flagged2["z"] >= 1.5) & (dataz_flagged2["z"] < 2) & (data_fast_flagged2["lmass"] > 11)]
-	chunk4_c = data_z_flagged2[(dataz_flagged2["z"] >= 2) & (dataz_flagged2["z"] < 2.5) & (data_fast_flagged2["lmass"] > 11)]
+	chunk2_c = data_z_flagged2[(dataz_flagged2["z_peak"] >= 1) & (dataz_flagged2["z_peak"] < 1.5) & (data_fast_flagged2["lmass"] > 11)]
+	chunk3_c = data_z_flagged2[(dataz_flagged2["z_peak"] >= 1.5) & (dataz_flagged2["z_peak"] < 2) & (data_fast_flagged2["lmass"] > 11)]
+	chunk4_c = data_z_flagged2[(dataz_flagged2["z_peak"] >= 2) & (dataz_flagged2["z_peak"] < 2.5) & (data_fast_flagged2["lmass"] > 11)]
 	
 	U2_c = chunk2_c["L153"]
 	U3_c = chunk3_c["L153"]
@@ -1689,9 +1690,9 @@ def U_V():
 	data_z_flagged3 = data_z_flag3[idx_3]
 	dataz_flagged3 = dataz_flag3[idx_3]
 	
-	chunk2_n = data_z_flagged3[(dataz_flagged3["z"] >= 1) & (dataz_flagged3["z"] < 1.5) & (data_fast_flagged3["lmass"] > 11)]
-	chunk3_n = data_z_flagged3[(dataz_flagged3["z"] >= 1.5) & (dataz_flagged3["z"] < 2) & (data_fast_flagged3["lmass"] > 11)]
-	chunk4_n = data_z_flagged3[(dataz_flagged3["z"] >= 2) & (dataz_flagged3["z"] < 2.5) & (data_fast_flagged3["lmass"] > 11)]
+	chunk2_n = data_z_flagged3[(dataz_flagged3["z_peak"] >= 1) & (dataz_flagged3["z_peak"] < 1.5) & (data_fast_flagged3["lmass"] > 11)]
+	chunk3_n = data_z_flagged3[(dataz_flagged3["z_peak"] >= 1.5) & (dataz_flagged3["z_peak"] < 2) & (data_fast_flagged3["lmass"] > 11)]
+	chunk4_n = data_z_flagged3[(dataz_flagged3["z_peak"] >= 2) & (dataz_flagged3["z_peak"] < 2.5) & (data_fast_flagged3["lmass"] > 11)]
 	
 	U2_n = chunk2_n["L153"]
 	U3_n = chunk3_n["L153"]
@@ -1731,9 +1732,9 @@ def U_V():
 	data_z_flagged4 = data_z_flag4[idx_4]
 	dataz_flagged4 = dataz_flag4[idx_4]
 	
-	chunk2_s = data_z_flagged4[(dataz_flagged4["z"] >= 1) & (dataz_flagged4["z"] < 1.5) & (data_fast_flagged4["lmass"] > 11)]
-	chunk3_s = data_z_flagged4[(dataz_flagged4["z"] >= 1.5) & (dataz_flagged4["z"] < 2) & (data_fast_flagged4["lmass"] > 11)]
-	chunk4_s = data_z_flagged4[(dataz_flagged4["z"] >= 2) & (dataz_flagged4["z"] < 2.5) & (data_fast_flagged4["lmass"] > 11)]
+	chunk2_s = data_z_flagged4[(dataz_flagged4["z_peak"] >= 1) & (dataz_flagged4["z_peak"] < 1.5) & (data_fast_flagged4["lmass"] > 11)]
+	chunk3_s = data_z_flagged4[(dataz_flagged4["z_peak"] >= 1.5) & (dataz_flagged4["z_peak"] < 2) & (data_fast_flagged4["lmass"] > 11)]
+	chunk4_s = data_z_flagged4[(dataz_flagged4["z_peak"] >= 2) & (dataz_flagged4["z_peak"] < 2.5) & (data_fast_flagged4["lmass"] > 11)]
 	
 	U2_s = chunk2_s["L153"]
 	U3_s = chunk3_s["L153"]
@@ -1773,9 +1774,9 @@ def U_V():
 	data_z_flagged5 = data_z_flag5[idx_5]
 	dataz_flagged5 = dataz_flag5[idx_5]
 	
-	chunk2_u = data_z_flagged5[(dataz_flagged5["z"] >= 1) & (dataz_flagged5["z"] < 1.5) & (data_fast_flagged5["lmass"] > 11)]
-	chunk3_u = data_z_flagged5[(dataz_flagged5["z"] >= 1.5) & (dataz_flagged5["z"] < 2) & (data_fast_flagged5["lmass"] > 11)]
-	chunk4_u = data_z_flagged5[(dataz_flagged5["z"] >= 2) & (dataz_flagged5["z"] < 2.5) & (data_fast_flagged5["lmass"] > 11)]
+	chunk2_u = data_z_flagged5[(dataz_flagged5["z_peak"] >= 1) & (dataz_flagged5["z_peak"] < 1.5) & (data_fast_flagged5["lmass"] > 11)]
+	chunk3_u = data_z_flagged5[(dataz_flagged5["z_peak"] >= 1.5) & (dataz_flagged5["z_peak"] < 2) & (data_fast_flagged5["lmass"] > 11)]
+	chunk4_u = data_z_flagged5[(dataz_flagged5["z_peak"] >= 2) & (dataz_flagged5["z_peak"] < 2.5) & (data_fast_flagged5["lmass"] > 11)]
 	
 	U2_u = chunk2_u["L153"]
 	U3_u = chunk3_u["L153"]
@@ -1850,2426 +1851,188 @@ def U_V():
 def wavelength():
 
 	factor = 3.0*(10.0**5.56)
+		
+	aegis_1 = [2250, 2481, 6115, 6234, 6424, 6691, 7771, 8838, 11022, 13524, 14012, 14056, 14499, 14609, 16238, 17297, 17570, 17775, 18045, 18257, 19970, 20106, 20250, 20794, 21028, 21357, 22126, 22678, 23011, 23089, 24456, 26850, 26884, 27177, 28328, 29863, 30393, 30421, 30735, 30920, 31326, 32114, 32425, 33028, 33158, 34141, 34254, 34722, 35604, 37919, 38065, 38130, 38167]
+	aegis_2 = [195, 766, 1420, 1821, 1925, 2016, 2289, 2427, 3106, 3311, 4826, 5016, 6262, 6310, 6880, 7601, 8646, 10858, 11465, 11730, 12049, 12219, 14481, 14495, 15069, 15088, 16491, 17691, 18280, 18922, 19743, 21156, 22423, 22713, 22741, 22887, 23027, 23045, 23234, 24059, 24333, 24448, 25346, 25969, 26079, 26649, 27315, 28310, 28843, 28864, 29144, 29329, 29399, 31169, 31680, 31839, 33196, 33551, 33770, 34185, 35002, 35677, 36347, 37556, 37592, 38174, 38290, 39028, 39239, 40470]
+	aegis_3 = [531, 1606, 2578, 2918, 2957, 8635, 9128, 9870, 10755, 10893, 11416, 11773, 12227, 12479, 15709, 15871, 16065, 17754, 23040, 23645, 25300, 26508, 26952, 27802, 29106, 29178, 29861, 29987, 30967, 31353, 32014, 32686, 33863, 33925, 34685, 34918, 36104, 36574, 37853, 38187]
+	cosmos_1 = [796, 2348, 5238, 9111, 10703, 11783, 11871, 12699, 12767, 13206, 13890, 15066, 17263, 18575, 25627, 27769, 31555, 32549]
+	cosmos_2 = [312, 363, 728, 2616, 2816, 3200, 4536, 7216, 7411, 9667, 10128, 10592, 10989, 11973, 17089, 17406, 18688, 20983, 21723, 24462, 25534, 25581, 28492, 28523, 29222, 31090]
+	cosmos_3 = [490, 1769, 2049, 3182, 3206, 5473, 5530, 6159, 7884, 7951, 9871, 11314, 11337, 11363, 11494, 12020, 12995, 13083, 13174, 16419, 19090, 19153, 20668, 22995, 23021, 23673, 25515, 26039, 26338, 26957, 27289, 28344, 28565, 31922, 33199]
+	goodsn_1 = [57, 128, 576, 1749, 2265, 2868, 3133, 4711, 7372, 9056, 10280, 10606, 11706, 11826, 12342, 12561, 13971, 17270, 21156, 23564, 25216, 25813, 32162, 35090, 35299]
+	goodsn_2 = [1616, 3186, 4117, 5932, 9692, 10311, 14140, 14532, 16827, 18633, 19913, 20709, 23187, 23548, 25265, 29464, 32842, 33780, 35292, 36582, 37738]
+	goodsn_3 = [338, 764, 774, 1678, 2295, 3776, 4854, 4927, 5346, 5371, 5507, 5677, 6215, 6789, 6877, 9122, 10125, 10657, 11064, 12066, 12302, 16129, 16346, 16879, 19082, 20052, 20317, 21738, 23018, 25942, 26529, 26888, 28810, 28826, 30283, 32002, 32033, 36988]
+	goodss_1 = [1523, 1924, 2707, 4210, 6098, 6106, 7444, 7503, 19186, 27442, 29928, 30394, 30997, 33163, 33164, 38111, 39170, 43042, 45775, 46392, 46846, 47742, 47873, 48631]
+	goodss_2 = [2383, 4505, 7457, 8422, 9704, 10436, 13369, 13628, 14152, 14335, 14747, 15214, 16769, 16814, 24308, 26139, 27881, 29407, 29652, 29900, 31397, 32048, 32783, 33912, 34491, 34519, 34567, 35444, 36095, 39012, 39208, 39364, 40889, 41148, 42113, 42501, 42705, 42957, 43114, 44042, 44157, 48312]
+	goodss_3 = [1725, 2467, 4583, 6341, 7686, 8683, 11016, 14813, 15847, 16888, 22079, 22825, 28604, 29288, 30274, 30534, 39568, 40185, 41181, 42607, 43901, 45475, 48464, 49285, 49834]
+	uds_1 = [1123, 2393, 2394, 5126, 5924, 6299, 6852, 7071, 7783, 9261, 10758, 11533, 13482, 14152, 14854, 15063, 16239, 17879, 19765, 19954, 21513, 23590, 24953, 26552, 26875, 28773, 30057, 30192, 30255, 32077, 32256, 32691, 32777, 32921, 32986, 34353, 34641, 35071, 35356, 36013, 40631, 41412, 41671, 41835]
+	uds_2 = [922, 1513, 1831, 1854, 2294, 3445, 4721, 6590, 6764, 7258, 9073, 10237, 10604, 12441, 12778, 14723, 15270, 18803, 19572, 19703, 19708, 19850, 20529, 20917, 20941, 21031, 21267, 21665, 22480, 25206, 25394, 25630, 27672, 28791, 30133, 30737, 31684, 32468, 32707, 33422, 33527, 35616, 35829, 36010, 36685, 37182, 37775, 38246, 38288, 38631, 39349, 39487, 40420, 40472, 40849, 41302, 41456, 42319, 43367]
+	uds_3 = [190, 394, 1620, 2166, 2211, 4059, 4128, 4701, 4706, 5155, 7516, 9207, 9367, 11558, 12010, 13108, 14409, 14996, 15598, 16022, 16709, 17838, 19068, 19126, 20694, 20704, 20770, 21998, 22227, 22416, 22685, 23692, 26581, 28087, 29179, 29461, 30196, 30916, 31615, 32147, 32351, 32947, 34150, 34817, 36247, 38640, 39126, 39624, 42529, 42571, 42812, 43667]
 	
 	os.chdir("/Volumes/TOSHIBA EXT/3d_hst/noah_massive/aegis_massive")
+	for i in aegis_1:
+		"data1_a" + str(i) = ascii.read("%s..obs_sed" % (i))
+		"lam1_a" + str(i) = ("data1_a" + str(i))["lambda"]
+		"flux_1_a" + str(i) = ("data1_a" + (i))["flux_cat"]
+		"flux1_a" + str(i) = (("flux_1_a" + str(i))*(("lam1_a" + str(i))**-2.0))*factor
+	for i in aegis_2:
+		"data2_a" + str(i) = ascii.read("%s..obs_sed" % (i))
+		"lam2_a" + str(i) = ("data2_a" + str(i))["lambda"]
+		"flux_2_a" + str(i) = ("data2_a" + str(i))["flux_cat"]
+		"flux2_a" + str(i) = (("flux_2_a" + str(i))*(("lam2_a" + str(i)**-2.0))*factor
+	for i in aegis_3:
+		"data3_a" + str(i) = ascii.read("%s..obs_sed" % (i))
+		"lam3_a" + str(i) = ("data3_a" + str(i))["lambda"]
+		"flux_3_a" + str(i) = ("data3_a" + (i))["flux_cat"]
+		"flux3_a" + str(i) = (("flux_3_a" + str(i))*(("lam3_a" + str(i))**-2.0))*factor
+	os.chdir("/Volumes/TOSHIBA EXT/3d_hst/noah_massive/cosmos_massive")	
+	for i in cosmos_1:
+		"data1_c" + str(i) = ascii.read("%s..obs_sed" % (i))
+		"lam1_c" + str(i) = ("data1_c" + str(i))["lambda"]
+		"flux_1_c" + str(i) = ("data1_c" + (i))["flux_cat"]
+		"flux1_c" + str(i) = (("flux_1_c" + str(i))*(("lam1_c" + str(i))**-2.0))*factor
+	for i in cosmos_2:
+		"data2_c" + str(i) = ascii.read("%s..obs_sed" % (i))
+		"lam2_c" + str(i) = ("data2_c" + str(i))["lambda"]
+		"flux_2_c" + str(i) = ("data2_c" + str(i))["flux_cat"]
+		"flux2_c" + str(i) = (("flux_2_c" + str(i))*(("lam2_c" + str(i)**-2.0))*factor
+	for i in cosmos_3:
+		"data3_c" + str(i) = ascii.read("%s..obs_sed" % (i))
+		"lam3_c" + str(i) = ("data3_c" + str(i))["lambda"]
+		"flux_3_c" + str(i) = ("data3_c" + (i))["flux_cat"]
+		"flux3_c" + str(i) = (("flux_3_c" + str(i))*(("lam3_c" + str(i))**-2.0))*factor
+	os.chdir("/Volumes/TOSHIBA EXT/3d_hst/noah_massive/goodsn_massive")	
+	for i in goodsn_1:
+		"data1_n" + str(i) = ascii.read("%s.obs_sed" % (i))
+		"lam1_n" + str(i) = ("data1_n" + str(i))["lambda"]
+		"flux_1_n" + str(i) = ("data1_n" + (i))["flux_cat"]
+		"flux1_n" + str(i) = (("flux_1_n" + str(i))*(("lam1_n" + str(i))**-2.0))*factor
+	for i in goodsn_2:
+		"data2_n" + str(i) = ascii.read("%s.obs_sed" % (i))
+		"lam2_n" + str(i) = ("data2_n" + str(i))["lambda"]
+		"flux_2_n" + str(i) = ("data2_n" + str(i))["flux_cat"]
+		"flux2_n" + str(i) = (("flux_2_n" + str(i))*(("lam2_n" + str(i)**-2.0))*factor
+	for i in goodsn_3:
+		"data3_n" + str(i) = ascii.read("%s.obs_sed" % (i))
+		"lam3_n" + str(i) = ("data3_n" + str(i))["lambda"]
+		"flux_3_n" + str(i) = ("data3_n" + (i))["flux_cat"]
+		"flux3_n" + str(i) = (("flux_3_n" + str(i))*(("lam3_n" + str(i))**-2.0))*factor
+	os.chdir("/Volumes/TOSHIBA EXT/3d_hst/noah_massive/goodss_massive")	
+	for i in goodss_1:
+		"data1_s" + str(i) = ascii.read("%s.obs_sed" % (i))
+		"lam1_s" + str(i) = ("data1_s" + str(i))["lambda"]
+		"flux_1_s" + str(i) = ("data1_s" + (i))["flux_cat"]
+		"flux1_s" + str(i) = (("flux_1_s" + str(i))*(("lam1_s" + str(i))**-2.0))*factor
+	for i in goodss_2:
+		"data2_s" + str(i) = ascii.read("%s.obs_sed" % (i))
+		"lam2_s" + str(i) = ("data2_s" + str(i))["lambda"]
+		"flux_2_s" + str(i) = ("data2_s" + str(i))["flux_cat"]
+		"flux2_s" + str(i) = (("flux_2_s" + str(i))*(("lam2_s" + str(i)**-2.0))*factor
+	for i in goodss_3:
+		"data3_s" + str(i) = ascii.read("%s.obs_sed" % (i))
+		"lam3_s" + str(i) = ("data3_s" + str(i))["lambda"]
+		"flux_3_s" + str(i) = ("data3_s" + (i))["flux_cat"]
+		"flux3_s" + str(i) = (("flux_3_s" + str(i))*(("lam3_s" + str(i))**-2.0))*factor
+	os.chdir("/Volumes/TOSHIBA EXT/3d_hst/noah_massive/uds_massive")	
+	for i in uds_1:
+		"data1_u" + str(i) = ascii.read("%s.obs_sed" % (i))
+		"lam1_u" + str(i) = ("data1_u" + str(i))["lambda"]
+		"flux_1_u" + str(i) = ("data1_u" + (i))["flux_cat"]
+		"flux1_u" + str(i) = (("flux_1_u" + str(i))*(("lam1_u" + str(i))**-2.0))*factor
+	for i in uds_2:
+		"data2_u" + str(i) = ascii.read("%s.obs_sed" % (i))
+		"lam2_u" + str(i) = ("data2_u" + str(i))["lambda"]
+		"flux_2_u" + str(i) = ("data2_u" + str(i))["flux_cat"]
+		"flux2_u" + str(i) = (("flux_2_u" + str(i))*(("lam2_u" + str(i)**-2.0))*factor
+	for i in uds_3:
+		"data3_u" + str(i) = ascii.read("%s.obs_sed" % (i))
+		"lam3_u" + str(i) = ("data3_u" + str(i))["lambda"]
+		"flux_3_u" + str(i) = ("data3_u" + (i))["flux_cat"]
+		"flux3_u" + str(i) = (("flux_3_u" + str(i))*(("lam3_u" + str(i))**-2.0))*factor
+		
 	
-	data1_a1 = ascii.read("2250..temp_sed")
-	data1_a2 = ascii.read("2481..temp_sed")
-	data1_a3 = ascii.read("6115..temp_sed")
-	data1_a4 = ascii.read("6234..temp_sed")
-	data1_a5 = ascii.read("6424..temp_sed")
-	data1_a6 = ascii.read("6691..temp_sed")
-	data1_a7 = ascii.read("7771..temp_sed")
-	data1_a8 = ascii.read("8838..temp_sed")
-	data1_a9 = ascii.read("11022..temp_sed")
-	data1_a10 = ascii.read("13524..temp_sed")
-	data1_a11 = ascii.read("14012..temp_sed")
-	data1_a12 = ascii.read("14056..temp_sed")
-	data1_a13 = ascii.read("14499..temp_sed")
-	data1_a14 = ascii.read("14609..temp_sed")
-	data1_a15 = ascii.read("16238..temp_sed")
-	data1_a16 = ascii.read("17297..temp_sed")
-	data1_a17 = ascii.read("17570..temp_sed")
-	data1_a18 = ascii.read("17775..temp_sed")
-	data1_a19 = ascii.read("18045..temp_sed")
-	data1_a20 = ascii.read("18257..temp_sed")
-	data1_a21 = ascii.read("19970..temp_sed")
-	data1_a22 = ascii.read("20106..temp_sed")
-	data1_a23 = ascii.read("20250..temp_sed")
-	data1_a24 = ascii.read("20794..temp_sed")
-	data1_a25 = ascii.read("21028..temp_sed")
-	data1_a26 = ascii.read("21357..temp_sed")
-	data1_a27 = ascii.read("22126..temp_sed")
-	data1_a28 = ascii.read("22678..temp_sed")
-	data1_a29 = ascii.read("23011..temp_sed")
-	data1_a30 = ascii.read("23089..temp_sed")
-	data1_a31 = ascii.read("24456..temp_sed")
-	data1_a32 = ascii.read("26850..temp_sed")
-	data1_a33 = ascii.read("26884..temp_sed")
-	data1_a34 = ascii.read("27177..temp_sed")
-	data1_a35 = ascii.read("28328..temp_sed")
-	data1_a36 = ascii.read("29863..temp_sed")
-	data1_a37 = ascii.read("30393..temp_sed")
-	data1_a38 = ascii.read("30421..temp_sed")
-	data1_a39 = ascii.read("30735..temp_sed")
-	data1_a40 = ascii.read("30920..temp_sed")
-	data1_a41 = ascii.read("31326..temp_sed")
-	data1_a42 = ascii.read("32114..temp_sed")
-	data1_a43 = ascii.read("32425..temp_sed")
-	data1_a44 = ascii.read("33028..temp_sed")
-	data1_a45 = ascii.read("33158..temp_sed")
-	data1_a46 = ascii.read("34141..temp_sed")
-	data1_a47 = ascii.read("34254..temp_sed")
-	data1_a48 = ascii.read("34722..temp_sed")
-	data1_a49 = ascii.read("35604..temp_sed")
-	data1_a50 = ascii.read("37919..temp_sed")
-	data1_a51 = ascii.read("38065..temp_sed")
-	data1_a52 = ascii.read("38130..temp_sed")
-	data1_a53 = ascii.read("38167..temp_sed")
+	
 
-	
-	lam1_a1 = data1_a1["lambda"]
-	lam1_a2 = data1_a2["lambda"]
-	lam1_a3 = data1_a3["lambda"]
-	lam1_a4 = data1_a4["lambda"]
-	lam1_a5 = data1_a5["lambda"]
-	lam1_a6 = data1_a6["lambda"]
-	lam1_a7 = data1_a7["lambda"]
-	lam1_a8 = data1_a8["lambda"]
-	lam1_a9 = data1_a9["lambda"]
-	lam1_a10 = data1_a10["lambda"]
-	lam1_a11 = data1_a11["lambda"]
-	lam1_a12 = data1_a12["lambda"]
-	lam1_a13 = data1_a13["lambda"]
-	lam1_a14 = data1_a14["lambda"]
-	lam1_a15 = data1_a15["lambda"]
-	lam1_a16 = data1_a16["lambda"]
-	lam1_a17 = data1_a17["lambda"]
-	lam1_a18 = data1_a18["lambda"]
-	lam1_a19 = data1_a19["lambda"]
-	lam1_a20 = data1_a20["lambda"]
-	lam1_a21 = data1_a21["lambda"]
-	lam1_a22 = data1_a22["lambda"]
-	lam1_a23 = data1_a23["lambda"]
-	lam1_a24 = data1_a24["lambda"]
-	lam1_a25 = data1_a25["lambda"]
-	lam1_a26 = data1_a26["lambda"]
-	lam1_a27 = data1_a27["lambda"]
-	lam1_a28 = data1_a28["lambda"]
-	lam1_a29 = data1_a29["lambda"]
-	lam1_a30 = data1_a30["lambda"]
-	lam1_a31 = data1_a31["lambda"]
-	lam1_a32 = data1_a32["lambda"]
-	lam1_a33 = data1_a33["lambda"]
-	lam1_a34 = data1_a34["lambda"]
-	lam1_a35 = data1_a35["lambda"]
-	lam1_a36 = data1_a36["lambda"]
-	lam1_a37 = data1_a37["lambda"]
-	lam1_a38 = data1_a38["lambda"]
-	lam1_a39 = data1_a39["lambda"]
-	lam1_a40 = data1_a40["lambda"]
-	lam1_a41 = data1_a41["lambda"]
-	lam1_a42 = data1_a42["lambda"]
-	lam1_a43 = data1_a43["lambda"]
-	lam1_a44 = data1_a44["lambda"]
-	lam1_a45 = data1_a45["lambda"]
-	lam1_a46 = data1_a46["lambda"]
-	lam1_a47 = data1_a47["lambda"]
-	lam1_a48 = data1_a48["lambda"]
-	lam1_a49 = data1_a49["lambda"]
-	lam1_a50 = data1_a50["lambda"]
-	lam1_a51 = data1_a51["lambda"]
-	lam1_a52 = data1_a52["lambda"]
-	lam1_a53 = data1_a53["lambda"]
-
-	
-	flux_1_a1 = data1_a1["tempflux"]
-	flux_1_a2 = data1_a2["tempflux"]
-	flux_1_a3 = data1_a3["tempflux"]
-	flux_1_a4 = data1_a4["tempflux"]
-	flux_1_a5 = data1_a5["tempflux"]
-	flux_1_a6 = data1_a6["tempflux"]
-	flux_1_a7 = data1_a7["tempflux"]
-	flux_1_a8 = data1_a8["tempflux"]
-	flux_1_a9 = data1_a9["tempflux"]
-	flux_1_a10 = data1_a10["tempflux"]
-	flux_1_a11 = data1_a11["tempflux"]
-	flux_1_a12 = data1_a12["tempflux"]
-	flux_1_a13 = data1_a13["tempflux"]
-	flux_1_a14 = data1_a14["tempflux"]
-	flux_1_a15 = data1_a15["tempflux"]
-	flux_1_a16 = data1_a16["tempflux"]
-	flux_1_a17 = data1_a17["tempflux"]
-	flux_1_a18 = data1_a18["tempflux"]
-	flux_1_a19 = data1_a19["tempflux"]
-	flux_1_a20 = data1_a20["tempflux"]
-	flux_1_a21 = data1_a21["tempflux"]
-	flux_1_a22 = data1_a22["tempflux"]
-	flux_1_a23 = data1_a23["tempflux"]
-	flux_1_a24 = data1_a24["tempflux"]
-	flux_1_a25 = data1_a25["tempflux"]
-	flux_1_a26 = data1_a26["tempflux"]
-	flux_1_a27 = data1_a27["tempflux"]
-	flux_1_a28 = data1_a28["tempflux"]
-	flux_1_a29 = data1_a29["tempflux"]
-	flux_1_a30 = data1_a30["tempflux"]
-	flux_1_a31 = data1_a31["tempflux"]
-	flux_1_a32 = data1_a32["tempflux"]
-	flux_1_a33 = data1_a33["tempflux"]
-	flux_1_a34 = data1_a34["tempflux"]
-	flux_1_a35 = data1_a35["tempflux"]
-	flux_1_a36 = data1_a36["tempflux"]
-	flux_1_a37 = data1_a37["tempflux"]
-	flux_1_a38 = data1_a38["tempflux"]
-	flux_1_a39 = data1_a39["tempflux"]
-	flux_1_a40 = data1_a40["tempflux"]
-	flux_1_a41 = data1_a41["tempflux"]
-	flux_1_a42 = data1_a42["tempflux"]
-	flux_1_a43 = data1_a43["tempflux"]
-	flux_1_a44 = data1_a44["tempflux"]
-	flux_1_a45 = data1_a45["tempflux"]
-	flux_1_a46 = data1_a46["tempflux"]
-	flux_1_a47 = data1_a47["tempflux"]
-	flux_1_a48 = data1_a48["tempflux"]
-	flux_1_a49 = data1_a49["tempflux"]
-	flux_1_a50 = data1_a50["tempflux"]
-	flux_1_a51 = data1_a51["tempflux"]
-	flux_1_a52 = data1_a52["tempflux"]
-	flux_1_a53 = data1_a53["tempflux"]
 
 	
 	
-	flux1_a1 = (flux_1_a1*(lam1_a1**-2.0))*factor
-	flux1_a2 = (flux_1_a2*(lam1_a2**-2.0))*factor
-	flux1_a3 = (flux_1_a3*(lam1_a3**-2.0))*factor
-	flux1_a4 = (flux_1_a4*(lam1_a4**-2.0))*factor
-	flux1_a5 = (flux_1_a5*(lam1_a5**-2.0))*factor
-	flux1_a6 = (flux_1_a6*(lam1_a6**-2.0))*factor
-	flux1_a7 = (flux_1_a7*(lam1_a7**-2.0))*factor
-	flux1_a8 = (flux_1_a8*(lam1_a8**-2.0))*factor
-	flux1_a9 = (flux_1_a9*(lam1_a9**-2.0))*factor
-	flux1_a10 = (flux_1_a10*(lam1_a10**-2.0))*factor
-	flux1_a11 = (flux_1_a11*(lam1_a11**-2.0))*factor
-	flux1_a12 = (flux_1_a12*(lam1_a12**-2.0))*factor
-	flux1_a13 = (flux_1_a13*(lam1_a13**-2.0))*factor
-	flux1_a14 = (flux_1_a14*(lam1_a14**-2.0))*factor
-	flux1_a15 = (flux_1_a15*(lam1_a15**-2.0))*factor
-	flux1_a16 = (flux_1_a16*(lam1_a16**-2.0))*factor
-	flux1_a17 = (flux_1_a17*(lam1_a17**-2.0))*factor
-	flux1_a18 = (flux_1_a18*(lam1_a18**-2.0))*factor
-	flux1_a19 = (flux_1_a19*(lam1_a19**-2.0))*factor
-	flux1_a20 = (flux_1_a20*(lam1_a20**-2.0))*factor
-	flux1_a21 = (flux_1_a21*(lam1_a21**-2.0))*factor
-	flux1_a22 = (flux_1_a22*(lam1_a22**-2.0))*factor
-	flux1_a23 = (flux_1_a23*(lam1_a23**-2.0))*factor
-	flux1_a24 = (flux_1_a24*(lam1_a24**-2.0))*factor
-	flux1_a25 = (flux_1_a25*(lam1_a25**-2.0))*factor
-	flux1_a26 = (flux_1_a26*(lam1_a26**-2.0))*factor
-	flux1_a27 = (flux_1_a27*(lam1_a27**-2.0))*factor
-	flux1_a28 = (flux_1_a28*(lam1_a28**-2.0))*factor
-	flux1_a29 = (flux_1_a29*(lam1_a29**-2.0))*factor
-	flux1_a30 = (flux_1_a30*(lam1_a30**-2.0))*factor
-	flux1_a31 = (flux_1_a31*(lam1_a31**-2.0))*factor
-	flux1_a32 = (flux_1_a32*(lam1_a32**-2.0))*factor
-	flux1_a33 = (flux_1_a33*(lam1_a33**-2.0))*factor
-	flux1_a34 = (flux_1_a34*(lam1_a34**-2.0))*factor
-	flux1_a35 = (flux_1_a35*(lam1_a35**-2.0))*factor
-	flux1_a36 = (flux_1_a36*(lam1_a36**-2.0))*factor
-	flux1_a37 = (flux_1_a37*(lam1_a37**-2.0))*factor
-	flux1_a38 = (flux_1_a38*(lam1_a38**-2.0))*factor
-	flux1_a39 = (flux_1_a39*(lam1_a39**-2.0))*factor
-	flux1_a40 = (flux_1_a40*(lam1_a40**-2.0))*factor
-	flux1_a41 = (flux_1_a41*(lam1_a41**-2.0))*factor
-	flux1_a42 = (flux_1_a42*(lam1_a42**-2.0))*factor
-	flux1_a43 = (flux_1_a43*(lam1_a43**-2.0))*factor
-	flux1_a44 = (flux_1_a44*(lam1_a44**-2.0))*factor
-	flux1_a45 = (flux_1_a45*(lam1_a45**-2.0))*factor
-	flux1_a46 = (flux_1_a46*(lam1_a46**-2.0))*factor
-	flux1_a47 = (flux_1_a47*(lam1_a47**-2.0))*factor
-	flux1_a48 = (flux_1_a48*(lam1_a48**-2.0))*factor
-	flux1_a49 = (flux_1_a49*(lam1_a49**-2.0))*factor
-	flux1_a50 = (flux_1_a50*(lam1_a50**-2.0))*factor
-	flux1_a51 = (flux_1_a51*(lam1_a51**-2.0))*factor
-	flux1_a52 = (flux_1_a52*(lam1_a52**-2.0))*factor
-	flux1_a53 = (flux_1_a53*(lam1_a53**-2.0))*factor
-
 	
-	data2_a1 = ascii.read("195..temp_sed")
-	data2_a2 = ascii.read("766..temp_sed")
-	data2_a3 = ascii.read("1420..temp_sed")
-	data2_a4 = ascii.read("1821..temp_sed")
-	data2_a5 = ascii.read("1925..temp_sed")
-	data2_a6 = ascii.read("2016..temp_sed")
-	data2_a7 = ascii.read("2289..temp_sed")
-	data2_a8 = ascii.read("2427..temp_sed")
-	data2_a9 = ascii.read("3106..temp_sed")
-	data2_a10 = ascii.read("3311..temp_sed")
-	data2_a11 = ascii.read("4826..temp_sed")
-	data2_a12 = ascii.read("5016..temp_sed")
-	data2_a13 = ascii.read("6262..temp_sed")
-	data2_a14 = ascii.read("6310..temp_sed")
-	data2_a15 = ascii.read("6880..temp_sed")
-	data2_a16 = ascii.read("7601..temp_sed")
-	data2_a17 = ascii.read("8646..temp_sed")
-	data2_a18 = ascii.read("10858..temp_sed")
-	data2_a19 = ascii.read("11465..temp_sed")
-	data2_a20 = ascii.read("11730..temp_sed")
-	data2_a21 = ascii.read("12049..temp_sed")
-	data2_a22 = ascii.read("12219..temp_sed")
-	data2_a23 = ascii.read("14481..temp_sed")
-	data2_a24 = ascii.read("14495..temp_sed")
-	data2_a25 = ascii.read("15069..temp_sed")
-	data2_a26 = ascii.read("15088..temp_sed")
-	data2_a27 = ascii.read("16491..temp_sed")
-	data2_a28 = ascii.read("17691..temp_sed")
-	data2_a29 = ascii.read("18280..temp_sed")
-	data2_a30 = ascii.read("18922..temp_sed")
-	data2_a31 = ascii.read("19743..temp_sed")
-	data2_a32 = ascii.read("21156..temp_sed")
-	data2_a33 = ascii.read("22423..temp_sed")
-	data2_a34 = ascii.read("22713..temp_sed")
-	data2_a35 = ascii.read("22741..temp_sed")
-	data2_a36 = ascii.read("22887..temp_sed")
-	data2_a37 = ascii.read("23027..temp_sed")
-	data2_a38 = ascii.read("23045..temp_sed")
-	data2_a39 = ascii.read("23234..temp_sed")
-	data2_a40 = ascii.read("24059..temp_sed")
-	data2_a41 = ascii.read("24333..temp_sed")
-	data2_a42 = ascii.read("24448..temp_sed")
-	data2_a43 = ascii.read("25346..temp_sed")
-	data2_a44 = ascii.read("25969..temp_sed")
-	data2_a45 = ascii.read("26079..temp_sed")
-	data2_a46 = ascii.read("26649..temp_sed")
-	data2_a47 = ascii.read("27315..temp_sed")
-	data2_a48 = ascii.read("28310..temp_sed")
-	data2_a49 = ascii.read("28843..temp_sed")
-	data2_a50 = ascii.read("28864..temp_sed")
-	data2_a51 = ascii.read("29144..temp_sed")
-	data2_a52 = ascii.read("29329..temp_sed")
-	data2_a53 = ascii.read("29399..temp_sed")
-	data2_a54 = ascii.read("31169..temp_sed")
-	data2_a55 = ascii.read("31680..temp_sed")
-	data2_a56 = ascii.read("31839..temp_sed")
-	data2_a57 = ascii.read("33196..temp_sed")
-	data2_a58 = ascii.read("33551..temp_sed")
-	data2_a59 = ascii.read("33770..temp_sed")
-	data2_a60 = ascii.read("34185..temp_sed")
-	data2_a61 = ascii.read("35002..temp_sed")
-	data2_a62 = ascii.read("35677..temp_sed")
-	data2_a63 = ascii.read("36347..temp_sed")
-	data2_a64 = ascii.read("37556..temp_sed")
-	data2_a65 = ascii.read("37592..temp_sed")
-	data2_a66 = ascii.read("38174..temp_sed")
-	data2_a67 = ascii.read("38290..temp_sed")
-	data2_a68 = ascii.read("39028..temp_sed")
-	data2_a69 = ascii.read("39239..temp_sed")
-	data2_a70 = ascii.read("40470..temp_sed")
 	
-	lam2_a1 = data2_a1["lambda"]
-	lam2_a2 = data2_a2["lambda"]
-	lam2_a3 = data2_a3["lambda"]
-	lam2_a4 = data2_a4["lambda"]
-	lam2_a5 = data2_a5["lambda"]
-	lam2_a6 = data2_a6["lambda"]
-	lam2_a7 = data2_a7["lambda"]
-	lam2_a8 = data2_a8["lambda"]
-	lam2_a9 = data2_a9["lambda"]
-	lam2_a10 = data2_a10["lambda"]
-	lam2_a11 = data2_a11["lambda"]
-	lam2_a12 = data2_a12["lambda"]
-	lam2_a13 = data2_a13["lambda"]
-	lam2_a14 = data2_a14["lambda"]
-	lam2_a15 = data2_a15["lambda"]
-	lam2_a16 = data2_a16["lambda"]
-	lam2_a17 = data2_a17["lambda"]
-	lam2_a18 = data2_a18["lambda"]
-	lam2_a19 = data2_a19["lambda"]
-	lam2_a20 = data2_a20["lambda"]
-	lam2_a21 = data2_a21["lambda"]
-	lam2_a22 = data2_a22["lambda"]
-	lam2_a23 = data2_a23["lambda"]
-	lam2_a24 = data2_a24["lambda"]
-	lam2_a25 = data2_a25["lambda"]
-	lam2_a26 = data2_a26["lambda"]
-	lam2_a27 = data2_a27["lambda"]
-	lam2_a28 = data2_a28["lambda"]
-	lam2_a29 = data2_a29["lambda"]
-	lam2_a30 = data2_a30["lambda"]
-	lam2_a31 = data2_a31["lambda"]
-	lam2_a32 = data2_a32["lambda"]
-	lam2_a33 = data2_a33["lambda"]
-	lam2_a34 = data2_a34["lambda"]
-	lam2_a35 = data2_a35["lambda"]
-	lam2_a36 = data2_a36["lambda"]
-	lam2_a37 = data2_a37["lambda"]
-	lam2_a38 = data2_a38["lambda"]
-	lam2_a39 = data2_a39["lambda"]
-	lam2_a40 = data2_a40["lambda"]
-	lam2_a41 = data2_a41["lambda"]
-	lam2_a42 = data2_a42["lambda"]
-	lam2_a43 = data2_a43["lambda"]
-	lam2_a44 = data2_a44["lambda"]
-	lam2_a45 = data2_a45["lambda"]
-	lam2_a46 = data2_a46["lambda"]
-	lam2_a47 = data2_a47["lambda"]
-	lam2_a48 = data2_a48["lambda"]
-	lam2_a49 = data2_a49["lambda"]
-	lam2_a50 = data2_a50["lambda"]
-	lam2_a51 = data2_a51["lambda"]
-	lam2_a52 = data2_a52["lambda"]
-	lam2_a53 = data2_a53["lambda"]
-	lam2_a54 = data2_a54["lambda"]
-	lam2_a55 = data2_a55["lambda"]
-	lam2_a56 = data2_a56["lambda"]
-	lam2_a57 = data2_a57["lambda"]
-	lam2_a58 = data2_a58["lambda"]
-	lam2_a59 = data2_a59["lambda"]
-	lam2_a60 = data2_a60["lambda"]
-	lam2_a61 = data2_a51["lambda"]
-	lam2_a62 = data2_a52["lambda"]
-	lam2_a63 = data2_a53["lambda"]
-	lam2_a64 = data2_a54["lambda"]
-	lam2_a65 = data2_a55["lambda"]
-	lam2_a66 = data2_a56["lambda"]
-	lam2_a67 = data2_a57["lambda"]
-	lam2_a68 = data2_a58["lambda"]
-	lam2_a69 = data2_a59["lambda"]
-	lam2_a70 = data2_a60["lambda"]
 	
-	flux_2_a1 = data2_a1["tempflux"]
-	flux_2_a2 = data2_a2["tempflux"]
-	flux_2_a3 = data2_a3["tempflux"]
-	flux_2_a4 = data2_a4["tempflux"]
-	flux_2_a5 = data2_a5["tempflux"]
-	flux_2_a6 = data2_a6["tempflux"]
-	flux_2_a7 = data2_a7["tempflux"]
-	flux_2_a8 = data2_a8["tempflux"]
-	flux_2_a9 = data2_a9["tempflux"]
-	flux_2_a10 = data2_a10["tempflux"]
-	flux_2_a11 = data2_a11["tempflux"]
-	flux_2_a12 = data2_a12["tempflux"]
-	flux_2_a13 = data2_a13["tempflux"]
-	flux_2_a14 = data2_a14["tempflux"]
-	flux_2_a15 = data2_a15["tempflux"]
-	flux_2_a16 = data2_a16["tempflux"]
-	flux_2_a17 = data2_a17["tempflux"]
-	flux_2_a18 = data2_a18["tempflux"]
-	flux_2_a19 = data2_a19["tempflux"]
-	flux_2_a20 = data2_a20["tempflux"]
-	flux_2_a21 = data2_a21["tempflux"]
-	flux_2_a22 = data2_a22["tempflux"]
-	flux_2_a23 = data2_a23["tempflux"]
-	flux_2_a24 = data2_a24["tempflux"]
-	flux_2_a25 = data2_a25["tempflux"]
-	flux_2_a26 = data2_a26["tempflux"]
-	flux_2_a27 = data2_a27["tempflux"]
-	flux_2_a28 = data2_a28["tempflux"]
-	flux_2_a29 = data2_a29["tempflux"]
-	flux_2_a30 = data2_a30["tempflux"]
-	flux_2_a31 = data2_a31["tempflux"]
-	flux_2_a32 = data2_a32["tempflux"]
-	flux_2_a33 = data2_a33["tempflux"]
-	flux_2_a34 = data2_a34["tempflux"]
-	flux_2_a35 = data2_a35["tempflux"]
-	flux_2_a36 = data2_a36["tempflux"]
-	flux_2_a37 = data2_a37["tempflux"]
-	flux_2_a38 = data2_a38["tempflux"]
-	flux_2_a39 = data2_a39["tempflux"]
-	flux_2_a40 = data2_a40["tempflux"]
-	flux_2_a41 = data2_a41["tempflux"]
-	flux_2_a42 = data2_a42["tempflux"]
-	flux_2_a43 = data2_a43["tempflux"]
-	flux_2_a44 = data2_a44["tempflux"]
-	flux_2_a45 = data2_a45["tempflux"]
-	flux_2_a46 = data2_a46["tempflux"]
-	flux_2_a47 = data2_a47["tempflux"]
-	flux_2_a48 = data2_a48["tempflux"]
-	flux_2_a49 = data2_a49["tempflux"]
-	flux_2_a50 = data2_a50["tempflux"]
-	flux_2_a51 = data2_a51["tempflux"]
-	flux_2_a52 = data2_a52["tempflux"]
-	flux_2_a53 = data2_a53["tempflux"]
-	flux_2_a54 = data2_a54["tempflux"]
-	flux_2_a55 = data2_a55["tempflux"]
-	flux_2_a56 = data2_a56["tempflux"]
-	flux_2_a57 = data2_a57["tempflux"]
-	flux_2_a58 = data2_a58["tempflux"]
-	flux_2_a59 = data2_a59["tempflux"]
-	flux_2_a60 = data2_a60["tempflux"]
-	flux_2_a61 = data2_a51["tempflux"]
-	flux_2_a62 = data2_a52["tempflux"]
-	flux_2_a63 = data2_a53["tempflux"]
-	flux_2_a64 = data2_a54["tempflux"]
-	flux_2_a65 = data2_a55["tempflux"]
-	flux_2_a66 = data2_a56["tempflux"]
-	flux_2_a67 = data2_a57["tempflux"]
-	flux_2_a68 = data2_a58["tempflux"]
-	flux_2_a69 = data2_a59["tempflux"]
-	flux_2_a70 = data2_a60["tempflux"]
 	
-	flux2_a1 = (flux_2_a1*(lam2_a1**-2.0))*factor
-	flux2_a2 = (flux_2_a2*(lam2_a2**-2.0))*factor
-	flux2_a3 = (flux_2_a3*(lam2_a3**-2.0))*factor
-	flux2_a4 = (flux_2_a4*(lam2_a4**-2.0))*factor
-	flux2_a5 = (flux_2_a5*(lam2_a5**-2.0))*factor
-	flux2_a6 = (flux_2_a6*(lam2_a6**-2.0))*factor
-	flux2_a7 = (flux_2_a7*(lam2_a7**-2.0))*factor
-	flux2_a8 = (flux_2_a8*(lam2_a8**-2.0))*factor
-	flux2_a9 = (flux_2_a9*(lam2_a9**-2.0))*factor
-	flux2_a10 = (flux_2_a10*(lam2_a10**-2.0))*factor
-	flux2_a11 = (flux_2_a11*(lam2_a11**-2.0))*factor
-	flux2_a12 = (flux_2_a12*(lam2_a12**-2.0))*factor
-	flux2_a13 = (flux_2_a13*(lam2_a13**-2.0))*factor
-	flux2_a14 = (flux_2_a14*(lam2_a14**-2.0))*factor
-	flux2_a15 = (flux_2_a15*(lam2_a15**-2.0))*factor
-	flux2_a16 = (flux_2_a16*(lam2_a16**-2.0))*factor
-	flux2_a17 = (flux_2_a17*(lam2_a17**-2.0))*factor
-	flux2_a18 = (flux_2_a18*(lam2_a18**-2.0))*factor
-	flux2_a19 = (flux_2_a19*(lam2_a19**-2.0))*factor
-	flux2_a20 = (flux_2_a20*(lam2_a20**-2.0))*factor
-	flux2_a21 = (flux_2_a21*(lam2_a21**-2.0))*factor
-	flux2_a22 = (flux_2_a22*(lam2_a22**-2.0))*factor
-	flux2_a23 = (flux_2_a23*(lam2_a23**-2.0))*factor
-	flux2_a24 = (flux_2_a24*(lam2_a24**-2.0))*factor
-	flux2_a25 = (flux_2_a25*(lam2_a25**-2.0))*factor
-	flux2_a26 = (flux_2_a26*(lam2_a26**-2.0))*factor
-	flux2_a27 = (flux_2_a27*(lam2_a27**-2.0))*factor
-	flux2_a28 = (flux_2_a28*(lam2_a28**-2.0))*factor
-	flux2_a29 = (flux_2_a29*(lam2_a29**-2.0))*factor
-	flux2_a30 = (flux_2_a30*(lam2_a30**-2.0))*factor
-	flux2_a31 = (flux_2_a31*(lam2_a31**-2.0))*factor
-	flux2_a32 = (flux_2_a32*(lam2_a32**-2.0))*factor
-	flux2_a33 = (flux_2_a33*(lam2_a33**-2.0))*factor
-	flux2_a34 = (flux_2_a34*(lam2_a34**-2.0))*factor
-	flux2_a35 = (flux_2_a35*(lam2_a35**-2.0))*factor
-	flux2_a36 = (flux_2_a36*(lam2_a36**-2.0))*factor
-	flux2_a37 = (flux_2_a37*(lam2_a37**-2.0))*factor
-	flux2_a38 = (flux_2_a38*(lam2_a38**-2.0))*factor
-	flux2_a39 = (flux_2_a39*(lam2_a39**-2.0))*factor
-	flux2_a40 = (flux_2_a40*(lam2_a40**-2.0))*factor
-	flux2_a41 = (flux_2_a41*(lam2_a41**-2.0))*factor
-	flux2_a42 = (flux_2_a42*(lam2_a42**-2.0))*factor
-	flux2_a43 = (flux_2_a43*(lam2_a43**-2.0))*factor
-	flux2_a44 = (flux_2_a44*(lam2_a44**-2.0))*factor
-	flux2_a45 = (flux_2_a45*(lam2_a45**-2.0))*factor
-	flux2_a46 = (flux_2_a46*(lam2_a46**-2.0))*factor
-	flux2_a47 = (flux_2_a47*(lam2_a47**-2.0))*factor
-	flux2_a48 = (flux_2_a48*(lam2_a48**-2.0))*factor
-	flux2_a49 = (flux_2_a49*(lam2_a49**-2.0))*factor
-	flux2_a50 = (flux_2_a50*(lam2_a50**-2.0))*factor
-	flux2_a51 = (flux_2_a51*(lam2_a51**-2.0))*factor
-	flux2_a52 = (flux_2_a52*(lam2_a52**-2.0))*factor
-	flux2_a53 = (flux_2_a53*(lam2_a53**-2.0))*factor
-	flux2_a54 = (flux_2_a54*(lam2_a54**-2.0))*factor
-	flux2_a55 = (flux_2_a55*(lam2_a55**-2.0))*factor
-	flux2_a56 = (flux_2_a56*(lam2_a56**-2.0))*factor
-	flux2_a57 = (flux_2_a57*(lam2_a57**-2.0))*factor
-	flux2_a58 = (flux_2_a58*(lam2_a58**-2.0))*factor
-	flux2_a59 = (flux_2_a59*(lam2_a59**-2.0))*factor
-	flux2_a60 = (flux_2_a60*(lam2_a60**-2.0))*factor
-	flux2_a61 = (flux_2_a51*(lam2_a51**-2.0))*factor
-	flux2_a62 = (flux_2_a52*(lam2_a52**-2.0))*factor
-	flux2_a63 = (flux_2_a53*(lam2_a53**-2.0))*factor
-	flux2_a64 = (flux_2_a54*(lam2_a54**-2.0))*factor
-	flux2_a65 = (flux_2_a55*(lam2_a55**-2.0))*factor
-	flux2_a66 = (flux_2_a56*(lam2_a56**-2.0))*factor
-	flux2_a67 = (flux_2_a57*(lam2_a57**-2.0))*factor
-	flux2_a68 = (flux_2_a58*(lam2_a58**-2.0))*factor
-	flux2_a69 = (flux_2_a59*(lam2_a59**-2.0))*factor
-	flux2_a70 = (flux_2_a60*(lam2_a60**-2.0))*factor
+	os.chdir("/Volumes/TOSHIBA EXT/3d_hst")
+	
+	
+	
+	dataz_a = ascii.read("aegis_3dhst.v4.1.zout")
+	dataz_c = ascii.read("cosmos_3dhst.v4.1.zout")
+	dataz_n = ascii.read("goodsn_3dhst.v4.1.zout")
+	dataz_s = ascii.read("goodss_3dhst.v4.1.zout")
+	dataz_u = ascii.read("uds_3dhst.v4.1.zout")
+	
+	for i in aegis_1:
+		"dataz1_a" + str(i) = dataz_a[(dataz_a["id"] == i)]
+	for i in aegis_2:
+		"dataz2_a" + str(i) = dataz_a[(dataz_a["id"] == i)]
+	for i in aegis_3:
+		"dataz3_a" + str(i) = dataz_a[(dataz_a["id"] == i)]
+	for i in cosmos_1:
+		"dataz1_c" + str(i) = dataz_c[(dataz_c["id"] == i)]
+	for i in cosmos_2:
+		"dataz2_c" + str(i) = dataz_c[(dataz_c["id"] == i)]
+	for i in cosmos_3:
+		"dataz3_c" + str(i) = dataz_c[(dataz_c["id"] == i)]
+	for i in goodsn_1:
+		"dataz1_n" + str(i) = dataz_n[(dataz_n["id"] == i)]
+	for i in goodsn_2:
+		"dataz2_n" + str(i) = dataz_n[(dataz_n["id"] == i)]
+	for i in goodsn_3:
+		"dataz3_n" + str(i) = dataz_n[(dataz_n["id"] == i)]
+	for i in goodss_1:
+		"dataz1_s" + str(i) = dataz_s[(dataz_s["id"] == i)]
+	for i in goodss_2:
+		"dataz2_s" + str(i) = dataz_s[(dataz_s["id"] == i)]
+	for i in goodss_3:
+		"dataz3_s" + str(i) = dataz_s[(dataz_s["id"] == i)]
+	for i in uds_1:
+		"dataz1_u" + str(i) = dataz_u[(dataz_u["id"] == i)]
+	for i in uds_2:
+		"dataz2_u" + str(i) = dataz_u[(dataz_u["id"] == i)]
+	for i in uds_3:
+		"dataz3_u" + str(i) = dataz_u[(dataz_u["id"] == i)]
+	
+	
+	for i in aegis_1:
+		lam_1_ai = lam1_ai/(1+ dataz1_ai["z_peak"])
+	for i in aegis_2:
+		lam_2_ai = lam2_ai/(1+ dataz2_ai["z_peak"])
+	for i in aegis_3:
+		lam_3_ai = lam3_ai/(1+ dataz3_ai["z_peak"])
+	for i in cosmos_1:
+		lam_1_ci = lam1_ci/(1+ dataz1_ci["z_peak"])
+	for i in cosmos_2:
+		lam_2_ci = lam2_ci/(1+ dataz2_ci["z_peak"])
+	for i in cosmos_3:
+		lam_3_ci = lam3_ci/(1+ dataz3_ci["z_peak"])
+	for i in goodsn_1:
+		lam_1_ni = lam1_ni/(1+ dataz1_ni["z_peak"])
+	for i in goodsn_2:
+		lam_2_ni = lam2_ni/(1+ dataz2_ni["z_peak"])
+	for i in goodsn_3:
+		lam_3_ni = lam3_ni/(1+ dataz3_ni["z_peak"])
+	for i in goodss_1:
+		lam_1_si = lam1_si/(1+ dataz1_si["z_peak"])
+	for i in goodss_2:
+		lam_2_si = lam2_si/(1+ dataz2_si["z_peak"])
+	for i in goodss_3:
+		lam_3_si = lam3_si/(1+ dataz3_si["z_peak"])
+	for i in uds_1:
+		lam_1_ui = lam1_ui/(1+ dataz1_ui["z_peak"])
+	for i in uds_2:
+		lam_2_ui = lam2_ui/(1+ dataz2_ui["z_peak"])
+	for i in uds_3:
+		lam_3_ui = lam3_ui/(1+ dataz3_ui["z_peak"])
 	
-	data3_a1 = ascii.read("531..temp_sed")
-	data3_a2 = ascii.read("1606..temp_sed")
-	data3_a3 = ascii.read("2578..temp_sed")
-	data3_a4 = ascii.read("2918..temp_sed")
-	data3_a5 = ascii.read("2957..temp_sed")
-	data3_a6 = ascii.read("8635..temp_sed")
-	data3_a7 = ascii.read("9128..temp_sed")
-	data3_a8 = ascii.read("9870..temp_sed")
-	data3_a9 = ascii.read("10755..temp_sed")
-	data3_a10 = ascii.read("10893..temp_sed")
-	data3_a11 = ascii.read("11416..temp_sed")
-	data3_a12 = ascii.read("11773..temp_sed")
-	data3_a13 = ascii.read("12227..temp_sed")
-	data3_a14 = ascii.read("12479..temp_sed")
-	data3_a15 = ascii.read("15709..temp_sed")
-	data3_a16 = ascii.read("15871..temp_sed")
-	data3_a17 = ascii.read("16065..temp_sed")
-	data3_a18 = ascii.read("17754..temp_sed")
-	data3_a19 = ascii.read("23040..temp_sed")
-	data3_a20 = ascii.read("23645..temp_sed")
-	data3_a21 = ascii.read("25300..temp_sed")
-	data3_a22 = ascii.read("26508..temp_sed")
-	data3_a23 = ascii.read("26952..temp_sed")
-	data3_a24 = ascii.read("27802..temp_sed")
-	data3_a25 = ascii.read("29106..temp_sed")
-	data3_a26 = ascii.read("29178..temp_sed")
-	data3_a27 = ascii.read("29861..temp_sed")
-	data3_a28 = ascii.read("29987..temp_sed")
-	data3_a29 = ascii.read("30967..temp_sed")
-	data3_a30 = ascii.read("31353..temp_sed")
-	data3_a31 = ascii.read("32014..temp_sed")
-	data3_a32 = ascii.read("32686..temp_sed")
-	data3_a33 = ascii.read("33863..temp_sed")
-	data3_a34 = ascii.read("33925..temp_sed")
-	data3_a35 = ascii.read("34685..temp_sed")
-	data3_a36 = ascii.read("34918..temp_sed")
-	data3_a37 = ascii.read("36104..temp_sed")
-	data3_a38 = ascii.read("36574..temp_sed")
-	data3_a39 = ascii.read("37853..temp_sed")
-	data3_a40 = ascii.read("38187..temp_sed")
 	
-	
-	lam3_a1 = data3_a1["lambda"]
-	lam3_a2 = data3_a2["lambda"]
-	lam3_a3 = data3_a3["lambda"]
-	lam3_a4 = data3_a4["lambda"]
-	lam3_a5 = data3_a5["lambda"]
-	lam3_a6 = data3_a6["lambda"]
-	lam3_a7 = data3_a7["lambda"]
-	lam3_a8 = data3_a8["lambda"]
-	lam3_a9 = data3_a9["lambda"]
-	lam3_a10 = data3_a10["lambda"]
-	lam3_a11 = data3_a11["lambda"]
-	lam3_a12 = data3_a12["lambda"]
-	lam3_a13 = data3_a13["lambda"]
-	lam3_a14 = data3_a14["lambda"]
-	lam3_a15 = data3_a15["lambda"]
-	lam3_a16 = data3_a16["lambda"]
-	lam3_a17 = data3_a17["lambda"]
-	lam3_a18 = data3_a18["lambda"]
-	lam3_a19 = data3_a19["lambda"]
-	lam3_a20 = data3_a20["lambda"]
-	lam3_a21 = data3_a21["lambda"]
-	lam3_a22 = data3_a22["lambda"]
-	lam3_a23 = data3_a23["lambda"]
-	lam3_a24 = data3_a24["lambda"]
-	lam3_a25 = data3_a25["lambda"]
-	lam3_a26 = data3_a26["lambda"]
-	lam3_a27 = data3_a27["lambda"]
-	lam3_a28 = data3_a28["lambda"]
-	lam3_a29 = data3_a29["lambda"]
-	lam3_a30 = data3_a30["lambda"]
-	lam3_a31 = data3_a31["lambda"]
-	lam3_a32 = data3_a32["lambda"]
-	lam3_a33 = data3_a33["lambda"]
-	lam3_a34 = data3_a34["lambda"]
-	lam3_a35 = data3_a35["lambda"]
-	lam3_a36 = data3_a36["lambda"]
-	lam3_a37 = data3_a37["lambda"]
-	lam3_a38 = data3_a38["lambda"]
-	lam3_a39 = data3_a39["lambda"]
-	lam3_a40 = data3_a40["lambda"]
-	
-	
-	flux_3_a1 = data3_a1["tempflux"]
-	flux_3_a2 = data3_a2["tempflux"]
-	flux_3_a3 = data3_a3["tempflux"]
-	flux_3_a4 = data3_a4["tempflux"]
-	flux_3_a5 = data3_a5["tempflux"]
-	flux_3_a6 = data3_a6["tempflux"]
-	flux_3_a7 = data3_a7["tempflux"]
-	flux_3_a8 = data3_a8["tempflux"]
-	flux_3_a9 = data3_a9["tempflux"]
-	flux_3_a10 = data3_a10["tempflux"]
-	flux_3_a11 = data3_a11["tempflux"]
-	flux_3_a12 = data3_a12["tempflux"]
-	flux_3_a13 = data3_a13["tempflux"]
-	flux_3_a14 = data3_a14["tempflux"]
-	flux_3_a15 = data3_a15["tempflux"]
-	flux_3_a16 = data3_a16["tempflux"]
-	flux_3_a17 = data3_a17["tempflux"]
-	flux_3_a18 = data3_a18["tempflux"]
-	flux_3_a19 = data3_a19["tempflux"]
-	flux_3_a20 = data3_a20["tempflux"]
-	flux_3_a21 = data3_a21["tempflux"]
-	flux_3_a22 = data3_a22["tempflux"]
-	flux_3_a23 = data3_a23["tempflux"]
-	flux_3_a24 = data3_a24["tempflux"]
-	flux_3_a25 = data3_a25["tempflux"]
-	flux_3_a26 = data3_a26["tempflux"]
-	flux_3_a27 = data3_a27["tempflux"]
-	flux_3_a28 = data3_a28["tempflux"]
-	flux_3_a29 = data3_a29["tempflux"]
-	flux_3_a30 = data3_a30["tempflux"]
-	flux_3_a31 = data3_a31["tempflux"]
-	flux_3_a32 = data3_a32["tempflux"]
-	flux_3_a33 = data3_a33["tempflux"]
-	flux_3_a34 = data3_a34["tempflux"]
-	flux_3_a35 = data3_a35["tempflux"]
-	flux_3_a36 = data3_a36["tempflux"]
-	flux_3_a37 = data3_a37["tempflux"]
-	flux_3_a38 = data3_a38["tempflux"]
-	flux_3_a39 = data3_a39["tempflux"]
-	flux_3_a40 = data3_a40["tempflux"]
-	
-	
-	flux3_a1 = (flux_3_a1*(lam3_a1**-2.0))*factor
-	flux3_a2 = (flux_3_a2*(lam3_a2**-2.0))*factor
-	flux3_a3 = (flux_3_a3*(lam3_a3**-2.0))*factor
-	flux3_a4 = (flux_3_a4*(lam3_a4**-2.0))*factor
-	flux3_a5 = (flux_3_a5*(lam3_a5**-2.0))*factor
-	flux3_a6 = (flux_3_a6*(lam3_a6**-2.0))*factor
-	flux3_a7 = (flux_3_a7*(lam3_a7**-2.0))*factor
-	flux3_a8 = (flux_3_a8*(lam3_a8**-2.0))*factor
-	flux3_a9 = (flux_3_a9*(lam3_a9**-2.0))*factor
-	flux3_a10 = (flux_3_a10*(lam3_a10**-2.0))*factor
-	flux3_a11 = (flux_3_a11*(lam3_a11**-2.0))*factor
-	flux3_a12 = (flux_3_a12*(lam3_a12**-2.0))*factor
-	flux3_a13 = (flux_3_a13*(lam3_a13**-2.0))*factor
-	flux3_a14 = (flux_3_a14*(lam3_a14**-2.0))*factor
-	flux3_a15 = (flux_3_a15*(lam3_a15**-2.0))*factor
-	flux3_a16 = (flux_3_a16*(lam3_a16**-2.0))*factor
-	flux3_a17 = (flux_3_a17*(lam3_a17**-2.0))*factor
-	flux3_a18 = (flux_3_a18*(lam3_a18**-2.0))*factor
-	flux3_a19 = (flux_3_a19*(lam3_a19**-2.0))*factor
-	flux3_a20 = (flux_3_a20*(lam3_a20**-2.0))*factor
-	flux3_a21 = (flux_3_a21*(lam3_a21**-2.0))*factor
-	flux3_a22 = (flux_3_a22*(lam3_a22**-2.0))*factor
-	flux3_a23 = (flux_3_a23*(lam3_a23**-2.0))*factor
-	flux3_a24 = (flux_3_a24*(lam3_a24**-2.0))*factor
-	flux3_a25 = (flux_3_a25*(lam3_a25**-2.0))*factor
-	flux3_a26 = (flux_3_a26*(lam3_a26**-2.0))*factor
-	flux3_a27 = (flux_3_a27*(lam3_a27**-2.0))*factor
-	flux3_a28 = (flux_3_a28*(lam3_a28**-2.0))*factor
-	flux3_a29 = (flux_3_a29*(lam3_a29**-2.0))*factor
-	flux3_a30 = (flux_3_a30*(lam3_a30**-2.0))*factor
-	flux3_a31 = (flux_3_a31*(lam3_a31**-2.0))*factor
-	flux3_a32 = (flux_3_a32*(lam3_a32**-2.0))*factor
-	flux3_a33 = (flux_3_a33*(lam3_a33**-2.0))*factor
-	flux3_a34 = (flux_3_a34*(lam3_a34**-2.0))*factor
-	flux3_a35 = (flux_3_a35*(lam3_a35**-2.0))*factor
-	flux3_a36 = (flux_3_a36*(lam3_a36**-2.0))*factor
-	flux3_a37 = (flux_3_a37*(lam3_a37**-2.0))*factor
-	flux3_a38 = (flux_3_a38*(lam3_a38**-2.0))*factor
-	flux3_a39 = (flux_3_a39*(lam3_a39**-2.0))*factor
-	flux3_a40 = (flux_3_a40*(lam3_a40**-2.0))*factor
-	
-	
-	
-	os.chdir("/Volumes/TOSHIBA EXT/3d_hst/noah_massive/cosmos_massive")
-	
-	data1_c1 = ascii.read("796..temp_sed")
-	data1_c2 = ascii.read("2348..temp_sed")
-	data1_c3 = ascii.read("5238..temp_sed")
-	data1_c4 = ascii.read("9111..temp_sed")
-	data1_c5 = ascii.read("10703..temp_sed")
-	data1_c6 = ascii.read("11783..temp_sed")
-	data1_c7 = ascii.read("11871..temp_sed")
-	data1_c8 = ascii.read("12699..temp_sed")
-	data1_c9 = ascii.read("12767..temp_sed")
-	data1_c10 = ascii.read("13206..temp_sed")
-	data1_c11 = ascii.read("13890..temp_sed")
-	data1_c12 = ascii.read("15066..temp_sed")
-	data1_c13 = ascii.read("17263..temp_sed")
-	data1_c14 = ascii.read("18575..temp_sed")
-	data1_c15 = ascii.read("25627..temp_sed")
-	data1_c16 = ascii.read("27769..temp_sed")
-	data1_c17 = ascii.read("31555..temp_sed")
-	data1_c18 = ascii.read("32549..temp_sed")
-	
-	
-	lam1_c1 = data1_c1["lambda"]
-	lam1_c2 = data1_c2["lambda"]
-	lam1_c3 = data1_c3["lambda"]
-	lam1_c4 = data1_c4["lambda"]
-	lam1_c5 = data1_c5["lambda"]
-	lam1_c6 = data1_c6["lambda"]
-	lam1_c7 = data1_c7["lambda"]
-	lam1_c8 = data1_c8["lambda"]
-	lam1_c9 = data1_c9["lambda"]
-	lam1_c10 = data1_c10["lambda"]
-	lam1_c11 = data1_c11["lambda"]
-	lam1_c12 = data1_c12["lambda"]
-	lam1_c13 = data1_c13["lambda"]
-	lam1_c14 = data1_c14["lambda"]
-	lam1_c15 = data1_c15["lambda"]
-	lam1_c16 = data1_c16["lambda"]
-	lam1_c17 = data1_c17["lambda"]
-	lam1_c18 = data1_c18["lambda"]
-	
-	
-	flux_1_c1 = data1_c1["tempflux"]
-	flux_1_c2 = data1_c2["tempflux"]
-	flux_1_c3 = data1_c3["tempflux"]
-	flux_1_c4 = data1_c4["tempflux"]
-	flux_1_c5 = data1_c5["tempflux"]
-	flux_1_c6 = data1_c6["tempflux"]
-	flux_1_c7 = data1_c7["tempflux"]
-	flux_1_c8 = data1_c8["tempflux"]
-	flux_1_c9 = data1_c9["tempflux"]
-	flux_1_c10 = data1_c10["tempflux"]
-	flux_1_c11 = data1_c11["tempflux"]
-	flux_1_c12 = data1_c12["tempflux"]
-	flux_1_c13 = data1_c13["tempflux"]
-	flux_1_c14 = data1_c14["tempflux"]
-	flux_1_c15 = data1_c15["tempflux"]
-	flux_1_c16 = data1_c16["tempflux"]
-	flux_1_c17 = data1_c17["tempflux"]
-	flux_1_c18 = data1_c18["tempflux"]
-	
-	
-	flux1_c1 = (flux_1_c1*(lam1_c1**-2.0))*factor
-	flux1_c2 = (flux_1_c2*(lam1_c2**-2.0))*factor
-	flux1_c3 = (flux_1_c3*(lam1_c3**-2.0))*factor
-	flux1_c4 = (flux_1_c4*(lam1_c4**-2.0))*factor
-	flux1_c5 = (flux_1_c5*(lam1_c5**-2.0))*factor
-	flux1_c6 = (flux_1_c6*(lam1_c6**-2.0))*factor
-	flux1_c7 = (flux_1_c7*(lam1_c7**-2.0))*factor
-	flux1_c8 = (flux_1_c8*(lam1_c8**-2.0))*factor
-	flux1_c9 = (flux_1_c9*(lam1_c9**-2.0))*factor
-	flux1_c10 = (flux_1_c10*(lam1_c10**-2.0))*factor
-	flux1_c11 = (flux_1_c11*(lam1_c11**-2.0))*factor
-	flux1_c12 = (flux_1_c12*(lam1_c12**-2.0))*factor
-	flux1_c13 = (flux_1_c13*(lam1_c13**-2.0))*factor
-	flux1_c14 = (flux_1_c14*(lam1_c14**-2.0))*factor
-	flux1_c15 = (flux_1_c15*(lam1_c15**-2.0))*factor
-	flux1_c16 = (flux_1_c16*(lam1_c16**-2.0))*factor
-	flux1_c17 = (flux_1_c17*(lam1_c17**-2.0))*factor
-	flux1_c18 = (flux_1_c18*(lam1_c18**-2.0))*factor
-	
-
-	data2_c1 = ascii.read("312..temp_sed")
-	data2_c2 = ascii.read("363..temp_sed")
-	data2_c3 = ascii.read("728..temp_sed")
-	data2_c4 = ascii.read("2616..temp_sed")
-	data2_c5 = ascii.read("2816..temp_sed")
-	data2_c6 = ascii.read("3200..temp_sed")
-	data2_c7 = ascii.read("4536..temp_sed")
-	data2_c8 = ascii.read("7216..temp_sed")
-	data2_c9 = ascii.read("7411..temp_sed")
-	data2_c10 = ascii.read("9667..temp_sed")
-	data2_c11 = ascii.read("10128..temp_sed")
-	data2_c12 = ascii.read("10592..temp_sed")
-	data2_c13 = ascii.read("10989..temp_sed")
-	data2_c14 = ascii.read("11973..temp_sed")
-	data2_c15 = ascii.read("17089..temp_sed")
-	data2_c16 = ascii.read("17406..temp_sed")
-	data2_c17 = ascii.read("18688..temp_sed")
-	data2_c18 = ascii.read("20983..temp_sed")
-	data2_c19 = ascii.read("21723..temp_sed")
-	data2_c20 = ascii.read("24462..temp_sed")
-	data2_c21 = ascii.read("25534..temp_sed")
-	data2_c22 = ascii.read("25581..temp_sed")
-	data2_c23 = ascii.read("28492..temp_sed")
-	data2_c24 = ascii.read("28523..temp_sed")
-	data2_c25 = ascii.read("29222..temp_sed")
-	data2_c26 = ascii.read("31090..temp_sed")
-	
-	
-	lam2_c1 = data2_c1["lambda"]
-	lam2_c2 = data2_c2["lambda"]
-	lam2_c3 = data2_c3["lambda"]
-	lam2_c4 = data2_c4["lambda"]
-	lam2_c5 = data2_c5["lambda"]
-	lam2_c6 = data2_c6["lambda"]
-	lam2_c7 = data2_c7["lambda"]
-	lam2_c8 = data2_c8["lambda"]
-	lam2_c9 = data2_c9["lambda"]
-	lam2_c10 = data2_c10["lambda"]
-	lam2_c11 = data2_c11["lambda"]
-	lam2_c12 = data2_c12["lambda"]
-	lam2_c13 = data2_c13["lambda"]
-	lam2_c14 = data2_c14["lambda"]
-	lam2_c15 = data2_c15["lambda"]
-	lam2_c16 = data2_c16["lambda"]
-	lam2_c17 = data2_c17["lambda"]
-	lam2_c18 = data2_c18["lambda"]
-	lam2_c19 = data2_c19["lambda"]
-	lam2_c20 = data2_c20["lambda"]
-	lam2_c21 = data2_c21["lambda"]
-	lam2_c22 = data2_c22["lambda"]
-	lam2_c23 = data2_c23["lambda"]
-	lam2_c24 = data2_c24["lambda"]
-	lam2_c25 = data2_c25["lambda"]
-	lam2_c26 = data2_c26["lambda"]
-	
-	
-	flux_2_c1 = data2_c1["tempflux"]
-	flux_2_c2 = data2_c2["tempflux"]
-	flux_2_c3 = data2_c3["tempflux"]
-	flux_2_c4 = data2_c4["tempflux"]
-	flux_2_c5 = data2_c5["tempflux"]
-	flux_2_c6 = data2_c6["tempflux"]
-	flux_2_c7 = data2_c7["tempflux"]
-	flux_2_c8 = data2_c8["tempflux"]
-	flux_2_c9 = data2_c9["tempflux"]
-	flux_2_c10 = data2_c10["tempflux"]
-	flux_2_c11 = data2_c11["tempflux"]
-	flux_2_c12 = data2_c12["tempflux"]
-	flux_2_c13 = data2_c13["tempflux"]
-	flux_2_c14 = data2_c14["tempflux"]
-	flux_2_c15 = data2_c15["tempflux"]
-	flux_2_c16 = data2_c16["tempflux"]
-	flux_2_c17 = data2_c17["tempflux"]
-	flux_2_c18 = data2_c18["tempflux"]
-	flux_2_c19 = data2_c19["tempflux"]
-	flux_2_c20 = data2_c20["tempflux"]
-	flux_2_c21 = data2_c21["tempflux"]
-	flux_2_c22 = data2_c22["tempflux"]
-	flux_2_c23 = data2_c23["tempflux"]
-	flux_2_c24 = data2_c24["tempflux"]
-	flux_2_c25 = data2_c25["tempflux"]
-	flux_2_c26 = data2_c26["tempflux"]
-	
-	
-	flux2_c1 = (flux_2_c1*(lam2_c1**-2.0))*factor
-	flux2_c2 = (flux_2_c2*(lam2_c2**-2.0))*factor
-	flux2_c3 = (flux_2_c3*(lam2_c3**-2.0))*factor
-	flux2_c4 = (flux_2_c4*(lam2_c4**-2.0))*factor
-	flux2_c5 = (flux_2_c5*(lam2_c5**-2.0))*factor
-	flux2_c6 = (flux_2_c6*(lam2_c6**-2.0))*factor
-	flux2_c7 = (flux_2_c7*(lam2_c7**-2.0))*factor
-	flux2_c8 = (flux_2_c8*(lam2_c8**-2.0))*factor
-	flux2_c9 = (flux_2_c9*(lam2_c9**-2.0))*factor
-	flux2_c10 = (flux_2_c10*(lam2_c10**-2.0))*factor
-	flux2_c11 = (flux_2_c11*(lam2_c11**-2.0))*factor
-	flux2_c12 = (flux_2_c12*(lam2_c12**-2.0))*factor
-	flux2_c13 = (flux_2_c13*(lam2_c13**-2.0))*factor
-	flux2_c14 = (flux_2_c14*(lam2_c14**-2.0))*factor
-	flux2_c15 = (flux_2_c15*(lam2_c15**-2.0))*factor
-	flux2_c16 = (flux_2_c16*(lam2_c16**-2.0))*factor
-	flux2_c17 = (flux_2_c17*(lam2_c17**-2.0))*factor
-	flux2_c18 = (flux_2_c18*(lam2_c18**-2.0))*factor
-	flux2_c19 = (flux_2_c19*(lam2_c19**-2.0))*factor
-	flux2_c20 = (flux_2_c20*(lam2_c20**-2.0))*factor
-	flux2_c21 = (flux_2_c21*(lam2_c21**-2.0))*factor
-	flux2_c22 = (flux_2_c22*(lam2_c22**-2.0))*factor
-	flux2_c23 = (flux_2_c23*(lam2_c23**-2.0))*factor
-	flux2_c24 = (flux_2_c24*(lam2_c24**-2.0))*factor
-	flux2_c25 = (flux_2_c25*(lam2_c25**-2.0))*factor
-	flux2_c26 = (flux_2_c26*(lam2_c26**-2.0))*factor
-	
-	
-	data3_c1 = ascii.read("490..temp_sed")
-	data3_c2 = ascii.read("1769..temp_sed")
-	data3_c3 = ascii.read("2049..temp_sed")
-	data3_c4 = ascii.read("3182..temp_sed")
-	data3_c5 = ascii.read("3206..temp_sed")
-	data3_c6 = ascii.read("5473..temp_sed")
-	data3_c7 = ascii.read("5530..temp_sed")
-	data3_c8 = ascii.read("6159..temp_sed")
-	data3_c9 = ascii.read("7884..temp_sed")
-	data3_c10 = ascii.read("7951..temp_sed")
-	data3_c11 = ascii.read("9871..temp_sed")
-	data3_c12 = ascii.read("11314..temp_sed")
-	data3_c13 = ascii.read("11337..temp_sed")
-	data3_c14 = ascii.read("11363..temp_sed")
-	data3_c15 = ascii.read("11494..temp_sed")
-	data3_c16 = ascii.read("12020..temp_sed")
-	data3_c17 = ascii.read("12995..temp_sed")
-	data3_c18 = ascii.read("13083..temp_sed")
-	data3_c19 = ascii.read("13174..temp_sed")
-	data3_c20 = ascii.read("16419..temp_sed")
-	data3_c21 = ascii.read("19090..temp_sed")
-	data3_c22 = ascii.read("19153..temp_sed")
-	data3_c23 = ascii.read("20668..temp_sed")
-	data3_c24 = ascii.read("22995..temp_sed")
-	data3_c25 = ascii.read("23021..temp_sed")
-	data3_c26 = ascii.read("23673..temp_sed")
-	data3_c27 = ascii.read("25515..temp_sed")
-	data3_c28 = ascii.read("26039..temp_sed")
-	data3_c29 = ascii.read("26338..temp_sed")
-	data3_c30 = ascii.read("26957..temp_sed")
-	data3_c31 = ascii.read("27289..temp_sed")
-	data3_c32 = ascii.read("28344..temp_sed")
-	data3_c33 = ascii.read("28565..temp_sed")
-	data3_c34 = ascii.read("31922..temp_sed")
-	data3_c35 = ascii.read("33199..temp_sed")
-	
-	
-	lam3_c1 = data3_c1["lambda"]
-	lam3_c2 = data3_c2["lambda"]
-	lam3_c3 = data3_c3["lambda"]
-	lam3_c4 = data3_c4["lambda"]
-	lam3_c5 = data3_c5["lambda"]
-	lam3_c6 = data3_c6["lambda"]
-	lam3_c7 = data3_c7["lambda"]
-	lam3_c8 = data3_c8["lambda"]
-	lam3_c9 = data3_c9["lambda"]
-	lam3_c10 = data3_c10["lambda"]
-	lam3_c11 = data3_c11["lambda"]
-	lam3_c12 = data3_c12["lambda"]
-	lam3_c13 = data3_c13["lambda"]
-	lam3_c14 = data3_c14["lambda"]
-	lam3_c15 = data3_c15["lambda"]
-	lam3_c16 = data3_c16["lambda"]
-	lam3_c17 = data3_c17["lambda"]
-	lam3_c18 = data3_c18["lambda"]
-	lam3_c19 = data3_c19["lambda"]
-	lam3_c20 = data3_c20["lambda"]
-	lam3_c21 = data3_c21["lambda"]
-	lam3_c22 = data3_c22["lambda"]
-	lam3_c23 = data3_c23["lambda"]
-	lam3_c24 = data3_c24["lambda"]
-	lam3_c25 = data3_c25["lambda"]
-	lam3_c26 = data3_c26["lambda"]
-	lam3_c27 = data3_c27["lambda"]
-	lam3_c28 = data3_c28["lambda"]
-	lam3_c29 = data3_c29["lambda"]
-	lam3_c30 = data3_c30["lambda"]
-	lam3_c31 = data3_c31["lambda"]
-	lam3_c32 = data3_c32["lambda"]
-	lam3_c33 = data3_c33["lambda"]
-	lam3_c34 = data3_c34["lambda"]
-	lam3_c35 = data3_c35["lambda"]
-	
-	
-	flux_3_c1 = data3_c1["tempflux"]
-	flux_3_c2 = data3_c2["tempflux"]
-	flux_3_c3 = data3_c3["tempflux"]
-	flux_3_c4 = data3_c4["tempflux"]
-	flux_3_c5 = data3_c5["tempflux"]
-	flux_3_c6 = data3_c6["tempflux"]
-	flux_3_c7 = data3_c7["tempflux"]
-	flux_3_c8 = data3_c8["tempflux"]
-	flux_3_c9 = data3_c9["tempflux"]
-	flux_3_c10 = data3_c10["tempflux"]
-	flux_3_c11 = data3_c11["tempflux"]
-	flux_3_c12 = data3_c12["tempflux"]
-	flux_3_c13 = data3_c13["tempflux"]
-	flux_3_c14 = data3_c14["tempflux"]
-	flux_3_c15 = data3_c15["tempflux"]
-	flux_3_c16 = data3_c16["tempflux"]
-	flux_3_c17 = data3_c17["tempflux"]
-	flux_3_c18 = data3_c18["tempflux"]
-	flux_3_c19 = data3_c19["tempflux"]
-	flux_3_c20 = data3_c20["tempflux"]
-	flux_3_c21 = data3_c21["tempflux"]
-	flux_3_c22 = data3_c22["tempflux"]
-	flux_3_c23 = data3_c23["tempflux"]
-	flux_3_c24 = data3_c24["tempflux"]
-	flux_3_c25 = data3_c25["tempflux"]
-	flux_3_c26 = data3_c26["tempflux"]
-	flux_3_c27 = data3_c27["tempflux"]
-	flux_3_c28 = data3_c28["tempflux"]
-	flux_3_c29 = data3_c29["tempflux"]
-	flux_3_c30 = data3_c30["tempflux"]
-	flux_3_c31 = data3_c31["tempflux"]
-	flux_3_c32 = data3_c32["tempflux"]
-	flux_3_c33 = data3_c33["tempflux"]
-	flux_3_c34 = data3_c34["tempflux"]
-	flux_3_c35 = data3_c35["tempflux"]
-	
-	
-	flux3_c1 = (flux_3_c1*(lam3_c1**-2.0))*factor
-	flux3_c2 = (flux_3_c2*(lam3_c2**-2.0))*factor
-	flux3_c3 = (flux_3_c3*(lam3_c3**-2.0))*factor
-	flux3_c4 = (flux_3_c4*(lam3_c4**-2.0))*factor
-	flux3_c5 = (flux_3_c5*(lam3_c5**-2.0))*factor
-	flux3_c6 = (flux_3_c6*(lam3_c6**-2.0))*factor
-	flux3_c7 = (flux_3_c7*(lam3_c7**-2.0))*factor
-	flux3_c8 = (flux_3_c8*(lam3_c8**-2.0))*factor
-	flux3_c9 = (flux_3_c9*(lam3_c9**-2.0))*factor
-	flux3_c10 = (flux_3_c10*(lam3_c10**-2.0))*factor
-	flux3_c11 = (flux_3_c11*(lam3_c11**-2.0))*factor
-	flux3_c12 = (flux_3_c12*(lam3_c12**-2.0))*factor
-	flux3_c13 = (flux_3_c13*(lam3_c13**-2.0))*factor
-	flux3_c14 = (flux_3_c14*(lam3_c14**-2.0))*factor
-	flux3_c15 = (flux_3_c15*(lam3_c15**-2.0))*factor
-	flux3_c16 = (flux_3_c16*(lam3_c16**-2.0))*factor
-	flux3_c17 = (flux_3_c17*(lam3_c17**-2.0))*factor
-	flux3_c18 = (flux_3_c18*(lam3_c18**-2.0))*factor
-	flux3_c19 = (flux_3_c19*(lam3_c19**-2.0))*factor
-	flux3_c20 = (flux_3_c20*(lam3_c20**-2.0))*factor
-	flux3_c21 = (flux_3_c21*(lam3_c21**-2.0))*factor
-	flux3_c22 = (flux_3_c22*(lam3_c22**-2.0))*factor
-	flux3_c23 = (flux_3_c23*(lam3_c23**-2.0))*factor
-	flux3_c24 = (flux_3_c24*(lam3_c24**-2.0))*factor
-	flux3_c25 = (flux_3_c25*(lam3_c25**-2.0))*factor
-	flux3_c26 = (flux_3_c26*(lam3_c26**-2.0))*factor
-	flux3_c27 = (flux_3_c27*(lam3_c27**-2.0))*factor
-	flux3_c28 = (flux_3_c28*(lam3_c28**-2.0))*factor
-	flux3_c29 = (flux_3_c29*(lam3_c29**-2.0))*factor
-	flux3_c30 = (flux_3_c30*(lam3_c30**-2.0))*factor
-	flux3_c31 = (flux_3_c31*(lam3_c31**-2.0))*factor
-	flux3_c32 = (flux_3_c32*(lam3_c32**-2.0))*factor
-	flux3_c33 = (flux_3_c33*(lam3_c33**-2.0))*factor
-	flux3_c34 = (flux_3_c34*(lam3_c34**-2.0))*factor
-	flux3_c35 = (flux_3_c35*(lam3_c35**-2.0))*factor
-	
-	
-	
-	os.chdir("/Volumes/TOSHIBA EXT/3d_hst/noah_massive/goodsn_massive")
-	
-	data1_n1 = ascii.read("57.temp_sed")
-	data1_n2 = ascii.read("128.temp_sed")
-	data1_n3 = ascii.read("576.temp_sed")
-	data1_n4 = ascii.read("1749.temp_sed")
-	data1_n5 = ascii.read("2265.temp_sed")
-	data1_n6 = ascii.read("35299.temp_sed")
-	data1_n7 = ascii.read("2868.temp_sed")
-	data1_n8 = ascii.read("3133.temp_sed")
-	data1_n9 = ascii.read("4711.temp_sed")
-	data1_n10 = ascii.read("7372.temp_sed")
-	data1_n11 = ascii.read("9056.temp_sed")
-	data1_n12 = ascii.read("10280.temp_sed")
-	data1_n13 = ascii.read("10606.temp_sed")
-	data1_n14 = ascii.read("11706.temp_sed")
-	data1_n15 = ascii.read("11826.temp_sed")
-	data1_n16 = ascii.read("12342.temp_sed")
-	data1_n17 = ascii.read("12561.temp_sed")
-	data1_n18 = ascii.read("13971.temp_sed")
-	data1_n19 = ascii.read("17270.temp_sed")
-	data1_n20 = ascii.read("21156.temp_sed")
-	data1_n21 = ascii.read("23564.temp_sed")
-	data1_n22 = ascii.read("25216.temp_sed")
-	data1_n23 = ascii.read("25813.temp_sed")
-	data1_n24 = ascii.read("32162.temp_sed")
-	data1_n25 = ascii.read("35090.temp_sed")
-	
-	
-	lam1_n1 = data1_n1["lambda"]
-	lam1_n2 = data1_n2["lambda"]
-	lam1_n3 = data1_n3["lambda"]
-	lam1_n4 = data1_n4["lambda"]
-	lam1_n5 = data1_n5["lambda"]
-	lam1_n6 = data1_n6["lambda"]
-	lam1_n7 = data1_n7["lambda"]
-	lam1_n8 = data1_n8["lambda"]
-	lam1_n9 = data1_n9["lambda"]
-	lam1_n10 = data1_n10["lambda"]
-	lam1_n11 = data1_n11["lambda"]
-	lam1_n12 = data1_n12["lambda"]
-	lam1_n13 = data1_n13["lambda"]
-	lam1_n14 = data1_n14["lambda"]
-	lam1_n15 = data1_n15["lambda"]
-	lam1_n16 = data1_n16["lambda"]
-	lam1_n17 = data1_n17["lambda"]
-	lam1_n18 = data1_n18["lambda"]
-	lam1_n19 = data1_n19["lambda"]
-	lam1_n20 = data1_n20["lambda"]
-	lam1_n21 = data1_n21["lambda"]
-	lam1_n22 = data1_n22["lambda"]
-	lam1_n23 = data1_n23["lambda"]
-	lam1_n24 = data1_n24["lambda"]
-	lam1_n25 = data1_n25["lambda"]
-	
-	
-	flux_1_n1 = data1_n1["tempflux"]
-	flux_1_n2 = data1_n2["tempflux"]
-	flux_1_n3 = data1_n3["tempflux"]
-	flux_1_n4 = data1_n4["tempflux"]
-	flux_1_n5 = data1_n5["tempflux"]
-	flux_1_n6 = data1_n6["tempflux"]
-	flux_1_n7 = data1_n7["tempflux"]
-	flux_1_n8 = data1_n8["tempflux"]
-	flux_1_n9 = data1_n9["tempflux"]
-	flux_1_n10 = data1_n10["tempflux"]
-	flux_1_n11 = data1_n11["tempflux"]
-	flux_1_n12 = data1_n12["tempflux"]
-	flux_1_n13 = data1_n13["tempflux"]
-	flux_1_n14 = data1_n14["tempflux"]
-	flux_1_n15 = data1_n15["tempflux"]
-	flux_1_n16 = data1_n16["tempflux"]
-	flux_1_n17 = data1_n17["tempflux"]
-	flux_1_n18 = data1_n18["tempflux"]
-	flux_1_n19 = data1_n19["tempflux"]
-	flux_1_n20 = data1_n20["tempflux"]
-	flux_1_n21 = data1_n21["tempflux"]
-	flux_1_n22 = data1_n22["tempflux"]
-	flux_1_n23 = data1_n23["tempflux"]
-	flux_1_n24 = data1_n24["tempflux"]
-	flux_1_n25 = data1_n25["tempflux"]
-	
-	
-	flux1_n1 = (flux_1_n1*(lam1_n1**-2.0))*factor
-	flux1_n2 = (flux_1_n2*(lam1_n2**-2.0))*factor
-	flux1_n3 = (flux_1_n3*(lam1_n3**-2.0))*factor
-	flux1_n4 = (flux_1_n4*(lam1_n4**-2.0))*factor
-	flux1_n5 = (flux_1_n5*(lam1_n5**-2.0))*factor
-	flux1_n6 = (flux_1_n6*(lam1_n6**-2.0))*factor
-	flux1_n7 = (flux_1_n7*(lam1_n7**-2.0))*factor
-	flux1_n8 = (flux_1_n8*(lam1_n8**-2.0))*factor
-	flux1_n9 = (flux_1_n9*(lam1_n9**-2.0))*factor
-	flux1_n10 = (flux_1_n10*(lam1_n10**-2.0))*factor
-	flux1_n11 = (flux_1_n11*(lam1_n11**-2.0))*factor
-	flux1_n12 = (flux_1_n12*(lam1_n12**-2.0))*factor
-	flux1_n13 = (flux_1_n13*(lam1_n13**-2.0))*factor
-	flux1_n14 = (flux_1_n14*(lam1_n14**-2.0))*factor
-	flux1_n15 = (flux_1_n15*(lam1_n15**-2.0))*factor
-	flux1_n16 = (flux_1_n16*(lam1_n16**-2.0))*factor
-	flux1_n17 = (flux_1_n17*(lam1_n17**-2.0))*factor
-	flux1_n18 = (flux_1_n18*(lam1_n18**-2.0))*factor
-	flux1_n19 = (flux_1_n19*(lam1_n19**-2.0))*factor
-	flux1_n20 = (flux_1_n20*(lam1_n20**-2.0))*factor
-	flux1_n21 = (flux_1_n21*(lam1_n21**-2.0))*factor
-	flux1_n22 = (flux_1_n22*(lam1_n22**-2.0))*factor
-	flux1_n23 = (flux_1_n23*(lam1_n23**-2.0))*factor
-	flux1_n24 = (flux_1_n24*(lam1_n24**-2.0))*factor
-	flux1_n25 = (flux_1_n25*(lam1_n25**-2.0))*factor
-	
-	
-	data2_n1 = ascii.read("1616.temp_sed")
-	data2_n2 = ascii.read("3186.temp_sed")
-	data2_n3 = ascii.read("4117.temp_sed")
-	data2_n4 = ascii.read("5932.temp_sed")
-	data2_n5 = ascii.read("9692.temp_sed")
-	data2_n6 = ascii.read("10311.temp_sed")
-	data2_n7 = ascii.read("14140.temp_sed")
-	data2_n8 = ascii.read("14532.temp_sed")
-	data2_n9 = ascii.read("16827.temp_sed")
-	data2_n10 = ascii.read("18633.temp_sed")
-	data2_n11 = ascii.read("19913.temp_sed")
-	data2_n12 = ascii.read("20709.temp_sed")
-	data2_n13 = ascii.read("23187.temp_sed")
-	data2_n14 = ascii.read("23548.temp_sed")
-	data2_n15 = ascii.read("25265.temp_sed")
-	data2_n16 = ascii.read("29464.temp_sed")
-	data2_n17 = ascii.read("32842.temp_sed")
-	data2_n18 = ascii.read("33780.temp_sed")
-	data2_n19 = ascii.read("35292.temp_sed")
-	data2_n20 = ascii.read("36582.temp_sed")
-	data2_n21 = ascii.read("37738.temp_sed")
-	
-	
-	lam2_n1 = data2_n1["lambda"]
-	lam2_n2 = data2_n2["lambda"]
-	lam2_n3 = data2_n3["lambda"]
-	lam2_n4 = data2_n4["lambda"]
-	lam2_n5 = data2_n5["lambda"]
-	lam2_n6 = data2_n6["lambda"]
-	lam2_n7 = data2_n7["lambda"]
-	lam2_n8 = data2_n8["lambda"]
-	lam2_n9 = data2_n9["lambda"]
-	lam2_n10 = data2_n10["lambda"]
-	lam2_n11 = data2_n11["lambda"]
-	lam2_n12 = data2_n12["lambda"]
-	lam2_n13 = data2_n13["lambda"]
-	lam2_n14 = data2_n14["lambda"]
-	lam2_n15 = data2_n15["lambda"]
-	lam2_n16 = data2_n16["lambda"]
-	lam2_n17 = data2_n17["lambda"]
-	lam2_n18 = data2_n18["lambda"]
-	lam2_n19 = data2_n19["lambda"]
-	lam2_n20 = data2_n20["lambda"]
-	lam2_n21 = data2_n21["lambda"]
-	
-	
-	flux_2_n1 = data2_n1["tempflux"]
-	flux_2_n2 = data2_n2["tempflux"]
-	flux_2_n3 = data2_n3["tempflux"]
-	flux_2_n4 = data2_n4["tempflux"]
-	flux_2_n5 = data2_n5["tempflux"]
-	flux_2_n6 = data2_n6["tempflux"]
-	flux_2_n7 = data2_n7["tempflux"]
-	flux_2_n8 = data2_n8["tempflux"]
-	flux_2_n9 = data2_n9["tempflux"]
-	flux_2_n10 = data2_n10["tempflux"]
-	flux_2_n11 = data2_n11["tempflux"]
-	flux_2_n12 = data2_n12["tempflux"]
-	flux_2_n13 = data2_n13["tempflux"]
-	flux_2_n14 = data2_n14["tempflux"]
-	flux_2_n15 = data2_n15["tempflux"]
-	flux_2_n16 = data2_n16["tempflux"]
-	flux_2_n17 = data2_n17["tempflux"]
-	flux_2_n18 = data2_n18["tempflux"]
-	flux_2_n19 = data2_n19["tempflux"]
-	flux_2_n20 = data2_n20["tempflux"]
-	flux_2_n21 = data2_n21["tempflux"]
-	
-	
-	flux2_n1 = (flux_2_n1*(lam2_n1**-2.0))*factor
-	flux2_n2 = (flux_2_n2*(lam2_n2**-2.0))*factor
-	flux2_n3 = (flux_2_n3*(lam2_n3**-2.0))*factor
-	flux2_n4 = (flux_2_n4*(lam2_n4**-2.0))*factor
-	flux2_n5 = (flux_2_n5*(lam2_n5**-2.0))*factor
-	flux2_n6 = (flux_2_n6*(lam2_n6**-2.0))*factor
-	flux2_n7 = (flux_2_n7*(lam2_n7**-2.0))*factor
-	flux2_n8 = (flux_2_n8*(lam2_n8**-2.0))*factor
-	flux2_n9 = (flux_2_n9*(lam2_n9**-2.0))*factor
-	flux2_n10 = (flux_2_n10*(lam2_n10**-2.0))*factor
-	flux2_n11 = (flux_2_n11*(lam2_n11**-2.0))*factor
-	flux2_n12 = (flux_2_n12*(lam2_n12**-2.0))*factor
-	flux2_n13 = (flux_2_n13*(lam2_n13**-2.0))*factor
-	flux2_n14 = (flux_2_n14*(lam2_n14**-2.0))*factor
-	flux2_n15 = (flux_2_n15*(lam2_n15**-2.0))*factor
-	flux2_n16 = (flux_2_n16*(lam2_n16**-2.0))*factor
-	flux2_n17 = (flux_2_n17*(lam2_n17**-2.0))*factor
-	flux2_n18 = (flux_2_n18*(lam2_n18**-2.0))*factor
-	flux2_n19 = (flux_2_n19*(lam2_n19**-2.0))*factor
-	flux2_n20 = (flux_2_n20*(lam2_n20**-2.0))*factor
-	flux2_n21 = (flux_2_n21*(lam2_n21**-2.0))*factor
-	
-	
-	data3_n1 = ascii.read("338.temp_sed")
-	data3_n2 = ascii.read("764.temp_sed")
-	data3_n3 = ascii.read("774.temp_sed")
-	data3_n4 = ascii.read("1678.temp_sed")
-	data3_n5 = ascii.read("2295.temp_sed")
-	data3_n6 = ascii.read("3776.temp_sed")
-	data3_n7 = ascii.read("4854.temp_sed")
-	data3_n8 = ascii.read("4927.temp_sed")
-	data3_n9 = ascii.read("5346.temp_sed")
-	data3_n10 = ascii.read("5371.temp_sed")
-	data3_n11 = ascii.read("5507.temp_sed")
-	data3_n12 = ascii.read("5677.temp_sed")
-	data3_n13 = ascii.read("6215.temp_sed")
-	data3_n14 = ascii.read("6789.temp_sed")
-	data3_n15 = ascii.read("6877.temp_sed")
-	data3_n16 = ascii.read("9122.temp_sed")
-	data3_n17 = ascii.read("10125.temp_sed")
-	data3_n18 = ascii.read("10657.temp_sed")
-	data3_n19 = ascii.read("11064.temp_sed")
-	data3_n20 = ascii.read("12066.temp_sed")
-	data3_n21 = ascii.read("12302.temp_sed")
-	data3_n22 = ascii.read("16129.temp_sed")
-	data3_n23 = ascii.read("16346.temp_sed")
-	data3_n24 = ascii.read("16879.temp_sed")
-	data3_n25 = ascii.read("19082.temp_sed")
-	data3_n26 = ascii.read("20052.temp_sed")
-	data3_n27 = ascii.read("20317.temp_sed")
-	data3_n28 = ascii.read("21738.temp_sed")
-	data3_n29 = ascii.read("23018.temp_sed")
-	data3_n30 = ascii.read("25942.temp_sed")
-	data3_n31 = ascii.read("26529.temp_sed")
-	data3_n32 = ascii.read("26888.temp_sed")
-	data3_n33 = ascii.read("28810.temp_sed")
-	data3_n34 = ascii.read("28826.temp_sed")
-	data3_n35 = ascii.read("30283.temp_sed")
-	data3_n36 = ascii.read("32002.temp_sed")
-	data3_n37 = ascii.read("32033.temp_sed")
-	data3_n38 = ascii.read("36988.temp_sed")
-	
-	
-	lam3_n1 = data3_n1["lambda"]
-	lam3_n2 = data3_n2["lambda"]
-	lam3_n3 = data3_n3["lambda"]
-	lam3_n4 = data3_n4["lambda"]
-	lam3_n5 = data3_n5["lambda"]
-	lam3_n6 = data3_n6["lambda"]
-	lam3_n7 = data3_n7["lambda"]
-	lam3_n8 = data3_n8["lambda"]
-	lam3_n9 = data3_n9["lambda"]
-	lam3_n10 = data3_n10["lambda"]
-	lam3_n11 = data3_n11["lambda"]
-	lam3_n12 = data3_n12["lambda"]
-	lam3_n13 = data3_n13["lambda"]
-	lam3_n14 = data3_n14["lambda"]
-	lam3_n15 = data3_n15["lambda"]
-	lam3_n16 = data3_n16["lambda"]
-	lam3_n17 = data3_n17["lambda"]
-	lam3_n18 = data3_n18["lambda"]
-	lam3_n19 = data3_n19["lambda"]
-	lam3_n20 = data3_n20["lambda"]
-	lam3_n21 = data3_n21["lambda"]
-	lam3_n22 = data3_n22["lambda"]
-	lam3_n23 = data3_n23["lambda"]
-	lam3_n24 = data3_n24["lambda"]
-	lam3_n25 = data3_n25["lambda"]
-	lam3_n26 = data3_n26["lambda"]
-	lam3_n27 = data3_n27["lambda"]
-	lam3_n28 = data3_n28["lambda"]
-	lam3_n29 = data3_n29["lambda"]
-	lam3_n30 = data3_n30["lambda"]
-	lam3_n31 = data3_n31["lambda"]
-	lam3_n32 = data3_n32["lambda"]
-	lam3_n33 = data3_n33["lambda"]
-	lam3_n34 = data3_n34["lambda"]
-	lam3_n35 = data3_n35["lambda"]
-	lam3_n36 = data3_n36["lambda"]
-	lam3_n37 = data3_n37["lambda"]
-	lam3_n38 = data3_n38["lambda"]
-	
-	
-	flux_3_n1 = data3_n1["tempflux"]
-	flux_3_n2 = data3_n2["tempflux"]
-	flux_3_n3 = data3_n3["tempflux"]
-	flux_3_n4 = data3_n4["tempflux"]
-	flux_3_n5 = data3_n5["tempflux"]
-	flux_3_n6 = data3_n6["tempflux"]
-	flux_3_n7 = data3_n7["tempflux"]
-	flux_3_n8 = data3_n8["tempflux"]
-	flux_3_n9 = data3_n9["tempflux"]
-	flux_3_n10 = data3_n10["tempflux"]
-	flux_3_n11 = data3_n11["tempflux"]
-	flux_3_n12 = data3_n12["tempflux"]
-	flux_3_n13 = data3_n13["tempflux"]
-	flux_3_n14 = data3_n14["tempflux"]
-	flux_3_n15 = data3_n15["tempflux"]
-	flux_3_n16 = data3_n16["tempflux"]
-	flux_3_n17 = data3_n17["tempflux"]
-	flux_3_n18 = data3_n18["tempflux"]
-	flux_3_n19 = data3_n19["tempflux"]
-	flux_3_n20 = data3_n20["tempflux"]
-	flux_3_n21 = data3_n21["tempflux"]
-	flux_3_n22 = data3_n22["tempflux"]
-	flux_3_n23 = data3_n23["tempflux"]
-	flux_3_n24 = data3_n24["tempflux"]
-	flux_3_n25 = data3_n25["tempflux"]
-	flux_3_n26 = data3_n26["tempflux"]
-	flux_3_n27 = data3_n27["tempflux"]
-	flux_3_n28 = data3_n28["tempflux"]
-	flux_3_n29 = data3_n29["tempflux"]
-	flux_3_n30 = data3_n30["tempflux"]
-	flux_3_n31 = data3_n31["tempflux"]
-	flux_3_n32 = data3_n32["tempflux"]
-	flux_3_n33 = data3_n33["tempflux"]
-	flux_3_n34 = data3_n34["tempflux"]
-	flux_3_n35 = data3_n35["tempflux"]
-	flux_3_n36 = data3_n36["tempflux"]
-	flux_3_n37 = data3_n37["tempflux"]
-	flux_3_n38 = data3_n38["tempflux"]
-	
-	
-	flux3_n1 = (flux_3_n1*(lam3_n1**-2.0))*factor
-	flux3_n2 = (flux_3_n2*(lam3_n2**-2.0))*factor
-	flux3_n3 = (flux_3_n3*(lam3_n3**-2.0))*factor
-	flux3_n4 = (flux_3_n4*(lam3_n4**-2.0))*factor
-	flux3_n5 = (flux_3_n5*(lam3_n5**-2.0))*factor
-	flux3_n6 = (flux_3_n6*(lam3_n6**-2.0))*factor
-	flux3_n7 = (flux_3_n7*(lam3_n7**-2.0))*factor
-	flux3_n8 = (flux_3_n8*(lam3_n8**-2.0))*factor
-	flux3_n9 = (flux_3_n9*(lam3_n9**-2.0))*factor
-	flux3_n10 = (flux_3_n10*(lam3_n10**-2.0))*factor
-	flux3_n11 = (flux_3_n11*(lam3_n11**-2.0))*factor
-	flux3_n12 = (flux_3_n12*(lam3_n12**-2.0))*factor
-	flux3_n13 = (flux_3_n13*(lam3_n13**-2.0))*factor
-	flux3_n14 = (flux_3_n14*(lam3_n14**-2.0))*factor
-	flux3_n15 = (flux_3_n15*(lam3_n15**-2.0))*factor
-	flux3_n16 = (flux_3_n16*(lam3_n16**-2.0))*factor
-	flux3_n17 = (flux_3_n17*(lam3_n17**-2.0))*factor
-	flux3_n18 = (flux_3_n18*(lam3_n18**-2.0))*factor
-	flux3_n19 = (flux_3_n19*(lam3_n19**-2.0))*factor
-	flux3_n20 = (flux_3_n20*(lam3_n20**-2.0))*factor
-	flux3_n21 = (flux_3_n21*(lam3_n21**-2.0))*factor
-	flux3_n22 = (flux_3_n22*(lam3_n22**-2.0))*factor
-	flux3_n23 = (flux_3_n23*(lam3_n23**-2.0))*factor
-	flux3_n24 = (flux_3_n24*(lam3_n24**-2.0))*factor
-	flux3_n25 = (flux_3_n25*(lam3_n25**-2.0))*factor
-	flux3_n26 = (flux_3_n26*(lam3_n26**-2.0))*factor
-	flux3_n27 = (flux_3_n27*(lam3_n27**-2.0))*factor
-	flux3_n28 = (flux_3_n28*(lam3_n28**-2.0))*factor
-	flux3_n29 = (flux_3_n29*(lam3_n29**-2.0))*factor
-	flux3_n30 = (flux_3_n30*(lam3_n30**-2.0))*factor
-	flux3_n31 = (flux_3_n31*(lam3_n31**-2.0))*factor
-	flux3_n32 = (flux_3_n32*(lam3_n32**-2.0))*factor
-	flux3_n33 = (flux_3_n33*(lam3_n33**-2.0))*factor
-	flux3_n34 = (flux_3_n34*(lam3_n34**-2.0))*factor
-	flux3_n35 = (flux_3_n35*(lam3_n35**-2.0))*factor
-	flux3_n36 = (flux_3_n36*(lam3_n36**-2.0))*factor
-	flux3_n37 = (flux_3_n37*(lam3_n37**-2.0))*factor
-	flux3_n38 = (flux_3_n38*(lam3_n38**-2.0))*factor
-	
-	
-	
-	
-	os.chdir("/Volumes/TOSHIBA EXT/3d_hst/noah_massive/goodss_massive")
-	
-	data1_s1 = ascii.read("1523.temp_sed")
-	data1_s2 = ascii.read("1924.temp_sed")
-	data1_s3 = ascii.read("2707.temp_sed")
-	data1_s4 = ascii.read("4210.temp_sed")
-	data1_s5 = ascii.read("6098.temp_sed")
-	data1_s6 = ascii.read("6106.temp_sed")
-	data1_s7 = ascii.read("7444.temp_sed")
-	data1_s8 = ascii.read("7503.temp_sed")
-	data1_s9 = ascii.read("19186.temp_sed")
-	data1_s10 = ascii.read("27442.temp_sed")
-	data1_s11 = ascii.read("29928.temp_sed")
-	data1_s12 = ascii.read("30394.temp_sed")
-	data1_s13 = ascii.read("30997.temp_sed")
-	data1_s14 = ascii.read("33163.temp_sed")
-	data1_s15 = ascii.read("33164.temp_sed")
-	data1_s16 = ascii.read("38111.temp_sed")
-	data1_s17 = ascii.read("39170.temp_sed")
-	data1_s18 = ascii.read("43042.temp_sed")
-	data1_s19 = ascii.read("45775.temp_sed")
-	data1_s20 = ascii.read("46392.temp_sed")
-	data1_s21 = ascii.read("46846.temp_sed")
-	data1_s22 = ascii.read("47742.temp_sed")
-	data1_s23 = ascii.read("47873.temp_sed")
-	data1_s24 = ascii.read("48631.temp_sed")
-	
-	
-	lam1_s1 = data1_s1["lambda"]
-	lam1_s2 = data1_s2["lambda"]
-	lam1_s3 = data1_s3["lambda"]
-	lam1_s4 = data1_s4["lambda"]
-	lam1_s5 = data1_s5["lambda"]
-	lam1_s6 = data1_s6["lambda"]
-	lam1_s7 = data1_s7["lambda"]
-	lam1_s8 = data1_s8["lambda"]
-	lam1_s9 = data1_s9["lambda"]
-	lam1_s10 = data1_s10["lambda"]
-	lam1_s11 = data1_s11["lambda"]
-	lam1_s12 = data1_s12["lambda"]
-	lam1_s13 = data1_s13["lambda"]
-	lam1_s14 = data1_s14["lambda"]
-	lam1_s15 = data1_s15["lambda"]
-	lam1_s16 = data1_s16["lambda"]
-	lam1_s17 = data1_s17["lambda"]
-	lam1_s18 = data1_s18["lambda"]
-	lam1_s19 = data1_s19["lambda"]
-	lam1_s20 = data1_s20["lambda"]
-	lam1_s21 = data1_s21["lambda"]
-	lam1_s22 = data1_s22["lambda"]
-	lam1_s23 = data1_s23["lambda"]
-	lam1_s24 = data1_s24["lambda"]
-	
-
-	flux_1_s1 = data1_s1["tempflux"]
-	flux_1_s2 = data1_s2["tempflux"]
-	flux_1_s3 = data1_s3["tempflux"]
-	flux_1_s4 = data1_s4["tempflux"]
-	flux_1_s5 = data1_s5["tempflux"]
-	flux_1_s6 = data1_s6["tempflux"]
-	flux_1_s7 = data1_s7["tempflux"]
-	flux_1_s8 = data1_s8["tempflux"]
-	flux_1_s9 = data1_s9["tempflux"]
-	flux_1_s10 = data1_s10["tempflux"]
-	flux_1_s11 = data1_s11["tempflux"]
-	flux_1_s12 = data1_s12["tempflux"]
-	flux_1_s13 = data1_s13["tempflux"]
-	flux_1_s14 = data1_s14["tempflux"]
-	flux_1_s15 = data1_s15["tempflux"]
-	flux_1_s16 = data1_s16["tempflux"]
-	flux_1_s17 = data1_s17["tempflux"]
-	flux_1_s18 = data1_s18["tempflux"]
-	flux_1_s19 = data1_s19["tempflux"]
-	flux_1_s20 = data1_s20["tempflux"]
-	flux_1_s21 = data1_s21["tempflux"]
-	flux_1_s22 = data1_s22["tempflux"]
-	flux_1_s23 = data1_s23["tempflux"]
-	flux_1_s24 = data1_s24["tempflux"]
-	
-	
-	flux1_s1 = (flux_1_s1*(lam1_s1**-2.0))*factor
-	flux1_s2 = (flux_1_s2*(lam1_s2**-2.0))*factor
-	flux1_s3 = (flux_1_s3*(lam1_s3**-2.0))*factor
-	flux1_s4 = (flux_1_s4*(lam1_s4**-2.0))*factor
-	flux1_s5 = (flux_1_s5*(lam1_s5**-2.0))*factor
-	flux1_s6 = (flux_1_s6*(lam1_s6**-2.0))*factor
-	flux1_s7 = (flux_1_s7*(lam1_s7**-2.0))*factor
-	flux1_s8 = (flux_1_s8*(lam1_s8**-2.0))*factor
-	flux1_s9 = (flux_1_s9*(lam1_s9**-2.0))*factor
-	flux1_s10 = (flux_1_s10*(lam1_s10**-2.0))*factor
-	flux1_s11 = (flux_1_s11*(lam1_s11**-2.0))*factor
-	flux1_s12 = (flux_1_s12*(lam1_s12**-2.0))*factor
-	flux1_s13 = (flux_1_s13*(lam1_s13**-2.0))*factor
-	flux1_s14 = (flux_1_s14*(lam1_s14**-2.0))*factor
-	flux1_s15 = (flux_1_s15*(lam1_s15**-2.0))*factor
-	flux1_s16 = (flux_1_s16*(lam1_s16**-2.0))*factor
-	flux1_s17 = (flux_1_s17*(lam1_s17**-2.0))*factor
-	flux1_s18 = (flux_1_s18*(lam1_s18**-2.0))*factor
-	flux1_s19 = (flux_1_s19*(lam1_s19**-2.0))*factor
-	flux1_s20 = (flux_1_s20*(lam1_s20**-2.0))*factor
-	flux1_s21 = (flux_1_s21*(lam1_s21**-2.0))*factor
-	flux1_s22 = (flux_1_s22*(lam1_s22**-2.0))*factor
-	flux1_s23 = (flux_1_s23*(lam1_s23**-2.0))*factor
-	flux1_s24 = (flux_1_s24*(lam1_s24**-2.0))*factor
-	
-	
-	data2_s1 = ascii.read("2383.temp_sed")
-	data2_s2 = ascii.read("4505.temp_sed")
-	data2_s3 = ascii.read("7457.temp_sed")
-	data2_s4 = ascii.read("8422.temp_sed")
-	data2_s5 = ascii.read("9704.temp_sed")
-	data2_s6 = ascii.read("10436.temp_sed")
-	data2_s7 = ascii.read("13369.temp_sed")
-	data2_s8 = ascii.read("13628.temp_sed")
-	data2_s9 = ascii.read("14152.temp_sed")
-	data2_s10 = ascii.read("14335.temp_sed")
-	data2_s11 = ascii.read("14747.temp_sed")
-	data2_s12 = ascii.read("15214.temp_sed")
-	data2_s13 = ascii.read("16769.temp_sed")
-	data2_s14 = ascii.read("16814.temp_sed")
-	data2_s15 = ascii.read("24308.temp_sed")
-	data2_s16 = ascii.read("26139.temp_sed")
-	data2_s17 = ascii.read("27881.temp_sed")
-	data2_s18 = ascii.read("29407.temp_sed")
-	data2_s19 = ascii.read("29652.temp_sed")
-	data2_s20 = ascii.read("29900.temp_sed")
-	data2_s21 = ascii.read("31397.temp_sed")
-	data2_s22 = ascii.read("32048.temp_sed")
-	data2_s23 = ascii.read("32783.temp_sed")
-	data2_s24 = ascii.read("33912.temp_sed")
-	data2_s25 = ascii.read("34491.temp_sed")
-	data2_s26 = ascii.read("34519.temp_sed")
-	data2_s27 = ascii.read("34567.temp_sed")
-	data2_s28 = ascii.read("35444.temp_sed")
-	data2_s29 = ascii.read("36095.temp_sed")
-	data2_s30 = ascii.read("39012.temp_sed")
-	data2_s31 = ascii.read("39208.temp_sed")
-	data2_s32 = ascii.read("39364.temp_sed")
-	data2_s33 = ascii.read("40889.temp_sed")
-	data2_s34 = ascii.read("41148.temp_sed")
-	data2_s35 = ascii.read("42113.temp_sed")
-	data2_s36 = ascii.read("42501.temp_sed")
-	data2_s37 = ascii.read("42705.temp_sed")
-	data2_s38 = ascii.read("42957.temp_sed")
-	data2_s39 = ascii.read("43114.temp_sed")
-	data2_s40 = ascii.read("44042.temp_sed")
-	data2_s41 = ascii.read("44157.temp_sed")
-	data2_s42 = ascii.read("48312.temp_sed")
-	
-	
-	lam2_s1 = data2_s1["lambda"]
-	lam2_s2 = data2_s2["lambda"]
-	lam2_s3 = data2_s3["lambda"]
-	lam2_s4 = data2_s4["lambda"]
-	lam2_s5 = data2_s5["lambda"]
-	lam2_s6 = data2_s6["lambda"]
-	lam2_s7 = data2_s7["lambda"]
-	lam2_s8 = data2_s8["lambda"]
-	lam2_s9 = data2_s9["lambda"]
-	lam2_s10 = data2_s10["lambda"]
-	lam2_s11 = data2_s11["lambda"]
-	lam2_s12 = data2_s12["lambda"]
-	lam2_s13 = data2_s13["lambda"]
-	lam2_s14 = data2_s14["lambda"]
-	lam2_s15 = data2_s15["lambda"]
-	lam2_s16 = data2_s16["lambda"]
-	lam2_s17 = data2_s17["lambda"]
-	lam2_s18 = data2_s18["lambda"]
-	lam2_s19 = data2_s19["lambda"]
-	lam2_s20 = data2_s20["lambda"]
-	lam2_s21 = data2_s21["lambda"]
-	lam2_s22 = data2_s22["lambda"]
-	lam2_s23 = data2_s23["lambda"]
-	lam2_s24 = data2_s24["lambda"]
-	lam2_s25 = data2_s25["lambda"]
-	lam2_s26 = data2_s26["lambda"]
-	lam2_s27 = data2_s27["lambda"]
-	lam2_s28 = data2_s28["lambda"]
-	lam2_s29 = data2_s29["lambda"]
-	lam2_s30 = data2_s30["lambda"]
-	lam2_s31 = data2_s31["lambda"]
-	lam2_s32 = data2_s32["lambda"]
-	lam2_s33 = data2_s33["lambda"]
-	lam2_s34 = data2_s34["lambda"]
-	lam2_s35 = data2_s35["lambda"]
-	lam2_s36 = data2_s36["lambda"]
-	lam2_s37 = data2_s37["lambda"]
-	lam2_s38 = data2_s38["lambda"]
-	lam2_s39 = data2_s39["lambda"]
-	lam2_s40 = data2_s40["lambda"]
-	lam2_s41 = data2_s41["lambda"]
-	lam2_s42 = data2_s42["lambda"]
-	
-	
-	flux_2_s1 = data2_s1["tempflux"]
-	flux_2_s2 = data2_s2["tempflux"]
-	flux_2_s3 = data2_s3["tempflux"]
-	flux_2_s4 = data2_s4["tempflux"]
-	flux_2_s5 = data2_s5["tempflux"]
-	flux_2_s6 = data2_s6["tempflux"]
-	flux_2_s7 = data2_s7["tempflux"]
-	flux_2_s8 = data2_s8["tempflux"]
-	flux_2_s9 = data2_s9["tempflux"]
-	flux_2_s10 = data2_s10["tempflux"]
-	flux_2_s11 = data2_s11["tempflux"]
-	flux_2_s12 = data2_s12["tempflux"]
-	flux_2_s13 = data2_s13["tempflux"]
-	flux_2_s14 = data2_s14["tempflux"]
-	flux_2_s15 = data2_s15["tempflux"]
-	flux_2_s16 = data2_s16["tempflux"]
-	flux_2_s17 = data2_s17["tempflux"]
-	flux_2_s18 = data2_s18["tempflux"]
-	flux_2_s19 = data2_s19["tempflux"]
-	flux_2_s20 = data2_s20["tempflux"]
-	flux_2_s21 = data2_s21["tempflux"]
-	flux_2_s22 = data2_s22["tempflux"]
-	flux_2_s23 = data2_s23["tempflux"]
-	flux_2_s24 = data2_s24["tempflux"]
-	flux_2_s25 = data2_s25["tempflux"]
-	flux_2_s26 = data2_s26["tempflux"]
-	flux_2_s27 = data2_s27["tempflux"]
-	flux_2_s28 = data2_s28["tempflux"]
-	flux_2_s29 = data2_s29["tempflux"]
-	flux_2_s30 = data2_s30["tempflux"]
-	flux_2_s31 = data2_s31["tempflux"]
-	flux_2_s32 = data2_s32["tempflux"]
-	flux_2_s33 = data2_s33["tempflux"]
-	flux_2_s34 = data2_s34["tempflux"]
-	flux_2_s35 = data2_s35["tempflux"]
-	flux_2_s36 = data2_s36["tempflux"]
-	flux_2_s37 = data2_s37["tempflux"]
-	flux_2_s38 = data2_s38["tempflux"]
-	flux_2_s39 = data2_s39["tempflux"]
-	flux_2_s40 = data2_s40["tempflux"]
-	flux_2_s41 = data2_s41["tempflux"]
-	flux_2_s42 = data2_s42["tempflux"]
-	
-	
-	flux2_s1 = (flux_2_s1*(lam2_s1**-2.0))*factor
-	flux2_s2 = (flux_2_s2*(lam2_s2**-2.0))*factor
-	flux2_s3 = (flux_2_s3*(lam2_s3**-2.0))*factor
-	flux2_s4 = (flux_2_s4*(lam2_s4**-2.0))*factor
-	flux2_s5 = (flux_2_s5*(lam2_s5**-2.0))*factor
-	flux2_s6 = (flux_2_s6*(lam2_s6**-2.0))*factor
-	flux2_s7 = (flux_2_s7*(lam2_s7**-2.0))*factor
-	flux2_s8 = (flux_2_s8*(lam2_s8**-2.0))*factor
-	flux2_s9 = (flux_2_s9*(lam2_s9**-2.0))*factor
-	flux2_s10 = (flux_2_s10*(lam2_s10**-2.0))*factor
-	flux2_s11 = (flux_2_s11*(lam2_s11**-2.0))*factor
-	flux2_s12 = (flux_2_s12*(lam2_s12**-2.0))*factor
-	flux2_s13 = (flux_2_s13*(lam2_s13**-2.0))*factor
-	flux2_s14 = (flux_2_s14*(lam2_s14**-2.0))*factor
-	flux2_s15 = (flux_2_s15*(lam2_s15**-2.0))*factor
-	flux2_s16 = (flux_2_s16*(lam2_s16**-2.0))*factor
-	flux2_s17 = (flux_2_s17*(lam2_s17**-2.0))*factor
-	flux2_s18 = (flux_2_s18*(lam2_s18**-2.0))*factor
-	flux2_s19 = (flux_2_s19*(lam2_s19**-2.0))*factor
-	flux2_s20 = (flux_2_s20*(lam2_s20**-2.0))*factor
-	flux2_s21 = (flux_2_s21*(lam2_s21**-2.0))*factor
-	flux2_s22 = (flux_2_s22*(lam2_s22**-2.0))*factor
-	flux2_s23 = (flux_2_s23*(lam2_s23**-2.0))*factor
-	flux2_s24 = (flux_2_s24*(lam2_s24**-2.0))*factor
-	flux2_s25 = (flux_2_s25*(lam2_s25**-2.0))*factor
-	flux2_s26 = (flux_2_s26*(lam2_s26**-2.0))*factor
-	flux2_s27 = (flux_2_s27*(lam2_s27**-2.0))*factor
-	flux2_s28 = (flux_2_s28*(lam2_s28**-2.0))*factor
-	flux2_s29 = (flux_2_s29*(lam2_s29**-2.0))*factor
-	flux2_s30 = (flux_2_s30*(lam2_s30**-2.0))*factor
-	flux2_s31 = (flux_2_s31*(lam2_s31**-2.0))*factor
-	flux2_s32 = (flux_2_s32*(lam2_s32**-2.0))*factor
-	flux2_s33 = (flux_2_s33*(lam2_s33**-2.0))*factor
-	flux2_s34 = (flux_2_s34*(lam2_s34**-2.0))*factor
-	flux2_s35 = (flux_2_s35*(lam2_s35**-2.0))*factor
-	flux2_s36 = (flux_2_s36*(lam2_s36**-2.0))*factor
-	flux2_s37 = (flux_2_s37*(lam2_s37**-2.0))*factor
-	flux2_s38 = (flux_2_s38*(lam2_s38**-2.0))*factor
-	flux2_s39 = (flux_2_s39*(lam2_s39**-2.0))*factor
-	flux2_s40 = (flux_2_s40*(lam2_s40**-2.0))*factor
-	flux2_s41 = (flux_2_s41*(lam2_s41**-2.0))*factor
-	flux2_s42 = (flux_2_s42*(lam2_s42**-2.0))*factor
-	
-	
-	data3_s1 = ascii.read("1725.temp_sed")
-	data3_s2 = ascii.read("2467.temp_sed")
-	data3_s3 = ascii.read("4583.temp_sed")
-	data3_s4 = ascii.read("6341.temp_sed")
-	data3_s5 = ascii.read("7686.temp_sed")
-	data3_s6 = ascii.read("8683.temp_sed")
-	data3_s7 = ascii.read("11016.temp_sed")
-	data3_s8 = ascii.read("14813.temp_sed")
-	data3_s9 = ascii.read("15847.temp_sed")
-	data3_s10 = ascii.read("16888.temp_sed")
-	data3_s11 = ascii.read("22079.temp_sed")
-	data3_s12 = ascii.read("22825.temp_sed")
-	data3_s13 = ascii.read("28604.temp_sed")
-	data3_s14 = ascii.read("29288.temp_sed")
-	data3_s15 = ascii.read("30274.temp_sed")
-	data3_s16 = ascii.read("30534.temp_sed")
-	data3_s17 = ascii.read("39568.temp_sed")
-	data3_s18 = ascii.read("40185.temp_sed")
-	data3_s19 = ascii.read("41181.temp_sed")
-	data3_s20 = ascii.read("42607.temp_sed")
-	data3_s21 = ascii.read("43901.temp_sed")
-	data3_s22 = ascii.read("45475.temp_sed")
-	data3_s23 = ascii.read("48464.temp_sed")
-	data3_s24 = ascii.read("49285.temp_sed")
-	data3_s25 = ascii.read("49834.temp_sed")
-	
-	
-	lam3_s1 = data3_s1["lambda"]
-	lam3_s2 = data3_s2["lambda"]
-	lam3_s3 = data3_s3["lambda"]
-	lam3_s4 = data3_s4["lambda"]
-	lam3_s5 = data3_s5["lambda"]
-	lam3_s6 = data3_s6["lambda"]
-	lam3_s7 = data3_s7["lambda"]
-	lam3_s8 = data3_s8["lambda"]
-	lam3_s9 = data3_s9["lambda"]
-	lam3_s10 = data3_s10["lambda"]
-	lam3_s11 = data3_s11["lambda"]
-	lam3_s12 = data3_s12["lambda"]
-	lam3_s13 = data3_s13["lambda"]
-	lam3_s14 = data3_s14["lambda"]
-	lam3_s15 = data3_s15["lambda"]
-	lam3_s16 = data3_s16["lambda"]
-	lam3_s17 = data3_s17["lambda"]
-	lam3_s18 = data3_s18["lambda"]
-	lam3_s19 = data3_s19["lambda"]
-	lam3_s20 = data3_s20["lambda"]
-	lam3_s21 = data3_s21["lambda"]
-	lam3_s22 = data3_s22["lambda"]
-	lam3_s23 = data3_s23["lambda"]
-	lam3_s24 = data3_s24["lambda"]
-	lam3_s25 = data3_s25["lambda"]
-	
-	
-	flux_3_s1 = data3_s1["tempflux"]
-	flux_3_s2 = data3_s2["tempflux"]
-	flux_3_s3 = data3_s3["tempflux"]
-	flux_3_s4 = data3_s4["tempflux"]
-	flux_3_s5 = data3_s5["tempflux"]
-	flux_3_s6 = data3_s6["tempflux"]
-	flux_3_s7 = data3_s7["tempflux"]
-	flux_3_s8 = data3_s8["tempflux"]
-	flux_3_s9 = data3_s9["tempflux"]
-	flux_3_s10 = data3_s10["tempflux"]
-	flux_3_s11 = data3_s11["tempflux"]
-	flux_3_s12 = data3_s12["tempflux"]
-	flux_3_s13 = data3_s13["tempflux"]
-	flux_3_s14 = data3_s14["tempflux"]
-	flux_3_s15 = data3_s15["tempflux"]
-	flux_3_s16 = data3_s16["tempflux"]
-	flux_3_s17 = data3_s17["tempflux"]
-	flux_3_s18 = data3_s18["tempflux"]
-	flux_3_s19 = data3_s19["tempflux"]
-	flux_3_s20 = data3_s20["tempflux"]
-	flux_3_s21 = data3_s21["tempflux"]
-	flux_3_s22 = data3_s22["tempflux"]
-	flux_3_s23 = data3_s23["tempflux"]
-	flux_3_s24 = data3_s24["tempflux"]
-	flux_3_s25 = data3_s25["tempflux"]
-	
-
-	flux3_s1 = (flux_3_s1*(lam3_s1**-2.0))*factor
-	flux3_s2 = (flux_3_s2*(lam3_s2**-2.0))*factor
-	flux3_s3 = (flux_3_s3*(lam3_s3**-2.0))*factor
-	flux3_s4 = (flux_3_s4*(lam3_s4**-2.0))*factor
-	flux3_s5 = (flux_3_s5*(lam3_s5**-2.0))*factor
-	flux3_s6 = (flux_3_s6*(lam3_s6**-2.0))*factor
-	flux3_s7 = (flux_3_s7*(lam3_s7**-2.0))*factor
-	flux3_s8 = (flux_3_s8*(lam3_s8**-2.0))*factor
-	flux3_s9 = (flux_3_s9*(lam3_s9**-2.0))*factor
-	flux3_s10 = (flux_3_s10*(lam3_s10**-2.0))*factor
-	flux3_s11 = (flux_3_s11*(lam3_s11**-2.0))*factor
-	flux3_s12 = (flux_3_s12*(lam3_s12**-2.0))*factor
-	flux3_s13 = (flux_3_s13*(lam3_s13**-2.0))*factor
-	flux3_s14 = (flux_3_s14*(lam3_s14**-2.0))*factor
-	flux3_s15 = (flux_3_s15*(lam3_s15**-2.0))*factor
-	flux3_s16 = (flux_3_s16*(lam3_s16**-2.0))*factor
-	flux3_s17 = (flux_3_s17*(lam3_s17**-2.0))*factor
-	flux3_s18 = (flux_3_s18*(lam3_s18**-2.0))*factor
-	flux3_s19 = (flux_3_s19*(lam3_s19**-2.0))*factor
-	flux3_s20 = (flux_3_s20*(lam3_s20**-2.0))*factor
-	flux3_s21 = (flux_3_s21*(lam3_s21**-2.0))*factor
-	flux3_s22 = (flux_3_s22*(lam3_s22**-2.0))*factor
-	flux3_s23 = (flux_3_s23*(lam3_s23**-2.0))*factor
-	flux3_s24 = (flux_3_s24*(lam3_s24**-2.0))*factor
-	flux3_s25 = (flux_3_s25*(lam3_s25**-2.0))*factor
-	
-	
-	
-	
-	os.chdir("/Volumes/TOSHIBA EXT/3d_hst/noah_massive/uds_massive")
-	
-	data1_u1 = ascii.read("1123.temp_sed")
-	data1_u2 = ascii.read("2393.temp_sed")
-	data1_u3 = ascii.read("2394.temp_sed")
-	data1_u4 = ascii.read("5126.temp_sed")
-	data1_u5 = ascii.read("5924.temp_sed")
-	data1_u6 = ascii.read("6299.temp_sed")
-	data1_u7 = ascii.read("6852.temp_sed")
-	data1_u8 = ascii.read("7071.temp_sed")
-	data1_u9 = ascii.read("7783.temp_sed")
-	data1_u10 = ascii.read("9261.temp_sed")
-	data1_u11 = ascii.read("10758.temp_sed")
-	data1_u12 = ascii.read("11533.temp_sed")
-	data1_u13 = ascii.read("13482.temp_sed")
-	data1_u14 = ascii.read("14152.temp_sed")
-	data1_u15 = ascii.read("14854.temp_sed")
-	data1_u16 = ascii.read("15063.temp_sed")
-	data1_u17 = ascii.read("16239.temp_sed")
-	data1_u18 = ascii.read("17879.temp_sed")
-	data1_u19 = ascii.read("19765.temp_sed")
-	data1_u20 = ascii.read("19954.temp_sed")
-	data1_u21 = ascii.read("21513.temp_sed")
-	data1_u22 = ascii.read("23590.temp_sed")
-	data1_u23 = ascii.read("24953.temp_sed")
-	data1_u24 = ascii.read("26552.temp_sed")
-	data1_u25 = ascii.read("26875.temp_sed")
-	data1_u26 = ascii.read("28773.temp_sed")
-	data1_u27 = ascii.read("30057.temp_sed")
-	data1_u28 = ascii.read("30192.temp_sed")
-	data1_u29 = ascii.read("30255.temp_sed")
-	data1_u30 = ascii.read("32077.temp_sed")
-	data1_u31 = ascii.read("32256.temp_sed")
-	data1_u32 = ascii.read("32691.temp_sed")
-	data1_u33 = ascii.read("32777.temp_sed")
-	data1_u34 = ascii.read("32921.temp_sed")
-	data1_u35 = ascii.read("32986.temp_sed")
-	data1_u36 = ascii.read("34353.temp_sed")
-	data1_u37 = ascii.read("34641.temp_sed")
-	data1_u38 = ascii.read("35071.temp_sed")
-	data1_u39 = ascii.read("35356.temp_sed")
-	data1_u40 = ascii.read("36013.temp_sed")
-	data1_u41 = ascii.read("40631.temp_sed")
-	data1_u42 = ascii.read("41412.temp_sed")
-	data1_u43 = ascii.read("41671.temp_sed")
-	data1_u44 = ascii.read("41835.temp_sed")
-	
-	
-	lam1_u1 = data1_u1["lambda"]
-	lam1_u2 = data1_u2["lambda"]
-	lam1_u3 = data1_u3["lambda"]
-	lam1_u4 = data1_u4["lambda"]
-	lam1_u5 = data1_u5["lambda"]
-	lam1_u6 = data1_u6["lambda"]
-	lam1_u7 = data1_u7["lambda"]
-	lam1_u8 = data1_u8["lambda"]
-	lam1_u9 = data1_u9["lambda"]
-	lam1_u10 = data1_u10["lambda"]
-	lam1_u11 = data1_u11["lambda"]
-	lam1_u12 = data1_u12["lambda"]
-	lam1_u13 = data1_u13["lambda"]
-	lam1_u14 = data1_u14["lambda"]
-	lam1_u15 = data1_u15["lambda"]
-	lam1_u16 = data1_u16["lambda"]
-	lam1_u17 = data1_u17["lambda"]
-	lam1_u18 = data1_u18["lambda"]
-	lam1_u19 = data1_u19["lambda"]
-	lam1_u20 = data1_u20["lambda"]
-	lam1_u21 = data1_u21["lambda"]
-	lam1_u22 = data1_u22["lambda"]
-	lam1_u23 = data1_u23["lambda"]
-	lam1_u24 = data1_u24["lambda"]
-	lam1_u25 = data1_u25["lambda"]
-	lam1_u26 = data1_u26["lambda"]
-	lam1_u27 = data1_u27["lambda"]
-	lam1_u28 = data1_u28["lambda"]
-	lam1_u29 = data1_u29["lambda"]
-	lam1_u30 = data1_u30["lambda"]
-	lam1_u31 = data1_u31["lambda"]
-	lam1_u32 = data1_u32["lambda"]
-	lam1_u33 = data1_u33["lambda"]
-	lam1_u34 = data1_u34["lambda"]
-	lam1_u35 = data1_u35["lambda"]
-	lam1_u36 = data1_u36["lambda"]
-	lam1_u37 = data1_u37["lambda"]
-	lam1_u38 = data1_u38["lambda"]
-	lam1_u39 = data1_u39["lambda"]
-	lam1_u40 = data1_u40["lambda"]
-	lam1_u41 = data1_u41["lambda"]
-	lam1_u42 = data1_u42["lambda"]
-	lam1_u43 = data1_u43["lambda"]
-	lam1_u44 = data1_u44["lambda"]
-	
-
-	flux_1_u1 = data1_u1["tempflux"]
-	flux_1_u2 = data1_u2["tempflux"]
-	flux_1_u3 = data1_u3["tempflux"]
-	flux_1_u4 = data1_u4["tempflux"]
-	flux_1_u5 = data1_u5["tempflux"]
-	flux_1_u6 = data1_u6["tempflux"]
-	flux_1_u7 = data1_u7["tempflux"]
-	flux_1_u8 = data1_u8["tempflux"]
-	flux_1_u9 = data1_u9["tempflux"]
-	flux_1_u10 = data1_u10["tempflux"]
-	flux_1_u11 = data1_u11["tempflux"]
-	flux_1_u12 = data1_u12["tempflux"]
-	flux_1_u13 = data1_u13["tempflux"]
-	flux_1_u14 = data1_u14["tempflux"]
-	flux_1_u15 = data1_u15["tempflux"]
-	flux_1_u16 = data1_u16["tempflux"]
-	flux_1_u17 = data1_u17["tempflux"]
-	flux_1_u18 = data1_u18["tempflux"]
-	flux_1_u19 = data1_u19["tempflux"]
-	flux_1_u20 = data1_u20["tempflux"]
-	flux_1_u21 = data1_u21["tempflux"]
-	flux_1_u22 = data1_u22["tempflux"]
-	flux_1_u23 = data1_u23["tempflux"]
-	flux_1_u24 = data1_u24["tempflux"]
-	flux_1_u25 = data1_u25["tempflux"]
-	flux_1_u26 = data1_u26["tempflux"]
-	flux_1_u27 = data1_u27["tempflux"]
-	flux_1_u28 = data1_u28["tempflux"]
-	flux_1_u29 = data1_u29["tempflux"]
-	flux_1_u30 = data1_u30["tempflux"]
-	flux_1_u31 = data1_u31["tempflux"]
-	flux_1_u32 = data1_u32["tempflux"]
-	flux_1_u33 = data1_u33["tempflux"]
-	flux_1_u34 = data1_u34["tempflux"]
-	flux_1_u35 = data1_u35["tempflux"]
-	flux_1_u36 = data1_u36["tempflux"]
-	flux_1_u37 = data1_u37["tempflux"]
-	flux_1_u38 = data1_u38["tempflux"]
-	flux_1_u39 = data1_u39["tempflux"]
-	flux_1_u40 = data1_u40["tempflux"]
-	flux_1_u41 = data1_u41["tempflux"]
-	flux_1_u42 = data1_u42["tempflux"]
-	flux_1_u43 = data1_u43["tempflux"]
-	flux_1_u44 = data1_u44["tempflux"]
-	
-	
-	flux1_u1 = (flux_1_u1*(lam1_u1**-2.0))*factor
-	flux1_u2 = (flux_1_u2*(lam1_u2**-2.0))*factor
-	flux1_u3 = (flux_1_u3*(lam1_u3**-2.0))*factor
-	flux1_u4 = (flux_1_u4*(lam1_u4**-2.0))*factor
-	flux1_u5 = (flux_1_u5*(lam1_u5**-2.0))*factor
-	flux1_u6 = (flux_1_u6*(lam1_u6**-2.0))*factor
-	flux1_u7 = (flux_1_u7*(lam1_u7**-2.0))*factor
-	flux1_u8 = (flux_1_u8*(lam1_u8**-2.0))*factor
-	flux1_u9 = (flux_1_u9*(lam1_u9**-2.0))*factor
-	flux1_u10 = (flux_1_u10*(lam1_u10**-2.0))*factor
-	flux1_u11 = (flux_1_u11*(lam1_u11**-2.0))*factor
-	flux1_u12 = (flux_1_u12*(lam1_u12**-2.0))*factor
-	flux1_u13 = (flux_1_u13*(lam1_u13**-2.0))*factor
-	flux1_u14 = (flux_1_u14*(lam1_u14**-2.0))*factor
-	flux1_u15 = (flux_1_u15*(lam1_u15**-2.0))*factor
-	flux1_u16 = (flux_1_u16*(lam1_u16**-2.0))*factor
-	flux1_u17 = (flux_1_u17*(lam1_u17**-2.0))*factor
-	flux1_u18 = (flux_1_u18*(lam1_u18**-2.0))*factor
-	flux1_u19 = (flux_1_u19*(lam1_u19**-2.0))*factor
-	flux1_u20 = (flux_1_u20*(lam1_u20**-2.0))*factor
-	flux1_u21 = (flux_1_u21*(lam1_u21**-2.0))*factor
-	flux1_u22 = (flux_1_u22*(lam1_u22**-2.0))*factor
-	flux1_u23 = (flux_1_u23*(lam1_u23**-2.0))*factor
-	flux1_u24 = (flux_1_u24*(lam1_u24**-2.0))*factor
-	flux1_u25 = (flux_1_u25*(lam1_u25**-2.0))*factor
-	flux1_u26 = (flux_1_u26*(lam1_u26**-2.0))*factor
-	flux1_u27 = (flux_1_u27*(lam1_u27**-2.0))*factor
-	flux1_u28 = (flux_1_u28*(lam1_u28**-2.0))*factor
-	flux1_u29 = (flux_1_u29*(lam1_u29**-2.0))*factor
-	flux1_u30 = (flux_1_u30*(lam1_u30**-2.0))*factor
-	flux1_u31 = (flux_1_u31*(lam1_u31**-2.0))*factor
-	flux1_u32 = (flux_1_u32*(lam1_u32**-2.0))*factor
-	flux1_u33 = (flux_1_u33*(lam1_u33**-2.0))*factor
-	flux1_u34 = (flux_1_u34*(lam1_u34**-2.0))*factor
-	flux1_u35 = (flux_1_u35*(lam1_u35**-2.0))*factor
-	flux1_u36 = (flux_1_u36*(lam1_u36**-2.0))*factor
-	flux1_u37 = (flux_1_u37*(lam1_u37**-2.0))*factor
-	flux1_u38 = (flux_1_u38*(lam1_u38**-2.0))*factor
-	flux1_u39 = (flux_1_u39*(lam1_u39**-2.0))*factor
-	flux1_u40 = (flux_1_u40*(lam1_u40**-2.0))*factor
-	flux1_u41 = (flux_1_u41*(lam1_u41**-2.0))*factor
-	flux1_u42 = (flux_1_u42*(lam1_u42**-2.0))*factor
-	flux1_u43 = (flux_1_u43*(lam1_u43**-2.0))*factor
-	flux1_u44 = (flux_1_u44*(lam1_u44**-2.0))*factor
-	
-	
-	data2_u1 = ascii.read("922.temp_sed")
-	data2_u2 = ascii.read("1513.temp_sed")
-	data2_u3 = ascii.read("1831.temp_sed")
-	data2_u4 = ascii.read("1854.temp_sed")
-	data2_u5 = ascii.read("2294.temp_sed")
-	data2_u6 = ascii.read("3445.temp_sed")
-	data2_u7 = ascii.read("4721.temp_sed")
-	data2_u8 = ascii.read("6590.temp_sed")
-	data2_u9 = ascii.read("6764.temp_sed")
-	data2_u10 = ascii.read("7258.temp_sed")
-	data2_u11 = ascii.read("9073.temp_sed")
-	data2_u12 = ascii.read("10237.temp_sed")
-	data2_u13 = ascii.read("10604.temp_sed")
-	data2_u14 = ascii.read("12441.temp_sed")
-	data2_u15 = ascii.read("12778.temp_sed")
-	data2_u16 = ascii.read("14723.temp_sed")
-	data2_u17 = ascii.read("15270.temp_sed")
-	data2_u18 = ascii.read("18803.temp_sed")
-	data2_u19 = ascii.read("19572.temp_sed")
-	data2_u20 = ascii.read("19703.temp_sed")
-	data2_u21 = ascii.read("19708.temp_sed")
-	data2_u22 = ascii.read("19850.temp_sed")
-	data2_u23 = ascii.read("20529.temp_sed")
-	data2_u24 = ascii.read("20917.temp_sed")
-	data2_u25 = ascii.read("20941.temp_sed")
-	data2_u26 = ascii.read("21031.temp_sed")
-	data2_u27 = ascii.read("21267.temp_sed")
-	data2_u28 = ascii.read("21665.temp_sed")
-	data2_u29 = ascii.read("22480.temp_sed")
-	data2_u30 = ascii.read("25206.temp_sed")
-	data2_u31 = ascii.read("25394.temp_sed")
-	data2_u32 = ascii.read("25630.temp_sed")
-	data2_u33 = ascii.read("27672.temp_sed")
-	data2_u34 = ascii.read("28791.temp_sed")
-	data2_u35 = ascii.read("30133.temp_sed")
-	data2_u36 = ascii.read("30737.temp_sed")
-	data2_u37 = ascii.read("31684.temp_sed")
-	data2_u38 = ascii.read("32468.temp_sed")
-	data2_u39 = ascii.read("32707.temp_sed")
-	data2_u40 = ascii.read("33422.temp_sed")
-	data2_u41 = ascii.read("33527.temp_sed")
-	data2_u42 = ascii.read("35616.temp_sed")
-	data2_u43 = ascii.read("35829.temp_sed")
-	data2_u44 = ascii.read("36010.temp_sed")
-	data2_u45 = ascii.read("36685.temp_sed")
-	data2_u46 = ascii.read("37182.temp_sed")
-	data2_u47 = ascii.read("37775.temp_sed")
-	data2_u48 = ascii.read("38246.temp_sed")
-	data2_u49 = ascii.read("38288.temp_sed")
-	data2_u50 = ascii.read("38631.temp_sed")
-	data2_u51 = ascii.read("39349.temp_sed")
-	data2_u52 = ascii.read("39487.temp_sed")
-	data2_u53 = ascii.read("40420.temp_sed")
-	data2_u54 = ascii.read("40472.temp_sed")
-	data2_u55 = ascii.read("40849.temp_sed")
-	data2_u56 = ascii.read("41302.temp_sed")
-	data2_u57 = ascii.read("41456.temp_sed")
-	data2_u58 = ascii.read("42319.temp_sed")
-	data2_u59 = ascii.read("43367.temp_sed")
-	
-	
-	lam2_u1 = data2_u1["lambda"]
-	lam2_u2 = data2_u2["lambda"]
-	lam2_u3 = data2_u3["lambda"]
-	lam2_u4 = data2_u4["lambda"]
-	lam2_u5 = data2_u5["lambda"]
-	lam2_u6 = data2_u6["lambda"]
-	lam2_u7 = data2_u7["lambda"]
-	lam2_u8 = data2_u8["lambda"]
-	lam2_u9 = data2_u9["lambda"]
-	lam2_u10 = data2_u10["lambda"]
-	lam2_u11 = data2_u11["lambda"]
-	lam2_u12 = data2_u12["lambda"]
-	lam2_u13 = data2_u13["lambda"]
-	lam2_u14 = data2_u14["lambda"]
-	lam2_u15 = data2_u15["lambda"]
-	lam2_u16 = data2_u16["lambda"]
-	lam2_u17 = data2_u17["lambda"]
-	lam2_u18 = data2_u18["lambda"]
-	lam2_u19 = data2_u19["lambda"]
-	lam2_u20 = data2_u20["lambda"]
-	lam2_u21 = data2_u21["lambda"]
-	lam2_u22 = data2_u22["lambda"]
-	lam2_u23 = data2_u23["lambda"]
-	lam2_u24 = data2_u24["lambda"]
-	lam2_u25 = data2_u25["lambda"]
-	lam2_u26 = data2_u26["lambda"]
-	lam2_u27 = data2_u27["lambda"]
-	lam2_u28 = data2_u28["lambda"]
-	lam2_u29 = data2_u29["lambda"]
-	lam2_u30 = data2_u30["lambda"]
-	lam2_u31 = data2_u31["lambda"]
-	lam2_u32 = data2_u32["lambda"]
-	lam2_u33 = data2_u33["lambda"]
-	lam2_u34 = data2_u34["lambda"]
-	lam2_u35 = data2_u35["lambda"]
-	lam2_u36 = data2_u36["lambda"]
-	lam2_u37 = data2_u37["lambda"]
-	lam2_u38 = data2_u38["lambda"]
-	lam2_u39 = data2_u39["lambda"]
-	lam2_u40 = data2_u40["lambda"]
-	lam2_u41 = data2_u41["lambda"]
-	lam2_u42 = data2_u42["lambda"]
-	lam2_u43 = data2_u43["lambda"]
-	lam2_u44 = data2_u44["lambda"]
-	lam2_u45 = data2_u45["lambda"]
-	lam2_u46 = data2_u46["lambda"]
-	lam2_u47 = data2_u47["lambda"]
-	lam2_u48 = data2_u48["lambda"]
-	lam2_u49 = data2_u49["lambda"]
-	lam2_u50 = data2_u50["lambda"]
-	lam2_u51 = data2_u51["lambda"]
-	lam2_u52 = data2_u52["lambda"]
-	lam2_u53 = data2_u53["lambda"]
-	lam2_u54 = data2_u54["lambda"]
-	lam2_u55 = data2_u55["lambda"]
-	lam2_u56 = data2_u56["lambda"]
-	lam2_u57 = data2_u57["lambda"]
-	lam2_u58 = data2_u58["lambda"]
-	lam2_u59 = data2_u59["lambda"]
-	
-	
-	flux_2_u1 = data2_u1["tempflux"]
-	flux_2_u2 = data2_u2["tempflux"]
-	flux_2_u3 = data2_u3["tempflux"]
-	flux_2_u4 = data2_u4["tempflux"]
-	flux_2_u5 = data2_u5["tempflux"]
-	flux_2_u6 = data2_u6["tempflux"]
-	flux_2_u7 = data2_u7["tempflux"]
-	flux_2_u8 = data2_u8["tempflux"]
-	flux_2_u9 = data2_u9["tempflux"]
-	flux_2_u10 = data2_u10["tempflux"]
-	flux_2_u11 = data2_u11["tempflux"]
-	flux_2_u12 = data2_u12["tempflux"]
-	flux_2_u13 = data2_u13["tempflux"]
-	flux_2_u14 = data2_u14["tempflux"]
-	flux_2_u15 = data2_u15["tempflux"]
-	flux_2_u16 = data2_u16["tempflux"]
-	flux_2_u17 = data2_u17["tempflux"]
-	flux_2_u18 = data2_u18["tempflux"]
-	flux_2_u19 = data2_u19["tempflux"]
-	flux_2_u20 = data2_u20["tempflux"]
-	flux_2_u21 = data2_u21["tempflux"]
-	flux_2_u22 = data2_u22["tempflux"]
-	flux_2_u23 = data2_u23["tempflux"]
-	flux_2_u24 = data2_u24["tempflux"]
-	flux_2_u25 = data2_u25["tempflux"]
-	flux_2_u26 = data2_u26["tempflux"]
-	flux_2_u27 = data2_u27["tempflux"]
-	flux_2_u28 = data2_u28["tempflux"]
-	flux_2_u29 = data2_u29["tempflux"]
-	flux_2_u30 = data2_u30["tempflux"]
-	flux_2_u31 = data2_u31["tempflux"]
-	flux_2_u32 = data2_u32["tempflux"]
-	flux_2_u33 = data2_u33["tempflux"]
-	flux_2_u34 = data2_u34["tempflux"]
-	flux_2_u35 = data2_u35["tempflux"]
-	flux_2_u36 = data2_u36["tempflux"]
-	flux_2_u37 = data2_u37["tempflux"]
-	flux_2_u38 = data2_u38["tempflux"]
-	flux_2_u39 = data2_u39["tempflux"]
-	flux_2_u40 = data2_u40["tempflux"]
-	flux_2_u41 = data2_u41["tempflux"]
-	flux_2_u42 = data2_u42["tempflux"]
-	flux_2_u43 = data2_u43["tempflux"]
-	flux_2_u44 = data2_u44["tempflux"]
-	flux_2_u45 = data2_u45["tempflux"]
-	flux_2_u46 = data2_u46["tempflux"]
-	flux_2_u47 = data2_u47["tempflux"]
-	flux_2_u48 = data2_u48["tempflux"]
-	flux_2_u49 = data2_u49["tempflux"]
-	flux_2_u50 = data2_u50["tempflux"]
-	flux_2_u51 = data2_u51["tempflux"]
-	flux_2_u52 = data2_u52["tempflux"]
-	flux_2_u53 = data2_u53["tempflux"]
-	flux_2_u54 = data2_u54["tempflux"]
-	flux_2_u55 = data2_u55["tempflux"]
-	flux_2_u56 = data2_u56["tempflux"]
-	flux_2_u57 = data2_u57["tempflux"]
-	flux_2_u58 = data2_u58["tempflux"]
-	flux_2_u59 = data2_u59["tempflux"]
-
-	
-	flux2_u1 = (flux_2_u1*(lam2_u1**-2.0))*factor
-	flux2_u2 = (flux_2_u2*(lam2_u2**-2.0))*factor
-	flux2_u3 = (flux_2_u3*(lam2_u3**-2.0))*factor
-	flux2_u4 = (flux_2_u4*(lam2_u4**-2.0))*factor
-	flux2_u5 = (flux_2_u5*(lam2_u5**-2.0))*factor
-	flux2_u6 = (flux_2_u6*(lam2_u6**-2.0))*factor
-	flux2_u7 = (flux_2_u7*(lam2_u7**-2.0))*factor
-	flux2_u8 = (flux_2_u8*(lam2_u8**-2.0))*factor
-	flux2_u9 = (flux_2_u9*(lam2_u9**-2.0))*factor
-	flux2_u10 = (flux_2_u10*(lam2_u10**-2.0))*factor
-	flux2_u11 = (flux_2_u11*(lam2_u11**-2.0))*factor
-	flux2_u12 = (flux_2_u12*(lam2_u12**-2.0))*factor
-	flux2_u13 = (flux_2_u13*(lam2_u13**-2.0))*factor
-	flux2_u14 = (flux_2_u14*(lam2_u14**-2.0))*factor
-	flux2_u15 = (flux_2_u15*(lam2_u15**-2.0))*factor
-	flux2_u16 = (flux_2_u16*(lam2_u16**-2.0))*factor
-	flux2_u17 = (flux_2_u17*(lam2_u17**-2.0))*factor
-	flux2_u18 = (flux_2_u18*(lam2_u18**-2.0))*factor
-	flux2_u19 = (flux_2_u19*(lam2_u19**-2.0))*factor
-	flux2_u20 = (flux_2_u20*(lam2_u20**-2.0))*factor
-	flux2_u21 = (flux_2_u21*(lam2_u21**-2.0))*factor
-	flux2_u22 = (flux_2_u22*(lam2_u22**-2.0))*factor
-	flux2_u23 = (flux_2_u23*(lam2_u23**-2.0))*factor
-	flux2_u24 = (flux_2_u24*(lam2_u24**-2.0))*factor
-	flux2_u25 = (flux_2_u25*(lam2_u25**-2.0))*factor
-	flux2_u26 = (flux_2_u26*(lam2_u26**-2.0))*factor
-	flux2_u27 = (flux_2_u27*(lam2_u27**-2.0))*factor
-	flux2_u28 = (flux_2_u28*(lam2_u28**-2.0))*factor
-	flux2_u29 = (flux_2_u29*(lam2_u29**-2.0))*factor
-	flux2_u30 = (flux_2_u30*(lam2_u30**-2.0))*factor
-	flux2_u31 = (flux_2_u31*(lam2_u31**-2.0))*factor
-	flux2_u32 = (flux_2_u32*(lam2_u32**-2.0))*factor
-	flux2_u33 = (flux_2_u33*(lam2_u33**-2.0))*factor
-	flux2_u34 = (flux_2_u34*(lam2_u34**-2.0))*factor
-	flux2_u35 = (flux_2_u35*(lam2_u35**-2.0))*factor
-	flux2_u36 = (flux_2_u36*(lam2_u36**-2.0))*factor
-	flux2_u37 = (flux_2_u37*(lam2_u37**-2.0))*factor
-	flux2_u38 = (flux_2_u38*(lam2_u38**-2.0))*factor
-	flux2_u39 = (flux_2_u39*(lam2_u39**-2.0))*factor
-	flux2_u40 = (flux_2_u40*(lam2_u40**-2.0))*factor
-	flux2_u41 = (flux_2_u41*(lam2_u41**-2.0))*factor
-	flux2_u42 = (flux_2_u42*(lam2_u42**-2.0))*factor
-	flux2_u43 = (flux_2_u43*(lam2_u43**-2.0))*factor
-	flux2_u44 = (flux_2_u44*(lam2_u44**-2.0))*factor
-	flux2_u45 = (flux_2_u45*(lam2_u45**-2.0))*factor
-	flux2_u46 = (flux_2_u46*(lam2_u46**-2.0))*factor
-	flux2_u47 = (flux_2_u47*(lam2_u47**-2.0))*factor
-	flux2_u48 = (flux_2_u48*(lam2_u48**-2.0))*factor
-	flux2_u49 = (flux_2_u49*(lam2_u49**-2.0))*factor
-	flux2_u50 = (flux_2_u50*(lam2_u50**-2.0))*factor
-	flux2_u51 = (flux_2_u51*(lam2_u51**-2.0))*factor
-	flux2_u52 = (flux_2_u52*(lam2_u52**-2.0))*factor
-	flux2_u53 = (flux_2_u53*(lam2_u53**-2.0))*factor
-	flux2_u54 = (flux_2_u54*(lam2_u54**-2.0))*factor
-	flux2_u55 = (flux_2_u55*(lam2_u55**-2.0))*factor
-	flux2_u56 = (flux_2_u56*(lam2_u56**-2.0))*factor
-	flux2_u57 = (flux_2_u57*(lam2_u57**-2.0))*factor
-	flux2_u58 = (flux_2_u58*(lam2_u58**-2.0))*factor
-	flux2_u59 = (flux_2_u59*(lam2_u59**-2.0))*factor
-
-	
-	data3_u1 = ascii.read("190.temp_sed")
-	data3_u2 = ascii.read("394.temp_sed")
-	data3_u3 = ascii.read("1620.temp_sed")
-	data3_u4 = ascii.read("2166.temp_sed")
-	data3_u5 = ascii.read("2211.temp_sed")
-	data3_u6 = ascii.read("4059.temp_sed")
-	data3_u7 = ascii.read("4128.temp_sed")
-	data3_u8 = ascii.read("4701.temp_sed")
-	data3_u9 = ascii.read("4706.temp_sed")
-	data3_u10 = ascii.read("5155.temp_sed")
-	data3_u11 = ascii.read("7516.temp_sed")
-	data3_u12 = ascii.read("9207.temp_sed")
-	data3_u13 = ascii.read("9367.temp_sed")
-	data3_u14 = ascii.read("11558.temp_sed")
-	data3_u15 = ascii.read("12010.temp_sed")
-	data3_u16 = ascii.read("13108.temp_sed")
-	data3_u17 = ascii.read("14409.temp_sed")
-	data3_u18 = ascii.read("14996.temp_sed")
-	data3_u19 = ascii.read("15598.temp_sed")
-	data3_u20 = ascii.read("16022.temp_sed")
-	data3_u21 = ascii.read("16709.temp_sed")
-	data3_u22 = ascii.read("17838.temp_sed")
-	data3_u23 = ascii.read("19068.temp_sed")
-	data3_u24 = ascii.read("19126.temp_sed")
-	data3_u25 = ascii.read("20694.temp_sed")
-	data3_u26 = ascii.read("20704.temp_sed")
-	data3_u27 = ascii.read("20770.temp_sed")
-	data3_u28 = ascii.read("21998.temp_sed")
-	data3_u29 = ascii.read("22227.temp_sed")
-	data3_u30 = ascii.read("22416.temp_sed")
-	data3_u31 = ascii.read("22685.temp_sed")
-	data3_u32 = ascii.read("23692.temp_sed")
-	data3_u33 = ascii.read("26581.temp_sed")
-	data3_u34 = ascii.read("28087.temp_sed")
-	data3_u35 = ascii.read("29179.temp_sed")
-	data3_u36 = ascii.read("29461.temp_sed")
-	data3_u37 = ascii.read("30196.temp_sed")
-	data3_u38 = ascii.read("30916.temp_sed")
-	data3_u39 = ascii.read("31615.temp_sed")
-	data3_u40 = ascii.read("32147.temp_sed")
-	data3_u41 = ascii.read("32351.temp_sed")
-	data3_u42 = ascii.read("32947.temp_sed")
-	data3_u43 = ascii.read("34150.temp_sed")
-	data3_u44 = ascii.read("34817.temp_sed")
-	data3_u45 = ascii.read("36247.temp_sed")
-	data3_u46 = ascii.read("38640.temp_sed")
-	data3_u47 = ascii.read("39126.temp_sed")
-	data3_u48 = ascii.read("39624.temp_sed")
-	data3_u49 = ascii.read("42529.temp_sed")
-	data3_u50 = ascii.read("42571.temp_sed")
-	data3_u51 = ascii.read("42812.temp_sed")
-	data3_u52 = ascii.read("43667.temp_sed")
-	
-
-	lam3_u1 = data3_u1["lambda"]
-	lam3_u2 = data3_u2["lambda"]
-	lam3_u3 = data3_u3["lambda"]
-	lam3_u4 = data3_u4["lambda"]
-	lam3_u5 = data3_u5["lambda"]
-	lam3_u6 = data3_u6["lambda"]
-	lam3_u7 = data3_u7["lambda"]
-	lam3_u8 = data3_u8["lambda"]
-	lam3_u9 = data3_u9["lambda"]
-	lam3_u10 = data3_u10["lambda"]
-	lam3_u11 = data3_u11["lambda"]
-	lam3_u12 = data3_u12["lambda"]
-	lam3_u13 = data3_u13["lambda"]
-	lam3_u14 = data3_u14["lambda"]
-	lam3_u15 = data3_u15["lambda"]
-	lam3_u16 = data3_u16["lambda"]
-	lam3_u17 = data3_u17["lambda"]
-	lam3_u18 = data3_u18["lambda"]
-	lam3_u19 = data3_u19["lambda"]
-	lam3_u20 = data3_u20["lambda"]
-	lam3_u21 = data3_u21["lambda"]
-	lam3_u22 = data3_u22["lambda"]
-	lam3_u23 = data3_u23["lambda"]
-	lam3_u24 = data3_u24["lambda"]
-	lam3_u25 = data3_u25["lambda"]
-	lam3_u26 = data3_u26["lambda"]
-	lam3_u27 = data3_u27["lambda"]
-	lam3_u28 = data3_u28["lambda"]
-	lam3_u29 = data3_u29["lambda"]
-	lam3_u30 = data3_u30["lambda"]
-	lam3_u31 = data3_u31["lambda"]
-	lam3_u32 = data3_u32["lambda"]
-	lam3_u33 = data3_u33["lambda"]
-	lam3_u34 = data3_u34["lambda"]
-	lam3_u35 = data3_u35["lambda"]
-	lam3_u36 = data3_u36["lambda"]
-	lam3_u37 = data3_u37["lambda"]
-	lam3_u38 = data3_u38["lambda"]
-	lam3_u39 = data3_u39["lambda"]
-	lam3_u40 = data3_u40["lambda"]
-	lam3_u41 = data3_u41["lambda"]
-	lam3_u42 = data3_u42["lambda"]
-	lam3_u43 = data3_u43["lambda"]
-	lam3_u44 = data3_u44["lambda"]
-	lam3_u45 = data3_u45["lambda"]
-	lam3_u46 = data3_u46["lambda"]
-	lam3_u47 = data3_u47["lambda"]
-	lam3_u48 = data3_u48["lambda"]
-	lam3_u49 = data3_u49["lambda"]
-	lam3_u50 = data3_u50["lambda"]
-	lam3_u51 = data3_u51["lambda"]
-	lam3_u52 = data3_u52["lambda"]
-	
-	
-	flux_3_u1 = data3_u1["tempflux"]
-	flux_3_u2 = data3_u2["tempflux"]
-	flux_3_u3 = data3_u3["tempflux"]
-	flux_3_u4 = data3_u4["tempflux"]
-	flux_3_u5 = data3_u5["tempflux"]
-	flux_3_u6 = data3_u6["tempflux"]
-	flux_3_u7 = data3_u7["tempflux"]
-	flux_3_u8 = data3_u8["tempflux"]
-	flux_3_u9 = data3_u9["tempflux"]
-	flux_3_u10 = data3_u10["tempflux"]
-	flux_3_u11 = data3_u11["tempflux"]
-	flux_3_u12 = data3_u12["tempflux"]
-	flux_3_u13 = data3_u13["tempflux"]
-	flux_3_u14 = data3_u14["tempflux"]
-	flux_3_u15 = data3_u15["tempflux"]
-	flux_3_u16 = data3_u16["tempflux"]
-	flux_3_u17 = data3_u17["tempflux"]
-	flux_3_u18 = data3_u18["tempflux"]
-	flux_3_u19 = data3_u19["tempflux"]
-	flux_3_u20 = data3_u20["tempflux"]
-	flux_3_u21 = data3_u21["tempflux"]
-	flux_3_u22 = data3_u22["tempflux"]
-	flux_3_u23 = data3_u23["tempflux"]
-	flux_3_u24 = data3_u24["tempflux"]
-	flux_3_u25 = data3_u25["tempflux"]
-	flux_3_u26 = data3_u26["tempflux"]
-	flux_3_u27 = data3_u27["tempflux"]
-	flux_3_u28 = data3_u28["tempflux"]
-	flux_3_u29 = data3_u29["tempflux"]
-	flux_3_u30 = data3_u30["tempflux"]
-	flux_3_u31 = data3_u31["tempflux"]
-	flux_3_u32 = data3_u32["tempflux"]
-	flux_3_u33 = data3_u33["tempflux"]
-	flux_3_u34 = data3_u34["tempflux"]
-	flux_3_u35 = data3_u35["tempflux"]
-	flux_3_u36 = data3_u36["tempflux"]
-	flux_3_u37 = data3_u37["tempflux"]
-	flux_3_u38 = data3_u38["tempflux"]
-	flux_3_u39 = data3_u39["tempflux"]
-	flux_3_u40 = data3_u40["tempflux"]
-	flux_3_u41 = data3_u41["tempflux"]
-	flux_3_u42 = data3_u42["tempflux"]
-	flux_3_u43 = data3_u43["tempflux"]
-	flux_3_u44 = data3_u44["tempflux"]
-	flux_3_u45 = data3_u45["tempflux"]
-	flux_3_u46 = data3_u46["tempflux"]
-	flux_3_u47 = data3_u47["tempflux"]
-	flux_3_u48 = data3_u48["tempflux"]
-	flux_3_u49 = data3_u49["tempflux"]
-	flux_3_u50 = data3_u50["tempflux"]
-	flux_3_u51 = data3_u51["tempflux"]
-	flux_3_u52 = data3_u52["tempflux"]
-	
-
-	flux3_u1 = (flux_3_u1*(lam3_u1**-2.0))*factor
-	flux3_u2 = (flux_3_u2*(lam3_u2**-2.0))*factor
-	flux3_u3 = (flux_3_u3*(lam3_u3**-2.0))*factor
-	flux3_u4 = (flux_3_u4*(lam3_u4**-2.0))*factor
-	flux3_u5 = (flux_3_u5*(lam3_u5**-2.0))*factor
-	flux3_u6 = (flux_3_u6*(lam3_u6**-2.0))*factor
-	flux3_u7 = (flux_3_u7*(lam3_u7**-2.0))*factor
-	flux3_u8 = (flux_3_u8*(lam3_u8**-2.0))*factor
-	flux3_u9 = (flux_3_u9*(lam3_u9**-2.0))*factor
-	flux3_u10 = (flux_3_u10*(lam3_u10**-2.0))*factor
-	flux3_u11 = (flux_3_u11*(lam3_u11**-2.0))*factor
-	flux3_u12 = (flux_3_u12*(lam3_u12**-2.0))*factor
-	flux3_u13 = (flux_3_u13*(lam3_u13**-2.0))*factor
-	flux3_u14 = (flux_3_u14*(lam3_u14**-2.0))*factor
-	flux3_u15 = (flux_3_u15*(lam3_u15**-2.0))*factor
-	flux3_u16 = (flux_3_u16*(lam3_u16**-2.0))*factor
-	flux3_u17 = (flux_3_u17*(lam3_u17**-2.0))*factor
-	flux3_u18 = (flux_3_u18*(lam3_u18**-2.0))*factor
-	flux3_u19 = (flux_3_u19*(lam3_u19**-2.0))*factor
-	flux3_u20 = (flux_3_u20*(lam3_u20**-2.0))*factor
-	flux3_u21 = (flux_3_u21*(lam3_u21**-2.0))*factor
-	flux3_u22 = (flux_3_u22*(lam3_u22**-2.0))*factor
-	flux3_u23 = (flux_3_u23*(lam3_u23**-2.0))*factor
-	flux3_u24 = (flux_3_u24*(lam3_u24**-2.0))*factor
-	flux3_u25 = (flux_3_u25*(lam3_u25**-2.0))*factor
-	flux3_u26 = (flux_3_u26*(lam3_u26**-2.0))*factor
-	flux3_u27 = (flux_3_u27*(lam3_u27**-2.0))*factor
-	flux3_u28 = (flux_3_u28*(lam3_u28**-2.0))*factor
-	flux3_u29 = (flux_3_u29*(lam3_u29**-2.0))*factor
-	flux3_u30 = (flux_3_u30*(lam3_u30**-2.0))*factor
-	flux3_u31 = (flux_3_u31*(lam3_u31**-2.0))*factor
-	flux3_u32 = (flux_3_u32*(lam3_u32**-2.0))*factor
-	flux3_u33 = (flux_3_u33*(lam3_u33**-2.0))*factor
-	flux3_u34 = (flux_3_u34*(lam3_u34**-2.0))*factor
-	flux3_u35 = (flux_3_u35*(lam3_u35**-2.0))*factor
-	flux3_u36 = (flux_3_u36*(lam3_u36**-2.0))*factor
-	flux3_u37 = (flux_3_u37*(lam3_u37**-2.0))*factor
-	flux3_u38 = (flux_3_u38*(lam3_u38**-2.0))*factor
-	flux3_u39 = (flux_3_u39*(lam3_u39**-2.0))*factor
-	flux3_u40 = (flux_3_u40*(lam3_u40**-2.0))*factor
-	flux3_u41 = (flux_3_u41*(lam3_u41**-2.0))*factor
-	flux3_u42 = (flux_3_u42*(lam3_u42**-2.0))*factor
-	flux3_u43 = (flux_3_u43*(lam3_u43**-2.0))*factor
-	flux3_u44 = (flux_3_u44*(lam3_u44**-2.0))*factor
-	flux3_u45 = (flux_3_u45*(lam3_u45**-2.0))*factor
-	flux3_u46 = (flux_3_u46*(lam3_u46**-2.0))*factor
-	flux3_u47 = (flux_3_u47*(lam3_u47**-2.0))*factor
-	flux3_u48 = (flux_3_u48*(lam3_u48**-2.0))*factor
-	flux3_u49 = (flux_3_u49*(lam3_u49**-2.0))*factor
-	flux3_u50 = (flux_3_u50*(lam3_u50**-2.0))*factor
-	flux3_u51 = (flux_3_u51*(lam3_u51**-2.0))*factor
-	flux3_u52 = (flux_3_u52*(lam3_u52**-2.0))*factor
 	
 	
 	
@@ -4280,624 +2043,199 @@ def wavelength():
 	a2 = pylab.axes[1]
 	a3 = pylab.axes[2]
 	
-	a1.plot(lam1_a1, flux1_a1, color="g", alpha=0.7)
-	a1.plot(lam1_a2, flux1_a2, color="g", alpha=0.7)
-	a1.plot(lam1_a3, flux1_a3, color="g", alpha=0.7)
-	a1.plot(lam1_a4, flux1_a4, color="g", alpha=0.7)
-	a1.plot(lam1_a5, flux1_a5, color="g", alpha=0.7)
-	a1.plot(lam1_a6, flux1_a6, color="g", alpha=0.7)
-	a1.plot(lam1_a7, flux1_a7, color="g", alpha=0.7)
-	a1.plot(lam1_a8, flux1_a8, color="g", alpha=0.7)
-	a1.plot(lam1_a9, flux1_a9, color="g", alpha=0.7)
-	a1.plot(lam1_a10, flux1_a10, color="g", alpha=0.7)
-	a1.plot(lam1_a11, flux1_a11, color="g", alpha=0.7)
-	a1.plot(lam1_a12, flux1_a12, color="g", alpha=0.7)
-	a1.plot(lam1_a13, flux1_a13, color="g", alpha=0.7)
-	a1.plot(lam1_a14, flux1_a14, color="g", alpha=0.7)
-	a1.plot(lam1_a15, flux1_a15, color="g", alpha=0.7)
-	a1.plot(lam1_a16, flux1_a16, color="g", alpha=0.7)
-	a1.plot(lam1_a17, flux1_a17, color="g", alpha=0.7)
-	a1.plot(lam1_a18, flux1_a18, color="g", alpha=0.7)
-	a1.plot(lam1_a19, flux1_a19, color="g", alpha=0.7)
-	a1.plot(lam1_a20, flux1_a20, color="g", alpha=0.7)
-	a1.plot(lam1_a21, flux1_a21, color="g", alpha=0.7)
-	a1.plot(lam1_a22, flux1_a22, color="g", alpha=0.7)
-	a1.plot(lam1_a23, flux1_a23, color="g", alpha=0.7)
-	a1.plot(lam1_a24, flux1_a24, color="g", alpha=0.7)
-	a1.plot(lam1_a25, flux1_a25, color="g", alpha=0.7)
-	a1.plot(lam1_a26, flux1_a26, color="g", alpha=0.7)
-	a1.plot(lam1_a27, flux1_a27, color="g", alpha=0.7)
-	a1.plot(lam1_a28, flux1_a28, color="g", alpha=0.7)
-	a1.plot(lam1_a29, flux1_a29, color="g", alpha=0.7)
-	a1.plot(lam1_a30, flux1_a30, color="g", alpha=0.7)
-	a1.plot(lam1_a31, flux1_a31, color="g", alpha=0.7)
-	a1.plot(lam1_a32, flux1_a32, color="g", alpha=0.7)
-	a1.plot(lam1_a33, flux1_a33, color="g", alpha=0.7)
-	a1.plot(lam1_a34, flux1_a34, color="g", alpha=0.7)
-	a1.plot(lam1_a35, flux1_a35, color="g", alpha=0.7)
-	a1.plot(lam1_a36, flux1_a36, color="g", alpha=0.7)
-	a1.plot(lam1_a37, flux1_a37, color="g", alpha=0.7)
-	a1.plot(lam1_a38, flux1_a38, color="g", alpha=0.7)
-	a1.plot(lam1_a39, flux1_a39, color="g", alpha=0.7)
-	a1.plot(lam1_a40, flux1_a40, color="g", alpha=0.7)
-	a1.plot(lam1_a41, flux1_a41, color="g", alpha=0.7)
-	a1.plot(lam1_a42, flux1_a42, color="g", alpha=0.7)
-	a1.plot(lam1_a43, flux1_a43, color="g", alpha=0.7)
-	a1.plot(lam1_a44, flux1_a44, color="g", alpha=0.7)
-	a1.plot(lam1_a45, flux1_a45, color="g", alpha=0.7)
-	a1.plot(lam1_a46, flux1_a46, color="g", alpha=0.7)
-	a1.plot(lam1_a47, flux1_a47, color="g", alpha=0.7)
-	a1.plot(lam1_a48, flux1_a48, color="g", alpha=0.7)
-	a1.plot(lam1_a49, flux1_a49, color="g", alpha=0.7)
-	a1.plot(lam1_a50, flux1_a50, color="g", alpha=0.7)
-	a1.plot(lam1_a51, flux1_a51, color="g", alpha=0.7)
-	a1.plot(lam1_a52, flux1_a52, color="g", alpha=0.7)
-	a1.plot(lam1_a53, flux1_a53, color="g", alpha=0.7)
 	
+	for i in aegis_1:
+		a1.plot(lam_1_ai, flux1_ai, color="g", alpha=0.7, markeredgecolor="none", linestyle="none", marker="o")
+	for i in aegis_2:
+		a2.plot(lam_2_ai, flux2_ai, color="b", alpha=0.7, markeredgecolor="none", linestyle="none", marker="o")
+	for i in aegis_3:
+		a3.plot(lam_3_ai, flux3_ai, color="purple", alpha=0.7, markeredgecolor="none", linestyle="none", marker="o")
 	
-	a2.plot(lam2_a1, flux2_a1, color="b", alpha=0.7)
-	a2.plot(lam2_a2, flux2_a2, color="b", alpha=0.7)
-	a2.plot(lam2_a3, flux2_a3, color="b", alpha=0.7)
-	a2.plot(lam2_a4, flux2_a4, color="b", alpha=0.7)
-	a2.plot(lam2_a5, flux2_a5, color="b", alpha=0.7)
-	a2.plot(lam2_a6, flux2_a6, color="b", alpha=0.7)
-	a2.plot(lam2_a7, flux2_a7, color="b", alpha=0.7)
-	a2.plot(lam2_a8, flux2_a8, color="b", alpha=0.7)
-	a2.plot(lam2_a9, flux2_a9, color="b", alpha=0.7)
-	a2.plot(lam2_a10, flux2_a10, color="b", alpha=0.7)
-	a2.plot(lam2_a11, flux2_a11, color="b", alpha=0.7)
-	a2.plot(lam2_a12, flux2_a12, color="b", alpha=0.7)
-	a2.plot(lam2_a13, flux2_a13, color="b", alpha=0.7)
-	a2.plot(lam2_a14, flux2_a14, color="b", alpha=0.7)
-	a2.plot(lam2_a15, flux2_a15, color="b", alpha=0.7)
-	a2.plot(lam2_a16, flux2_a16, color="b", alpha=0.7)
-	a2.plot(lam2_a17, flux2_a17, color="b", alpha=0.7)
-	a2.plot(lam2_a18, flux2_a18, color="b", alpha=0.7)
-	a2.plot(lam2_a19, flux2_a19, color="b", alpha=0.7)
-	a2.plot(lam2_a20, flux2_a20, color="b", alpha=0.7)
-	a2.plot(lam2_a21, flux2_a21, color="b", alpha=0.7)
-	a2.plot(lam2_a22, flux2_a22, color="b", alpha=0.7)
-	a2.plot(lam2_a23, flux2_a23, color="b", alpha=0.7)
-	a2.plot(lam2_a24, flux2_a24, color="b", alpha=0.7)
-	a2.plot(lam2_a25, flux2_a25, color="b", alpha=0.7)
-	a2.plot(lam2_a26, flux2_a26, color="b", alpha=0.7)
-	a2.plot(lam2_a27, flux2_a27, color="b", alpha=0.7)
-	a2.plot(lam2_a28, flux2_a28, color="b", alpha=0.7)
-	a2.plot(lam2_a29, flux2_a29, color="b", alpha=0.7)
-	a2.plot(lam2_a30, flux2_a30, color="b", alpha=0.7)
-	a2.plot(lam2_a31, flux2_a31, color="b", alpha=0.7)
-	a2.plot(lam2_a32, flux2_a32, color="b", alpha=0.7)
-	a2.plot(lam2_a33, flux2_a33, color="b", alpha=0.7)
-	a2.plot(lam2_a34, flux2_a34, color="b", alpha=0.7)
-	a2.plot(lam2_a35, flux2_a35, color="b", alpha=0.7)
-	a2.plot(lam2_a36, flux2_a36, color="b", alpha=0.7)
-	a2.plot(lam2_a37, flux2_a37, color="b", alpha=0.7)
-	a2.plot(lam2_a38, flux2_a38, color="b", alpha=0.7)
-	a2.plot(lam2_a39, flux2_a39, color="b", alpha=0.7)
-	a2.plot(lam2_a40, flux2_a40, color="b", alpha=0.7)
-	a2.plot(lam2_a41, flux2_a41, color="b", alpha=0.7)
-	a2.plot(lam2_a42, flux2_a42, color="b", alpha=0.7)
-	a2.plot(lam2_a43, flux2_a43, color="b", alpha=0.7)
-	a2.plot(lam2_a44, flux2_a44, color="b", alpha=0.7)
-	a2.plot(lam2_a45, flux2_a45, color="b", alpha=0.7)
-	a2.plot(lam2_a46, flux2_a46, color="b", alpha=0.7)
-	a2.plot(lam2_a47, flux2_a47, color="b", alpha=0.7)
-	a2.plot(lam2_a48, flux2_a48, color="b", alpha=0.7)
-	a2.plot(lam2_a49, flux2_a49, color="b", alpha=0.7)
-	a2.plot(lam2_a50, flux2_a50, color="b", alpha=0.7)
-	a2.plot(lam2_a51, flux2_a51, color="b", alpha=0.7)
-	a2.plot(lam2_a52, flux2_a52, color="b", alpha=0.7)
-	a2.plot(lam2_a53, flux2_a53, color="b", alpha=0.7)
-	a2.plot(lam2_a54, flux2_a54, color="b", alpha=0.7)
-	a2.plot(lam2_a55, flux2_a55, color="b", alpha=0.7)
-	a2.plot(lam2_a56, flux2_a56, color="b", alpha=0.7)
-	a2.plot(lam2_a57, flux2_a57, color="b", alpha=0.7)
-	a2.plot(lam2_a58, flux2_a58, color="b", alpha=0.7)
-	a2.plot(lam2_a59, flux2_a59, color="b", alpha=0.7)
-	a2.plot(lam2_a60, flux2_a60, color="b", alpha=0.7)
-	a2.plot(lam2_a61, flux2_a51, color="b", alpha=0.7)
-	a2.plot(lam2_a62, flux2_a52, color="b", alpha=0.7)
-	a2.plot(lam2_a63, flux2_a53, color="b", alpha=0.7)
-	a2.plot(lam2_a64, flux2_a54, color="b", alpha=0.7)
-	a2.plot(lam2_a65, flux2_a55, color="b", alpha=0.7)
-	a2.plot(lam2_a66, flux2_a56, color="b", alpha=0.7)
-	a2.plot(lam2_a67, flux2_a57, color="b", alpha=0.7)
-	a2.plot(lam2_a68, flux2_a58, color="b", alpha=0.7)
-	a2.plot(lam2_a69, flux2_a59, color="b", alpha=0.7)
-	a2.plot(lam2_a70, flux2_a60, color="b", alpha=0.7)
+	for i in cosmos_1:
+		a1.plot(lam_1_ci, flux1_ci, color="g", alpha=0.7, markeredgecolor="none", linestyle="none", marker="o")
+	for i in cosmos_2:
+		a2.plot(lam_2_ci, flux2_ci, color="b", alpha=0.7, markeredgecolor="none", linestyle="none", marker="o")
+	for i in cosmos_3:
+		a3.plot(lam_3_ci, flux3_ci, color="purple", alpha=0.7, markeredgecolor="none", linestyle="none", marker="o")
 	
-	a3.plot(lam3_a1, flux3_a1, color="purple", alpha=0.7)
-	a3.plot(lam3_a2, flux3_a2, color="purple", alpha=0.7)
-	a3.plot(lam3_a3, flux3_a3, color="purple", alpha=0.7)
-	a3.plot(lam3_a4, flux3_a4, color="purple", alpha=0.7)
-	a3.plot(lam3_a5, flux3_a5, color="purple", alpha=0.7)
-	a3.plot(lam3_a6, flux3_a6, color="purple", alpha=0.7)
-	a3.plot(lam3_a7, flux3_a7, color="purple", alpha=0.7)
-	a3.plot(lam3_a8, flux3_a8, color="purple", alpha=0.7)
-	a3.plot(lam3_a9, flux3_a9, color="purple", alpha=0.7)
-	a3.plot(lam3_a10, flux3_a10, color="purple", alpha=0.7)
-	a3.plot(lam3_a11, flux3_a11, color="purple", alpha=0.7)
-	a3.plot(lam3_a12, flux3_a12, color="purple", alpha=0.7)
-	a3.plot(lam3_a13, flux3_a13, color="purple", alpha=0.7)
-	a3.plot(lam3_a14, flux3_a14, color="purple", alpha=0.7)
-	a3.plot(lam3_a15, flux3_a15, color="purple", alpha=0.7)
-	a3.plot(lam3_a16, flux3_a16, color="purple", alpha=0.7)
-	a3.plot(lam3_a17, flux3_a17, color="purple", alpha=0.7)
-	a3.plot(lam3_a18, flux3_a18, color="purple", alpha=0.7)
-	a3.plot(lam3_a19, flux3_a19, color="purple", alpha=0.7)
-	a3.plot(lam3_a20, flux3_a20, color="purple", alpha=0.7)
-	a3.plot(lam3_a21, flux3_a21, color="purple", alpha=0.7)
-	a3.plot(lam3_a22, flux3_a22, color="purple", alpha=0.7)
-	a3.plot(lam3_a23, flux3_a23, color="purple", alpha=0.7)
-	a3.plot(lam3_a24, flux3_a24, color="purple", alpha=0.7)
-	a3.plot(lam3_a25, flux3_a25, color="purple", alpha=0.7)
-	a3.plot(lam3_a26, flux3_a26, color="purple", alpha=0.7)
-	a3.plot(lam3_a27, flux3_a27, color="purple", alpha=0.7)
-	a3.plot(lam3_a28, flux3_a28, color="purple", alpha=0.7)
-	a3.plot(lam3_a29, flux3_a29, color="purple", alpha=0.7)
-	a3.plot(lam3_a30, flux3_a30, color="purple", alpha=0.7)
-	a3.plot(lam3_a31, flux3_a31, color="purple", alpha=0.7)
-	a3.plot(lam3_a32, flux3_a32, color="purple", alpha=0.7)
-	a3.plot(lam3_a33, flux3_a33, color="purple", alpha=0.7)
-	a3.plot(lam3_a34, flux3_a34, color="purple", alpha=0.7)
-	a3.plot(lam3_a35, flux3_a35, color="purple", alpha=0.7)
-	a3.plot(lam3_a36, flux3_a36, color="purple", alpha=0.7)
-	a3.plot(lam3_a37, flux3_a37, color="purple", alpha=0.7)
-	a3.plot(lam3_a38, flux3_a38, color="purple", alpha=0.7)
-	a3.plot(lam3_a39, flux3_a39, color="purple", alpha=0.7)
-	a3.plot(lam3_a40, flux3_a40, color="purple", alpha=0.7)
+	for i in goodsn_1:
+		a1.plot(lam_1_ni, flux1_ni, color="g", alpha=0.7, markeredgecolor="none", linestyle="none", marker="o")
+	for i in goodsn_2:
+		a2.plot(lam_2_ni, flux2_ni, color="b", alpha=0.7, markeredgecolor="none", linestyle="none", marker="o")
+	for i in goodsn_3:
+		a3.plot(lam_3_ni, flux3_ni, color="purple", alpha=0.7, markeredgecolor="none", linestyle="none", marker="o")
+	
+	for i in goodss_1:
+		a1.plot(lam_1_si, flux1_si, color="g", alpha=0.7, markeredgecolor="none", linestyle="none", marker="o")
+	for i in goodss_2:
+		a2.plot(lam_2_si, flux2_si, color="b", alpha=0.7, markeredgecolor="none", linestyle="none", marker="o")
+	for i in goodss_3:
+		a3.plot(lam_3_si, flux3_si, color="purple", alpha=0.7, markeredgecolor="none", linestyle="none", marker="o")
+	
+	for i in uds_1:
+		a1.plot(lam_1_ui, flux1_ui, color="g", alpha=0.7, markeredgecolor="none", linestyle="none", marker="o")
+	for i in uds_2:
+		a2.plot(lam_2_ui, flux2_ui, color="b", alpha=0.7, markeredgecolor="none", linestyle="none", marker="o")
+	for i in uds_3:
+		a3.plot(lam_3_ui, flux3_ui, color="purple", alpha=0.7, markeredgecolor="none", linestyle="none", marker="o")
 	
 	
 	
 	
-	a1.plot(lam1_c1, flux1_c1, color="g", alpha=0.7)
-	a1.plot(lam1_c2, flux1_c2, color="g", alpha=0.7)
-	a1.plot(lam1_c3, flux1_c3, color="g", alpha=0.7)
-	a1.plot(lam1_c4, flux1_c4, color="g", alpha=0.7)
-	a1.plot(lam1_c5, flux1_c5, color="g", alpha=0.7)
-	a1.plot(lam1_c6, flux1_c6, color="g", alpha=0.7)
-	a1.plot(lam1_c7, flux1_c7, color="g", alpha=0.7)
-	a1.plot(lam1_c8, flux1_c8, color="g", alpha=0.7)
-	a1.plot(lam1_c9, flux1_c9, color="g", alpha=0.7)
-	a1.plot(lam1_c10, flux1_c10, color="g", alpha=0.7)
-	a1.plot(lam1_c11, flux1_c11, color="g", alpha=0.7)
-	a1.plot(lam1_c12, flux1_c12, color="g", alpha=0.7)
-	a1.plot(lam1_c13, flux1_c13, color="g", alpha=0.7)
-	a1.plot(lam1_c14, flux1_c14, color="g", alpha=0.7)
-	a1.plot(lam1_c15, flux1_c15, color="g", alpha=0.7)
-	a1.plot(lam1_c16, flux1_c16, color="g", alpha=0.7)
-	a1.plot(lam1_c17, flux1_c17, color="g", alpha=0.7)
-	a1.plot(lam1_c18, flux1_c18, color="g", alpha=0.7)
+	os.chdir("/Volumes/TOSHIBA EXT/3d_hst/noah_massive/aegis_massive")
 	
+	for i in aegis_1:
+		_data1_ai = ascii.read("%s..temp_sed" % (i))
+		_flux_1_ai = _data1_ai["tempflux"]
+		_lam1_ai = _data1_ai["lambda"]
+		_lam_1_ai = _lam1_ai/(1+ dataz1_ai["z_peak"])
+		_flux1_ai = (_flux_1_ai*(_lam_1_ai**-2.0))*factor
+		
+	for i in aegis_2:
+		_data2_ai = ascii.read("%s..temp_sed" % (i))
+		_flux_2_ai = _data2_ai["tempflux"]
+		_lam2_ai = _data2_ai["lambda"]
+		_lam_2_ai = _lam2_ai/(1+ dataz2_ai["z_peak"])
+		_flux2_ai = (_flux_2_ai*(_lam_2_ai**-2.0))*factor
+		
+		
+	for i in aegis_3:
+		_data3_ai = ascii.read("%s..temp_sed" % (i))
+		_flux_3_ai = _data3_ai["tempflux"]
+		_lam3_ai = _data3_ai["lambda"]
+		_lam_3_ai = _lam3_ai/(1+ dataz3_ai["z_peak"])
+		_flux3_ai = (_flux_3_ai*(_lam_3_ai**-2.0))*factor
+		
+		
+	os.chdir("/Volumes/TOSHIBA EXT/3d_hst/noah_massive/cosmos_massive")	
+		
+	for i in cosmos_1:
+		_data1_ci = ascii.read("%s..temp_sed" % (i))
+		_flux_1_ci = _data1_ci["tempflux"]
+		_lam1_ci = _data1_ci["lambda"]
+		_lam_1_ci = _lam1_ci/(1+ dataz1_ci["z_peak"])
+		_flux1_ci = (_flux_1_ci*(_lam_1_ci**-2.0))*factor
+		
+		
+	for i in cosmos_2:
+		_data2_ci = ascii.read("%s..temp_sed" % (i))
+		_flux_2_ci = _data2_ci["tempflux"]
+		_lam2_ci = _data2_ci["lambda"]
+		_lam_2_ci = _lam2_ci/(1+ dataz2_ci["z_peak"])
+		_flux2_ci = (_flux_2_ci*(_lam_2_ci**-2.0))*factor
+		
+		
+	for i in cosmos_3:
+		_data3_ci = ascii.read("%s..temp_sed" % (i))
+		_flux_3_ci = _data3_ci["tempflux"]
+		_lam3_ci = _data3_ci["lambda"]
+		_lam_3_ci = _lam3_ci/(1+ dataz3_ci["z_peak"])
+		_flux3_ci = (_flux_3_ci*(_lam_3_ci**-2.0))*factor
+		
 	
-	a2.plot(lam2_c1, flux2_c1, color="b", alpha=0.7)
-	a2.plot(lam2_c2, flux2_c2, color="b", alpha=0.7)
-	a2.plot(lam2_c3, flux2_c3, color="b", alpha=0.7)
-	a2.plot(lam2_c4, flux2_c4, color="b", alpha=0.7)
-	a2.plot(lam2_c5, flux2_c5, color="b", alpha=0.7)
-	a2.plot(lam2_c6, flux2_c6, color="b", alpha=0.7)
-	a2.plot(lam2_c7, flux2_c7, color="b", alpha=0.7)
-	a2.plot(lam2_c8, flux2_c8, color="b", alpha=0.7)
-	a2.plot(lam2_c9, flux2_c9, color="b", alpha=0.7)
-	a2.plot(lam2_c10, flux2_c10, color="b", alpha=0.7)
-	a2.plot(lam2_c11, flux2_c11, color="b", alpha=0.7)
-	a2.plot(lam2_c12, flux2_c12, color="b", alpha=0.7)
-	a2.plot(lam2_c13, flux2_c13, color="b", alpha=0.7)
-	a2.plot(lam2_c14, flux2_c14, color="b", alpha=0.7)
-	a2.plot(lam2_c15, flux2_c15, color="b", alpha=0.7)
-	a2.plot(lam2_c16, flux2_c16, color="b", alpha=0.7)
-	a2.plot(lam2_c17, flux2_c17, color="b", alpha=0.7)
-	a2.plot(lam2_c18, flux2_c18, color="b", alpha=0.7)
-	a2.plot(lam2_c19, flux2_c19, color="b", alpha=0.7)
-	a2.plot(lam2_c20, flux2_c20, color="b", alpha=0.7)
-	a2.plot(lam2_c21, flux2_c21, color="b", alpha=0.7)
-	a2.plot(lam2_c22, flux2_c22, color="b", alpha=0.7)
-	a2.plot(lam2_c23, flux2_c23, color="b", alpha=0.7)
-	a2.plot(lam2_c24, flux2_c24, color="b", alpha=0.7)
-	a2.plot(lam2_c25, flux2_c25, color="b", alpha=0.7)
-	a2.plot(lam2_c26, flux2_c26, color="b", alpha=0.7)
+	os.chdir("/Volumes/TOSHIBA EXT/3d_hst/noah_massive/goodsn_massive")
+		
+	for i in goodsn_1:
+		_data1_ni = ascii.read("%s.temp_sed" % (i))
+		_flux_1_ni = _data1_ni["tempflux"]
+		_lam1_ni = _data1_ni["lambda"]
+		_lam_1_ni = _lam1_ni/(1+ dataz1_ni["z_peak"])
+		_flux1_ni = (_flux_1_ni*(_lam_1_ni**-2.0))*factor
+		
+		
+	for i in goodsn_2:
+		_data2_ni = ascii.read("%s.temp_sed" % (i))
+		_flux_2_ni = _data2_ni["tempflux"]
+		_lam2_ni = _data2_ni["lambda"]
+		_lam_2_ni = _lam2_ni/(1+ dataz2_ni["z_peak"])
+		_flux2_ni = (_flux_2_ni*(_lam_2_ni**-2.0))*factor
+		
+		
+	for i in goodsn_3:
+		_data3_ni = ascii.read("%s.temp_sed" % (i))
+		_flux_3_ni = _data3_ni["tempflux"]
+		_lam3_ni = _data3_ni["lambda"]
+		_lam_3_ni = _lam3_ni/(1+ dataz3_ni["z_peak"])
+		_flux3_ni = (_flux_3_ni*(_lam_3_ni**-2.0))*factor
+		
 	
+	os.chdir("/Volumes/TOSHIBA EXT/3d_hst/noah_massive/goodss_massive")
+		
+	for i in goodss_1:
+		_data1_si = ascii.read("%s.temp_sed" % (i))
+		_flux_1_si = _data1_si["tempflux"]
+		_lam1_si = _data1_si["lambda"]
+		_lam_1_si = _lam1_si/(1+ dataz1_si["z_peak"])
+		_flux1_si = (_flux_1_si*(_lam_1_si**-2.0))*factor
+		
+		
+	for i in goodss_2:
+		_data2_si = ascii.read("%s.temp_sed" % (i))
+		_flux_2_si = _data2_si["tempflux"]
+		_lam2_si = _data2_si["lambda"]
+		_lam_2_si = _lam2_si/(1+ dataz2_si["z_peak"])
+		_flux2_si = (_flux_2_si*(_lam_2_si**-2.0))*factor
+		
+		
+	for i in goodss_3:
+		_data3_si = ascii.read("%s.temp_sed" % (i))
+		_flux_3_si = _data3_si["tempflux"]
+		_lam3_si = _data3_si["lambda"]
+		_lam_3_si = _lam3_si/(1+ dataz3_si["z_peak"])
+		_flux3_si = (_flux_3_si*(_lam_3_si**-2.0))*factor
+		
 	
-	a3.plot(lam3_c1, flux3_c1, color="purple", alpha=0.7)
-	a3.plot(lam3_c2, flux3_c2, color="purple", alpha=0.7)
-	a3.plot(lam3_c3, flux3_c3, color="purple", alpha=0.7)
-	a3.plot(lam3_c4, flux3_c4, color="purple", alpha=0.7)
-	a3.plot(lam3_c5, flux3_c5, color="purple", alpha=0.7)
-	a3.plot(lam3_c6, flux3_c6, color="purple", alpha=0.7)
-	a3.plot(lam3_c7, flux3_c7, color="purple", alpha=0.7)
-	a3.plot(lam3_c8, flux3_c8, color="purple", alpha=0.7)
-	a3.plot(lam3_c9, flux3_c9, color="purple", alpha=0.7)
-	a3.plot(lam3_c10, flux3_c10, color="purple", alpha=0.7)
-	a3.plot(lam3_c11, flux3_c11, color="purple", alpha=0.7)
-	a3.plot(lam3_c12, flux3_c12, color="purple", alpha=0.7)
-	a3.plot(lam3_c13, flux3_c13, color="purple", alpha=0.7)
-	a3.plot(lam3_c14, flux3_c14, color="purple", alpha=0.7)
-	a3.plot(lam3_c15, flux3_c15, color="purple", alpha=0.7)
-	a3.plot(lam3_c16, flux3_c16, color="purple", alpha=0.7)
-	a3.plot(lam3_c17, flux3_c17, color="purple", alpha=0.7)
-	a3.plot(lam3_c18, flux3_c18, color="purple", alpha=0.7)
-	a3.plot(lam3_c19, flux3_c19, color="purple", alpha=0.7)
-	a3.plot(lam3_c20, flux3_c20, color="purple", alpha=0.7)
-	a3.plot(lam3_c21, flux3_c21, color="purple", alpha=0.7)
-	a3.plot(lam3_c22, flux3_c22, color="purple", alpha=0.7)
-	a3.plot(lam3_c23, flux3_c23, color="purple", alpha=0.7)
-	a3.plot(lam3_c24, flux3_c24, color="purple", alpha=0.7)
-	a3.plot(lam3_c25, flux3_c25, color="purple", alpha=0.7)
-	a3.plot(lam3_c26, flux3_c26, color="purple", alpha=0.7)
-	a3.plot(lam3_c27, flux3_c27, color="purple", alpha=0.7)
-	a3.plot(lam3_c28, flux3_c28, color="purple", alpha=0.7)
-	a3.plot(lam3_c29, flux3_c29, color="purple", alpha=0.7)
-	a3.plot(lam3_c30, flux3_c30, color="purple", alpha=0.7)
-	a3.plot(lam3_c31, flux3_c31, color="purple", alpha=0.7)
-	a3.plot(lam3_c32, flux3_c32, color="purple", alpha=0.7)
-	a3.plot(lam3_c33, flux3_c33, color="purple", alpha=0.7)
-	a3.plot(lam3_c34, flux3_c34, color="purple", alpha=0.7)
-	a3.plot(lam3_c35, flux3_c35, color="purple", alpha=0.7)
+	os.chdir("/Volumes/TOSHIBA EXT/3d_hst/noah_massive/uds_massive")
+		
+	for i in uds_1:
+		_data1_ui = ascii.read("%s.temp_sed" % (i))
+		_flux_1_ui = _data1_ui["tempflux"]
+		_lam1_ui = _data1_ui["lambda"]
+		_lam_1_ui = _lam1_ui/(1+ dataz1_ui["z_peak"])
+		_flux1_ui = (_flux_1_ui*(_lam_1_ui**-2.0))*factor
+		
+		
+	for i in uds_2:
+		_data2_ui = ascii.read("%s.temp_sed" % (i))
+		_flux_2_ui = _data2_ui["tempflux"]
+		_lam2_ui = _data2_ui["lambda"]
+		_lam_2_ui = _lam2_ui/(1+ dataz2_ui["z_peak"])
+		_flux2_ui = (_flux_2_ui*(_lam_2_ui**-2.0))*factor
+		
+		
+	for i in uds_3:
+		_data3_ui = ascii.read("%s.temp_sed" % (i))
+		_flux_3_ui = _data3_ui["tempflux"]
+		_lam3_ui = _data3_ui["lambda"]
+		_lam_3_ui = _lam3_ui/(1+ dataz3_ui["z_peak"])
+		_flux3_ui = (_flux_3_ui*(_lam_3_ui**-2.0))*factor
+		
 	
+	chunk1 = zip(_flux1_a2250, _flux1_a2481, _flux1_a6115, _flux1_a6234, _flux1_a6424, _flux1_a6691, _flux1_a7771, _flux1_a8838, _flux1_a11022, _flux1_a13524, _flux1_a14012, _flux1_a14056, _flux1_a14499, _flux1_a14609, _flux1_a16238, _flux1_a17297, _flux1_a17570, _flux1_a17775, _flux1_a18045, _flux1_a18257, _flux1_a19970, _flux1_a20106, _flux1_a20250, _flux1_a20794, _flux1_a21028, _flux1_a21357, _flux1_a22126, _flux1_a22678, _flux1_a23011, _flux1_a23089, _flux1_a24456, _flux1_a26850, _flux1_a26884, _flux1_a27177, _flux1_a28328, _flux1_a29863, _flux1_a30393, _flux1_a30421, _flux1_a30735, _flux1_a30920, _flux1_a31326, _flux1_a32114, _flux1_a32425, _flux1_a33028, _flux1_a33158, _flux1_a34141, _flux1_a34254, _flux1_a34722, _flux1_a35604, _flux1_a37919, _flux1_a38065, _flux1_a38130, _flux1_a38167, _flux1_c796, _flux1_c2348, _flux1_c5238, _flux1_c9111, _flux1_c10703, _flux1_c11783, _flux1_c11871, _flux1_c12699, _flux1_c12767, _flux1_c13206, _flux1_c13890, _flux1_c15066, _flux1_c17263, _flux1_c18575, _flux1_c25627, _flux1_c27769, _flux1_c31555, _flux1_c32549, _flux1_n57, _flux1_n128, _flux1_n576, _flux1_n1749, _flux1_n2265, _flux1_n2868, _flux1_n3133, _flux1_n4711, _flux1_n7372, _flux1_n9056, _flux1_n10280, _flux1_n10606, _flux1_n11706, _flux1_n11826, _flux1_n12342, _flux1_n12561, _flux1_n13971, _flux1_n17270, _flux1_n21156, _flux1_n23564, _flux1_n25216, _flux1_n25813, _flux1_n32162, _flux1_n35090, _flux1_n35299, _flux1_s1523, _flux1_s1924, _flux1_s2707, _flux1_s4210, _flux1_s6098, _flux1_s6106, _flux1_s7444, _flux1_s7503, _flux1_s19186, _flux1_s27442, _flux1_s29928, _flux1_s30394, _flux1_s30997, _flux1_s33163, _flux1_s33164, _flux1_s38111, _flux1_s39170, _flux1_s43042, _flux1_s45775, _flux1_s46392, _flux1_s46846, _flux1_s47742, _flux1_s47873, _flux1_s48631, _flux1_u1123, _flux1_u2393, _flux1_u2394, _flux1_u5126, _flux1_u5924, _flux1_u6299, _flux1_u6852, _flux1_u7071, _flux1_u7783, _flux1_u9261, _flux1_u10758, _flux1_u11533, _flux1_u13482, _flux1_u14152, _flux1_u14854, _flux1_u15063, _flux1_u16239, _flux1_u17879, _flux1_u19765, _flux1_u19954, _flux1_u21513, _flux1_u23590, _flux1_u24953, _flux1_u26552, _flux1_u26875, _flux1_u28773, _flux1_u30057, _flux1_u30192, _flux1_u30255, _flux1_u32077, _flux1_u32256, _flux1_u32691, _flux1_u32777, _flux1_u32921, _flux1_u32986, _flux1_u34353, _flux1_u34641, _flux1_u35071, _flux1_u35356, _flux1_u36013, _flux1_u40631, _flux1_u41412, _flux1_u41671, _flux1_u41835)
+	chunk2 = zip(_flux2_a195, _flux2_a766, _flux2_a1420, _flux2_a1821, _flux2_a1925, _flux2_a2016, _flux2_a2289, _flux2_a2427, _flux2_a3106, _flux2_a3311, _flux2_a4826, _flux2_a5016, _flux2_a6262, _flux2_a6310, _flux2_a6880, _flux2_a7601, _flux2_a8646, _flux2_a10858, _flux2_a11465, _flux2_a11730, _flux2_a12049, _flux2_a12219, _flux2_a14481, _flux2_a14495, _flux2_a15069, _flux2_a15088, _flux2_a16491, _flux2_a17691, _flux2_a18280, _flux2_a18922, _flux2_a19743, _flux2_a21156, _flux2_a22423, _flux2_a22713, _flux2_a22741, _flux2_a22887, _flux2_a23027, _flux2_a23045, _flux2_a23234, _flux2_a24059, _flux2_a24333, _flux2_a24448, _flux2_a25346, _flux2_a25969, _flux2_a26079, _flux2_a26649, _flux2_a27315, _flux2_a28310, _flux2_a28843, _flux2_a28864, _flux2_a29144, _flux2_a29329, _flux2_a29399, _flux2_a31169, _flux2_a31680, _flux2_a31839, _flux2_a33196, _flux2_a33551, _flux2_a33770, _flux2_a34185, _flux2_a35002, _flux2_a35677, _flux2_a36347, _flux2_a37556, _flux2_a37592, _flux2_a38174, _flux2_a38290, _flux2_a39028, _flux2_a39239, _flux2_a40470, _flux2_c312, _flux2_c363, _flux2_c728, _flux2_c2616, _flux2_c2816, _flux2_c3200, _flux2_c4536, _flux2_c7216, _flux2_c7411, _flux2_c9667, _flux2_c10128, _flux2_c10592, _flux2_c10989, _flux2_c11973, _flux2_c17089, _flux2_c17406, _flux2_c18688, _flux2_c20983, _flux2_c21723, _flux2_c24462, _flux2_c25534, _flux2_c25581, _flux2_c28492, _flux2_c28523, _flux2_c29222, _flux2_c31090, _flux2_n1616, _flux2_n3186, _flux2_n4117, _flux2_n5932, _flux2_n9692, _flux2_n10311, _flux2_n14140, _flux2_n14532, _flux2_n16827, _flux2_n18633, _flux2_n19913, _flux2_n20709, _flux2_n23187, _flux2_n23548, _flux2_n25265, _flux2_n29464, _flux2_n32842, _flux2_n33780, _flux2_n35292, _flux2_n36582, _flux2_n37738, _flux2_s2383, _flux2_s4505, _flux2_s7457, _flux2_s8422, _flux2_s9704, _flux2_s10436, _flux2_s13369, _flux2_s13628, _flux2_s14152, _flux2_s14335, _flux2_s14747, _flux2_s15214, _flux2_s16769, _flux2_s16814, _flux2_s24308, _flux2_s26139, _flux2_s27881, _flux2_s29407, _flux2_s29652, _flux2_s29900, _flux2_s31397, _flux2_s32048, _flux2_s32783, _flux2_s33912, _flux2_s34491, _flux2_s34519, _flux2_s34567, _flux2_s35444, _flux2_s36095, _flux2_s39012, _flux2_s39208, _flux2_s39364, _flux2_s40889, _flux2_s41148, _flux2_s42113, _flux2_s42501, _flux2_s42705, _flux2_s42957, _flux2_s43114, _flux2_s44042, _flux2_s44157, _flux2_s48312, _flux2_u922, _flux2_u1513, _flux2_u1831, _flux2_u1854, _flux2_u2294, _flux2_u3445, _flux2_u4721, _flux2_u6590, _flux2_u6764, _flux2_u7258, _flux2_u9073, _flux2_u10237, _flux2_u10604, _flux2_u12441, _flux2_u12778, _flux2_u14723, _flux2_u15270, _flux2_u18803, _flux2_u19572, _flux2_u19703, _flux2_u19708, _flux2_u19850, _flux2_u20529, _flux2_u20917, _flux2_u20941, _flux2_u21031, _flux2_u21267, _flux2_u21665, _flux2_u22480, _flux2_u25206, _flux2_u25394, _flux2_u25630, _flux2_u27672, _flux2_u28791, _flux2_u30133, _flux2_u30737, _flux2_u31684, _flux2_u32468, _flux2_u32707, _flux2_u33422, _flux2_u33527, _flux2_u35616, _flux2_u35829, _flux2_u36010, _flux2_u36685, _flux2_u37182, _flux2_u37775, _flux2_u38246, _flux2_u38288, _flux2_u38631, _flux2_u39349, _flux2_u39487, _flux2_u40420, _flux2_u40472, _flux2_u40849, _flux2_u41302, _flux2_u41456, _flux2_u42319, _flux2_u43367)
+	chunk3 = zip(_flux3_a531, _flux3_a1606, _flux3_a2578, _flux3_a2918, _flux3_a2957, _flux3_a8635, _flux3_a9128, _flux3_a9870, _flux3_a10755, _flux3_a10893, _flux3_a11416, _flux3_a11773, _flux3_a12227, _flux3_a12479, _flux3_a15709, _flux3_a15871, _flux3_a16065, _flux3_a17754, _flux3_a23040, _flux3_a23645, _flux3_a25300, _flux3_a26508, _flux3_a26952, _flux3_a27802, _flux3_a29106, _flux3_a29178, _flux3_a29861, _flux3_a29987, _flux3_a30967, _flux3_a31353, _flux3_a32014, _flux3_a32686, _flux3_a33863, _flux3_a33925, _flux3_a34685, _flux3_a34918, _flux3_a36104, _flux3_a36574, _flux3_a37853, _flux3_a38187, _flux3_c490, _flux3_c1769, _flux2_c2049, _flux2_c3182, _flux3_c3206, _flux3_c5473, _flux3_c5530, _flux3_c6159, _flux3_c7884, _flux3_c7951, _flux3_c9871, _flux3_c11314, _flux3_c11337, _flux3_c11363, _flux3_c11494, _flux3_c12020, _flux3_c12995, _flux3_c13083, _flux3_c13174, _flux3_c16419, _flux3_c19090, _flux3_c19153, _flux3_c20668, _flux3_c22995, _flux3_c23021, _flux3_c23673, _flux3_c25515, _flux3_c26039, _flux3_c26338, _flux3_c26957, _flux3_c27289, _flux3_c28344, _flux3_c28565, _flux3_c31922, _flux3_c33199, _flux3_n338, _flux3_n764, _flux2_n774, _flux2_n1678, _flux3_n2295, _flux3_n3776, _flux3_n4854, _flux3_n4927, _flux3_n5346, _flux3_n5371, _flux3_n5507, _flux3_n5677, _flux3_n6215, _flux3_n6789, _flux3_n6877, _flux3_n9122, _flux3_n10125, _flux3_n10657, _flux3_n11064, _flux3_n12066, _flux3_n12302, _flux3_n16129, _flux3_n16346, _flux3_n16879, _flux3_n19082, _flux3_n20052, _flux3_n20317, _flux3_n21738, _flux3_n23018, _flux3_n25942, _flux3_n26529, _flux3_n26888, _flux3_n28810, _flux3_n28826, _flux3_n30283, _flux3_n32002, _flux3_n32033, _flux3_n36988, _flux3_s1725, _flux3_s2467, _flux2_s4583, _flux2_s6341, _flux3_s7686, _flux3_s8683, _flux3_s11016, _flux3_s14813, _flux3_s15847, _flux3_s16888, _flux3_s22079, _flux3_s22825, _flux3_s28604, _flux3_s29288, _flux3_s30274, _flux3_s30534, _flux3_s39568, _flux3_s40185, _flux3_s41181, _flux3_s42607, _flux3_s43901, _flux3_s45475, _flux3_s48464, _flux3_s49285, _flux3_s49834, _flux3_u190, _flux3_u394, _flux2_u1620, _flux2_u2166, _flux3_u2211, _flux3_u4059, _flux3_u4128, _flux3_u4701, _flux3_u4706, _flux3_u5155, _flux3_u7516, _flux3_u9207, _flux3_u9367, _flux3_u11558, _flux3_u12010, _flux3_u13108, _flux3_u14409, _flux3_u14996, _flux3_u15598, _flux3_u16022, _flux3_u16709, _flux3_u17838, _flux3_u19068, _flux3_u19126, _flux3_u20694, _flux3_u20704, _flux3_u20770, _flux3_u21998, _flux3_u22227, _flux3_u22416, _flux3_u22685, _flux3_u23692, _flux3_u26581, _flux3_u28087, _flux3_u29179, _flux3_u29461, _flux3_u30196, _flux3_u30916, _flux3_u31615, _flux3_u32147, _flux3_u32351, _flux3_u32947, _flux3_u34150, _flux3_u34817, _flux3_u36247, _flux3_u38640, _flux3_u39126, _flux3_u39624, _flux3_u42529, _flux3_u42571, _flux3_u42812, _flux3_u43667)
 	
+	chunked1 = np.median(chunk1, axis=1)
+	chunked2 = np.median(chunk2, axis=1)
+	chunked3 = np.median(chunk3, axis=1)
 	
-	a1.plot(lam1_n1, flux1_n1, color="g", alpha=0.7)
-	a1.plot(lam1_n2, flux1_n2, color="g", alpha=0.7)
-	a1.plot(lam1_n3, flux1_n3, color="g", alpha=0.7)
-	a1.plot(lam1_n4, flux1_n4, color="g", alpha=0.7)
-	a1.plot(lam1_n5, flux1_n5, color="g", alpha=0.7)
-	a1.plot(lam1_n6, flux1_n6, color="g", alpha=0.7)
-	a1.plot(lam1_n7, flux1_n7, color="g", alpha=0.7)
-	a1.plot(lam1_n8, flux1_n8, color="g", alpha=0.7)
-	a1.plot(lam1_n9, flux1_n9, color="g", alpha=0.7)
-	a1.plot(lam1_n10, flux1_n10, color="g", alpha=0.7)
-	a1.plot(lam1_n11, flux1_n11, color="g", alpha=0.7)
-	a1.plot(lam1_n12, flux1_n12, color="g", alpha=0.7)
-	a1.plot(lam1_n13, flux1_n13, color="g", alpha=0.7)
-	a1.plot(lam1_n14, flux1_n14, color="g", alpha=0.7)
-	a1.plot(lam1_n15, flux1_n15, color="g", alpha=0.7)
-	a1.plot(lam1_n16, flux1_n16, color="g", alpha=0.7)
-	a1.plot(lam1_n17, flux1_n17, color="g", alpha=0.7)
-	a1.plot(lam1_n18, flux1_n18, color="g", alpha=0.7)
-	a1.plot(lam1_n19, flux1_n19, color="g", alpha=0.7)
-	a1.plot(lam1_n20, flux1_n20, color="g", alpha=0.7)
-	a1.plot(lam1_n21, flux1_n21, color="g", alpha=0.7)
-	a1.plot(lam1_n22, flux1_n22, color="g", alpha=0.7)
-	a1.plot(lam1_n23, flux1_n23, color="g", alpha=0.7)
-	a1.plot(lam1_n24, flux1_n24, color="g", alpha=0.7)
-	a1.plot(lam1_n25, flux1_n25, color="g", alpha=0.7)
-	
-
-	a2.plot(lam2_n1, flux2_n1, color="b", alpha=0.7)
-	a2.plot(lam2_n2, flux2_n2, color="b", alpha=0.7)
-	a2.plot(lam2_n3, flux2_n3, color="b", alpha=0.7)
-	a2.plot(lam2_n4, flux2_n4, color="b", alpha=0.7)
-	a2.plot(lam2_n5, flux2_n5, color="b", alpha=0.7)
-	a2.plot(lam2_n6, flux2_n6, color="b", alpha=0.7)
-	a2.plot(lam2_n7, flux2_n7, color="b", alpha=0.7)
-	a2.plot(lam2_n8, flux2_n8, color="b", alpha=0.7)
-	a2.plot(lam2_n9, flux2_n9, color="b", alpha=0.7)
-	a2.plot(lam2_n10, flux2_n10, color="b", alpha=0.7)
-	a2.plot(lam2_n11, flux2_n11, color="b", alpha=0.7)
-	a2.plot(lam2_n12, flux2_n12, color="b", alpha=0.7)
-	a2.plot(lam2_n13, flux2_n13, color="b", alpha=0.7)
-	a2.plot(lam2_n14, flux2_n14, color="b", alpha=0.7)
-	a2.plot(lam2_n15, flux2_n15, color="b", alpha=0.7)
-	a2.plot(lam2_n16, flux2_n16, color="b", alpha=0.7)
-	a2.plot(lam2_n17, flux2_n17, color="b", alpha=0.7)
-	a2.plot(lam2_n18, flux2_n18, color="b", alpha=0.7)
-	a2.plot(lam2_n19, flux2_n19, color="b", alpha=0.7)
-	a2.plot(lam2_n20, flux2_n20, color="b", alpha=0.7)
-	a2.plot(lam2_n21, flux2_n21, color="b", alpha=0.7)
-	
-	
-	a3.plot(lam3_n1, flux3_n1, color="purple", alpha=0.7)
-	a3.plot(lam3_n2, flux3_n2, color="purple", alpha=0.7)
-	a3.plot(lam3_n3, flux3_n3, color="purple", alpha=0.7)
-	a3.plot(lam3_n4, flux3_n4, color="purple", alpha=0.7)
-	a3.plot(lam3_n5, flux3_n5, color="purple", alpha=0.7)
-	a3.plot(lam3_n6, flux3_n6, color="purple", alpha=0.7)
-	a3.plot(lam3_n7, flux3_n7, color="purple", alpha=0.7)
-	a3.plot(lam3_n8, flux3_n8, color="purple", alpha=0.7)
-	a3.plot(lam3_n9, flux3_n9, color="purple", alpha=0.7)
-	a3.plot(lam3_n10, flux3_n10, color="purple", alpha=0.7)
-	a3.plot(lam3_n11, flux3_n11, color="purple", alpha=0.7)
-	a3.plot(lam3_n12, flux3_n12, color="purple", alpha=0.7)
-	a3.plot(lam3_n13, flux3_n13, color="purple", alpha=0.7)
-	a3.plot(lam3_n14, flux3_n14, color="purple", alpha=0.7)
-	a3.plot(lam3_n15, flux3_n15, color="purple", alpha=0.7)
-	a3.plot(lam3_n16, flux3_n16, color="purple", alpha=0.7)
-	a3.plot(lam3_n17, flux3_n17, color="purple", alpha=0.7)
-	a3.plot(lam3_n18, flux3_n18, color="purple", alpha=0.7)
-	a3.plot(lam3_n19, flux3_n19, color="purple", alpha=0.7)
-	a3.plot(lam3_n20, flux3_n20, color="purple", alpha=0.7)
-	a3.plot(lam3_n21, flux3_n21, color="purple", alpha=0.7)
-	a3.plot(lam3_n22, flux3_n22, color="purple", alpha=0.7)
-	a3.plot(lam3_n23, flux3_n23, color="purple", alpha=0.7)
-	a3.plot(lam3_n24, flux3_n24, color="purple", alpha=0.7)
-	a3.plot(lam3_n25, flux3_n25, color="purple", alpha=0.7)
-	a3.plot(lam3_n26, flux3_n26, color="purple", alpha=0.7)
-	a3.plot(lam3_n27, flux3_n27, color="purple", alpha=0.7)
-	a3.plot(lam3_n28, flux3_n28, color="purple", alpha=0.7)
-	a3.plot(lam3_n29, flux3_n29, color="purple", alpha=0.7)
-	a3.plot(lam3_n30, flux3_n30, color="purple", alpha=0.7)
-	a3.plot(lam3_n31, flux3_n31, color="purple", alpha=0.7)
-	a3.plot(lam3_n32, flux3_n32, color="purple", alpha=0.7)
-	a3.plot(lam3_n33, flux3_n33, color="purple", alpha=0.7)
-	a3.plot(lam3_n34, flux3_n34, color="purple", alpha=0.7)
-	a3.plot(lam3_n35, flux3_n35, color="purple", alpha=0.7)
-	a3.plot(lam3_n36, flux3_n36, color="purple", alpha=0.7)
-	a3.plot(lam3_n37, flux3_n37, color="purple", alpha=0.7)
-	a3.plot(lam3_n38, flux3_n38, color="purple", alpha=0.7)
+	a1.plot(_lam_1_a1, chunked1, color="black", label="median", lw=2)
+	a2.plot(_lam_2_a1, chunked2, color="black", label="median", lw=2)
+	a3.plot(_lam_3_a1, chunked3, color="black", label="median", lw=2)
 	
 	
 	
 	
-	a1.plot(lam1_s1, flux1_s1, color="g", alpha=0.7)
-	a1.plot(lam1_s2, flux1_s2, color="g", alpha=0.7)
-	a1.plot(lam1_s3, flux1_s3, color="g", alpha=0.7)
-	a1.plot(lam1_s4, flux1_s4, color="g", alpha=0.7)
-	a1.plot(lam1_s5, flux1_s5, color="g", alpha=0.7)
-	a1.plot(lam1_s6, flux1_s6, color="g", alpha=0.7)
-	a1.plot(lam1_s7, flux1_s7, color="g", alpha=0.7)
-	a1.plot(lam1_s8, flux1_s8, color="g", alpha=0.7)
-	a1.plot(lam1_s9, flux1_s9, color="g", alpha=0.7)
-	a1.plot(lam1_s10, flux1_s10, color="g", alpha=0.7)
-	a1.plot(lam1_s11, flux1_s11, color="g", alpha=0.7)
-	a1.plot(lam1_s12, flux1_s12, color="g", alpha=0.7)
-	a1.plot(lam1_s13, flux1_s13, color="g", alpha=0.7)
-	a1.plot(lam1_s14, flux1_s14, color="g", alpha=0.7)
-	a1.plot(lam1_s15, flux1_s15, color="g", alpha=0.7)
-	a1.plot(lam1_s16, flux1_s16, color="g", alpha=0.7)
-	a1.plot(lam1_s17, flux1_s17, color="g", alpha=0.7)
-	a1.plot(lam1_s18, flux1_s18, color="g", alpha=0.7)
-	a1.plot(lam1_s19, flux1_s19, color="g", alpha=0.7)
-	a1.plot(lam1_s20, flux1_s20, color="g", alpha=0.7)
-	a1.plot(lam1_s21, flux1_s21, color="g", alpha=0.7)
-	a1.plot(lam1_s22, flux1_s22, color="g", alpha=0.7)
-	a1.plot(lam1_s23, flux1_s23, color="g", alpha=0.7)
-	a1.plot(lam1_s24, flux1_s24, color="g", alpha=0.7)
-	
-
-	a2.plot(lam2_s1, flux2_s1, color="b", alpha=0.7)
-	a2.plot(lam2_s2, flux2_s2, color="b", alpha=0.7)
-	a2.plot(lam2_s3, flux2_s3, color="b", alpha=0.7)
-	a2.plot(lam2_s4, flux2_s4, color="b", alpha=0.7)
-	a2.plot(lam2_s5, flux2_s5, color="b", alpha=0.7)
-	a2.plot(lam2_s6, flux2_s6, color="b", alpha=0.7)
-	a2.plot(lam2_s7, flux2_s7, color="b", alpha=0.7)
-	a2.plot(lam2_s8, flux2_s8, color="b", alpha=0.7)
-	a2.plot(lam2_s9, flux2_s9, color="b", alpha=0.7)
-	a2.plot(lam2_s10, flux2_s10, color="b", alpha=0.7)
-	a2.plot(lam2_s11, flux2_s11, color="b", alpha=0.7)
-	a2.plot(lam2_s12, flux2_s12, color="b", alpha=0.7)
-	a2.plot(lam2_s13, flux2_s13, color="b", alpha=0.7)
-	a2.plot(lam2_s14, flux2_s14, color="b", alpha=0.7)
-	a2.plot(lam2_s15, flux2_s15, color="b", alpha=0.7)
-	a2.plot(lam2_s16, flux2_s16, color="b", alpha=0.7)
-	a2.plot(lam2_s17, flux2_s17, color="b", alpha=0.7)
-	a2.plot(lam2_s18, flux2_s18, color="b", alpha=0.7)
-	a2.plot(lam2_s19, flux2_s19, color="b", alpha=0.7)
-	a2.plot(lam2_s20, flux2_s20, color="b", alpha=0.7)
-	a2.plot(lam2_s21, flux2_s21, color="b", alpha=0.7)
-	a2.plot(lam2_s22, flux2_s22, color="b", alpha=0.7)
-	a2.plot(lam2_s23, flux2_s23, color="b", alpha=0.7)
-	a2.plot(lam2_s24, flux2_s24, color="b", alpha=0.7)
-	a2.plot(lam2_s25, flux2_s25, color="b", alpha=0.7)
-	a2.plot(lam2_s26, flux2_s26, color="b", alpha=0.7)
-	a2.plot(lam2_s27, flux2_s27, color="b", alpha=0.7)
-	a2.plot(lam2_s28, flux2_s28, color="b", alpha=0.7)
-	a2.plot(lam2_s29, flux2_s29, color="b", alpha=0.7)
-	a2.plot(lam2_s30, flux2_s30, color="b", alpha=0.7)
-	a2.plot(lam2_s31, flux2_s31, color="b", alpha=0.7)
-	a2.plot(lam2_s32, flux2_s32, color="b", alpha=0.7)
-	a2.plot(lam2_s33, flux2_s33, color="b", alpha=0.7)
-	a2.plot(lam2_s34, flux2_s34, color="b", alpha=0.7)
-	a2.plot(lam2_s35, flux2_s35, color="b", alpha=0.7)
-	a2.plot(lam2_s36, flux2_s36, color="b", alpha=0.7)
-	a2.plot(lam2_s37, flux2_s37, color="b", alpha=0.7)
-	a2.plot(lam2_s38, flux2_s38, color="b", alpha=0.7)
-	a2.plot(lam2_s39, flux2_s39, color="b", alpha=0.7)
-	a2.plot(lam2_s40, flux2_s40, color="b", alpha=0.7)
-	a2.plot(lam2_s41, flux2_s41, color="b", alpha=0.7)
-	a2.plot(lam2_s42, flux2_s42, color="b", alpha=0.7)
-	
-	
-	a3.plot(lam3_s1, flux3_s1, color="purple", alpha=0.7)
-	a3.plot(lam3_s2, flux3_s2, color="purple", alpha=0.7)
-	a3.plot(lam3_s3, flux3_s3, color="purple", alpha=0.7)
-	a3.plot(lam3_s4, flux3_s4, color="purple", alpha=0.7)
-	a3.plot(lam3_s5, flux3_s5, color="purple", alpha=0.7)
-	a3.plot(lam3_s6, flux3_s6, color="purple", alpha=0.7)
-	a3.plot(lam3_s7, flux3_s7, color="purple", alpha=0.7)
-	a3.plot(lam3_s8, flux3_s8, color="purple", alpha=0.7)
-	a3.plot(lam3_s9, flux3_s9, color="purple", alpha=0.7)
-	a3.plot(lam3_s10, flux3_s10, color="purple", alpha=0.7)
-	a3.plot(lam3_s11, flux3_s11, color="purple", alpha=0.7)
-	a3.plot(lam3_s12, flux3_s12, color="purple", alpha=0.7)
-	a3.plot(lam3_s13, flux3_s13, color="purple", alpha=0.7)
-	a3.plot(lam3_s14, flux3_s14, color="purple", alpha=0.7)
-	a3.plot(lam3_s15, flux3_s15, color="purple", alpha=0.7)
-	a3.plot(lam3_s16, flux3_s16, color="purple", alpha=0.7)
-	a3.plot(lam3_s17, flux3_s17, color="purple", alpha=0.7)
-	a3.plot(lam3_s18, flux3_s18, color="purple", alpha=0.7)
-	a3.plot(lam3_s19, flux3_s19, color="purple", alpha=0.7)
-	a3.plot(lam3_s20, flux3_s20, color="purple", alpha=0.7)
-	a3.plot(lam3_s21, flux3_s21, color="purple", alpha=0.7)
-	a3.plot(lam3_s22, flux3_s22, color="purple", alpha=0.7)
-	a3.plot(lam3_s23, flux3_s23, color="purple", alpha=0.7)
-	a3.plot(lam3_s24, flux3_s24, color="purple", alpha=0.7)
-	a3.plot(lam3_s25, flux3_s25, color="purple", alpha=0.7)
 	
 	
 	
-	
-	a1.plot(lam1_u1, flux1_u1, color="g", label="1 < z < 1.5", alpha=0.7)
-	a1.plot(lam1_u2, flux1_u2, color="g", alpha=0.7)
-	a1.plot(lam1_u3, flux1_u3, color="g", alpha=0.7)
-	a1.plot(lam1_u4, flux1_u4, color="g", alpha=0.7)
-	a1.plot(lam1_u5, flux1_u5, color="g", alpha=0.7)
-	a1.plot(lam1_u6, flux1_u6, color="g", alpha=0.7)
-	a1.plot(lam1_u7, flux1_u7, color="g", alpha=0.7)
-	a1.plot(lam1_u8, flux1_u8, color="g", alpha=0.7)
-	a1.plot(lam1_u9, flux1_u9, color="g", alpha=0.7)
-	a1.plot(lam1_u10, flux1_u10, color="g", alpha=0.7)
-	a1.plot(lam1_u11, flux1_u11, color="g", alpha=0.7)
-	a1.plot(lam1_u12, flux1_u12, color="g", alpha=0.7)
-	a1.plot(lam1_u13, flux1_u13, color="g", alpha=0.7)
-	a1.plot(lam1_u14, flux1_u14, color="g", alpha=0.7)
-	a1.plot(lam1_u15, flux1_u15, color="g", alpha=0.7)
-	a1.plot(lam1_u16, flux1_u16, color="g", alpha=0.7)
-	a1.plot(lam1_u17, flux1_u17, color="g", alpha=0.7)
-	a1.plot(lam1_u18, flux1_u18, color="g", alpha=0.7)
-	a1.plot(lam1_u19, flux1_u19, color="g", alpha=0.7)
-	a1.plot(lam1_u20, flux1_u20, color="g", alpha=0.7)
-	a1.plot(lam1_u21, flux1_u21, color="g", alpha=0.7)
-	a1.plot(lam1_u22, flux1_u22, color="g", alpha=0.7)
-	a1.plot(lam1_u23, flux1_u23, color="g", alpha=0.7)
-	a1.plot(lam1_u24, flux1_u24, color="g", alpha=0.7)
-	a1.plot(lam1_u25, flux1_u25, color="g", alpha=0.7)
-	a1.plot(lam1_u26, flux1_u26, color="g", alpha=0.7)
-	a1.plot(lam1_u27, flux1_u27, color="g", alpha=0.7)
-	a1.plot(lam1_u28, flux1_u28, color="g", alpha=0.7)
-	a1.plot(lam1_u29, flux1_u29, color="g", alpha=0.7)
-	a1.plot(lam1_u30, flux1_u30, color="g", alpha=0.7)
-	a1.plot(lam1_u31, flux1_u31, color="g", alpha=0.7)
-	a1.plot(lam1_u32, flux1_u32, color="g", alpha=0.7)
-	a1.plot(lam1_u33, flux1_u33, color="g", alpha=0.7)
-	a1.plot(lam1_u34, flux1_u34, color="g", alpha=0.7)
-	a1.plot(lam1_u35, flux1_u35, color="g", alpha=0.7)
-	a1.plot(lam1_u36, flux1_u36, color="g", alpha=0.7)
-	a1.plot(lam1_u37, flux1_u37, color="g", alpha=0.7)
-	a1.plot(lam1_u38, flux1_u38, color="g", alpha=0.7)
-	a1.plot(lam1_u39, flux1_u39, color="g", alpha=0.7)
-	a1.plot(lam1_u40, flux1_u40, color="g", alpha=0.7)
-	a1.plot(lam1_u41, flux1_u41, color="g", alpha=0.7)
-	a1.plot(lam1_u42, flux1_u42, color="g", alpha=0.7)
-	a1.plot(lam1_u43, flux1_u43, color="g", alpha=0.7)
-	a1.plot(lam1_u44, flux1_u44, color="g", alpha=0.7)
-	
-	
-	a2.plot(lam2_u1, flux2_u1, color="b", label="1.5 < z < 2", alpha=0.7)
-	a2.plot(lam2_u2, flux2_u2, color="b", alpha=0.7)
-	a2.plot(lam2_u3, flux2_u3, color="b", alpha=0.7)
-	a2.plot(lam2_u4, flux2_u4, color="b", alpha=0.7)
-	a2.plot(lam2_u5, flux2_u5, color="b", alpha=0.7)
-	a2.plot(lam2_u6, flux2_u6, color="b", alpha=0.7)
-	a2.plot(lam2_u7, flux2_u7, color="b", alpha=0.7)
-	a2.plot(lam2_u8, flux2_u8, color="b", alpha=0.7)
-	a2.plot(lam2_u9, flux2_u9, color="b", alpha=0.7)
-	a2.plot(lam2_u10, flux2_u10, color="b", alpha=0.7)
-	a2.plot(lam2_u11, flux2_u11, color="b", alpha=0.7)
-	a2.plot(lam2_u12, flux2_u12, color="b", alpha=0.7)
-	a2.plot(lam2_u13, flux2_u13, color="b", alpha=0.7)
-	a2.plot(lam2_u14, flux2_u14, color="b", alpha=0.7)
-	a2.plot(lam2_u15, flux2_u15, color="b", alpha=0.7)
-	a2.plot(lam2_u16, flux2_u16, color="b", alpha=0.7)
-	a2.plot(lam2_u17, flux2_u17, color="b", alpha=0.7)
-	a2.plot(lam2_u18, flux2_u18, color="b", alpha=0.7)
-	a2.plot(lam2_u19, flux2_u19, color="b", alpha=0.7)
-	a2.plot(lam2_u20, flux2_u20, color="b", alpha=0.7)
-	a2.plot(lam2_u21, flux2_u21, color="b", alpha=0.7)
-	a2.plot(lam2_u22, flux2_u22, color="b", alpha=0.7)
-	a2.plot(lam2_u23, flux2_u23, color="b", alpha=0.7)
-	a2.plot(lam2_u24, flux2_u24, color="b", alpha=0.7)
-	a2.plot(lam2_u25, flux2_u25, color="b", alpha=0.7)
-	a2.plot(lam2_u26, flux2_u26, color="b", alpha=0.7)
-	a2.plot(lam2_u27, flux2_u27, color="b", alpha=0.7)
-	a2.plot(lam2_u28, flux2_u28, color="b", alpha=0.7)
-	a2.plot(lam2_u29, flux2_u29, color="b", alpha=0.7)
-	a2.plot(lam2_u30, flux2_u30, color="b", alpha=0.7)
-	a2.plot(lam2_u31, flux2_u31, color="b", alpha=0.7)
-	a2.plot(lam2_u32, flux2_u32, color="b", alpha=0.7)
-	a2.plot(lam2_u33, flux2_u33, color="b", alpha=0.7)
-	a2.plot(lam2_u34, flux2_u34, color="b", alpha=0.7)
-	a2.plot(lam2_u35, flux2_u35, color="b", alpha=0.7)
-	a2.plot(lam2_u36, flux2_u36, color="b", alpha=0.7)
-	a2.plot(lam2_u37, flux2_u37, color="b", alpha=0.7)
-	a2.plot(lam2_u38, flux2_u38, color="b", alpha=0.7)
-	a2.plot(lam2_u39, flux2_u39, color="b", alpha=0.7)
-	a2.plot(lam2_u40, flux2_u40, color="b", alpha=0.7)
-	a2.plot(lam2_u41, flux2_u41, color="b", alpha=0.7)
-	a2.plot(lam2_u42, flux2_u42, color="b", alpha=0.7)
-	a2.plot(lam2_u43, flux2_u43, color="b", alpha=0.7)
-	a2.plot(lam2_u44, flux2_u44, color="b", alpha=0.7)
-	a2.plot(lam2_u45, flux2_u45, color="b", alpha=0.7)
-	a2.plot(lam2_u46, flux2_u46, color="b", alpha=0.7)
-	a2.plot(lam2_u47, flux2_u47, color="b", alpha=0.7)
-	a2.plot(lam2_u48, flux2_u48, color="b", alpha=0.7)
-	a2.plot(lam2_u49, flux2_u49, color="b", alpha=0.7)
-	a2.plot(lam2_u50, flux2_u50, color="b", alpha=0.7)
-	a2.plot(lam2_u51, flux2_u51, color="b", alpha=0.7)
-	a2.plot(lam2_u52, flux2_u52, color="b", alpha=0.7)
-	a2.plot(lam2_u53, flux2_u53, color="b", alpha=0.7)
-	a2.plot(lam2_u54, flux2_u54, color="b", alpha=0.7)
-	a2.plot(lam2_u55, flux2_u55, color="b", alpha=0.7)
-	a2.plot(lam2_u56, flux2_u56, color="b", alpha=0.7)
-	a2.plot(lam2_u57, flux2_u57, color="b", alpha=0.7)
-	a2.plot(lam2_u58, flux2_u58, color="b", alpha=0.7)
-	a2.plot(lam2_u59, flux2_u59, color="b", alpha=0.7)
-	
-	
-	a3.plot(lam3_u1, flux3_u1, color="purple", label="2 < z < 2.5", alpha=0.7)
-	a3.plot(lam3_u2, flux3_u2, color="purple", alpha=0.7)
-	a3.plot(lam3_u3, flux3_u3, color="purple", alpha=0.7)
-	a3.plot(lam3_u4, flux3_u4, color="purple", alpha=0.7)
-	a3.plot(lam3_u5, flux3_u5, color="purple", alpha=0.7)
-	a3.plot(lam3_u6, flux3_u6, color="purple", alpha=0.7)
-	a3.plot(lam3_u7, flux3_u7, color="purple", alpha=0.7)
-	a3.plot(lam3_u8, flux3_u8, color="purple", alpha=0.7)
-	a3.plot(lam3_u9, flux3_u9, color="purple", alpha=0.7)
-	a3.plot(lam3_u10, flux3_u10, color="purple", alpha=0.7)
-	a3.plot(lam3_u11, flux3_u11, color="purple", alpha=0.7)
-	a3.plot(lam3_u12, flux3_u12, color="purple", alpha=0.7)
-	a3.plot(lam3_u13, flux3_u13, color="purple", alpha=0.7)
-	a3.plot(lam3_u14, flux3_u14, color="purple", alpha=0.7)
-	a3.plot(lam3_u15, flux3_u15, color="purple", alpha=0.7)
-	a3.plot(lam3_u16, flux3_u16, color="purple", alpha=0.7)
-	a3.plot(lam3_u17, flux3_u17, color="purple", alpha=0.7)
-	a3.plot(lam3_u18, flux3_u18, color="purple", alpha=0.7)
-	a3.plot(lam3_u19, flux3_u19, color="purple", alpha=0.7)
-	a3.plot(lam3_u20, flux3_u20, color="purple", alpha=0.7)
-	a3.plot(lam3_u21, flux3_u21, color="purple", alpha=0.7)
-	a3.plot(lam3_u22, flux3_u22, color="purple", alpha=0.7)
-	a3.plot(lam3_u23, flux3_u23, color="purple", alpha=0.7)
-	a3.plot(lam3_u24, flux3_u24, color="purple", alpha=0.7)
-	a3.plot(lam3_u25, flux3_u25, color="purple", alpha=0.7)
-	a3.plot(lam3_u26, flux3_u26, color="purple", alpha=0.7)
-	a3.plot(lam3_u27, flux3_u27, color="purple", alpha=0.7)
-	a3.plot(lam3_u28, flux3_u28, color="purple", alpha=0.7)
-	a3.plot(lam3_u29, flux3_u29, color="purple", alpha=0.7)
-	a3.plot(lam3_u30, flux3_u30, color="purple", alpha=0.7)
-	a3.plot(lam3_u31, flux3_u31, color="purple", alpha=0.7)
-	a3.plot(lam3_u32, flux3_u32, color="purple", alpha=0.7)
-	a3.plot(lam3_u33, flux3_u33, color="purple", alpha=0.7)
-	a3.plot(lam3_u34, flux3_u34, color="purple", alpha=0.7)
-	a3.plot(lam3_u35, flux3_u35, color="purple", alpha=0.7)
-	a3.plot(lam3_u36, flux3_u36, color="purple", alpha=0.7)
-	a3.plot(lam3_u37, flux3_u37, color="purple", alpha=0.7)
-	a3.plot(lam3_u38, flux3_u38, color="purple", alpha=0.7)
-	a3.plot(lam3_u39, flux3_u39, color="purple", alpha=0.7)
-	a3.plot(lam3_u40, flux3_u40, color="purple", alpha=0.7)
-	a3.plot(lam3_u41, flux3_u41, color="purple", alpha=0.7)
-	a3.plot(lam3_u42, flux3_u42, color="purple", alpha=0.7)
-	a3.plot(lam3_u43, flux3_u43, color="purple", alpha=0.7)
-	a3.plot(lam3_u44, flux3_u44, color="purple", alpha=0.7)
-	a3.plot(lam3_u45, flux3_u45, color="purple", alpha=0.7)
-	a3.plot(lam3_u46, flux3_u46, color="purple", alpha=0.7)
-	a3.plot(lam3_u47, flux3_u47, color="purple", alpha=0.7)
-	a3.plot(lam3_u48, flux3_u48, color="purple", alpha=0.7)
-	a3.plot(lam3_u49, flux3_u49, color="purple", alpha=0.7)
-	a3.plot(lam3_u50, flux3_u50, color="purple", alpha=0.7)
-	a3.plot(lam3_u51, flux3_u51, color="purple", alpha=0.7)
-	a3.plot(lam3_u52, flux3_u52, color="purple", alpha=0.7)
-	
-	
-	a1.legend(loc=2)
-	a2.legend(loc=2)
-	a3.legend(loc=2)
-	a1.set_xlim([2000,140000])
+	a1.set_xlim([800,40000])
 	a1.set_ylim([0,2.4])
 	a1.set_xscale("log")
-	a2.set_xlim([2000,140000])
+	a2.set_xlim([800,40000])
 	a2.set_ylim([0,2.4])
 	a2.set_xscale("log")
-	a3.set_xlim([2000,140000])
+	a3.set_xlim([800,40000])
 	a3.set_ylim([0,2.4])
 	a3.set_xscale("log")
 	pylab.suptitle("Wavelength vs Flux", fontsize=19)
@@ -4910,13 +2248,25 @@ def wavelength():
 	pylab.ion()
 	pylab.show()
 		
-
-
-
-
-
-
-
+def test():
+	aegis_1 = [2250, 2481, 6115, 6234, 6424, 6691, 7771, 8838, 11022, 13524, 14012, 14056, 14499, 14609, 16238, 17297, 17570, 17775, 18045, 18257, 19970, 20106, 20250, 20794, 21028, 21357, 22126, 22678, 23011, 23089, 24456, 26850, 26884, 27177, 28328, 29863, 30393, 30421, 30735, 30920, 31326, 32114, 32425, 33028, 33158, 34141, 34254, 34722, 35604, 37919, 38065, 38130, 38167]
+	aegis_2 = [195, 766, 1420, 1821, 1925, 2016, 2289, 2427, 3106, 3311, 4826, 5016, 6262, 6310, 6880, 7601, 8646, 10858, 11465, 11730, 12049, 12219, 14481, 14495, 15069, 15088, 16491, 17691, 18280, 18922, 19743, 21156, 22423, 22713, 22741, 22887, 23027, 23045, 23234, 24059, 24333, 24448, 25346, 25969, 26079, 26649, 27315, 28310, 28843, 28864, 29144, 29329, 29399, 31169, 31680, 31839, 33196, 33551, 33770, 34185, 35002, 35677, 36347, 37556, 37592, 38174, 38290, 39028, 39239, 40470]
+	aegis_3 = [531, 1606, 2578, 2918, 2957, 8635, 9128, 9870, 10755, 10893, 11416, 11773, 12227, 12479, 15709, 15871, 16065, 17754, 23040, 23645, 25300, 26508, 26952, 27802, 29106, 29178, 29861, 29987, 30967, 31353, 32014, 32686, 33863, 33925, 34685, 34918, 36104, 36574, 37853, 38187]
+	cosmos_1 = [796, 2348, 5238, 9111, 10703, 11783, 11871, 12699, 12767, 13206, 13890, 15066, 17263, 18575, 25627, 27769, 31555, 32549]
+	cosmos_2 = [312, 363, 728, 2616, 2816, 3200, 4536, 7216, 7411, 9667, 10128, 10592, 10989, 11973, 17089, 17406, 18688, 20983, 21723, 24462, 25534, 25581, 28492, 28523, 29222, 31090]
+	cosmos_3 = [490, 1769, 2049, 3182, 3206, 5473, 5530, 6159, 7884, 7951, 9871, 11314, 11337, 11363, 11494, 12020, 12995, 13083, 13174, 16419, 19090, 19153, 20668, 22995, 23021, 23673, 25515, 26039, 26338, 26957, 27289, 28344, 28565, 31922, 33199]
+	goodsn_1 = [57, 128, 576, 1749, 2265, 2868, 3133, 4711, 7372, 9056, 10280, 10606, 11706, 11826, 12342, 12561, 13971, 17270, 21156, 23564, 25216, 25813, 32162, 35090, 35299]
+	goodsn_2 = [1616, 3186, 4117, 5932, 9692, 10311, 14140, 14532, 16827, 18633, 19913, 20709, 23187, 23548, 25265, 29464, 32842, 33780, 35292, 36582, 37738]
+	goodsn_3 = [338, 764, 774, 1678, 2295, 3776, 4854, 4927, 5346, 5371, 5507, 5677, 6215, 6789, 6877, 9122, 10125, 10657, 11064, 12066, 12302, 16129, 16346, 16879, 19082, 20052, 20317, 21738, 23018, 25942, 26529, 26888, 28810, 28826, 30283, 32002, 32033, 36988]
+	goodss_1 = [1523, 1924, 2707, 4210, 6098, 6106, 7444, 7503, 19186, 27442, 29928, 30394, 30997, 33163, 33164, 38111, 39170, 43042, 45775, 46392, 46846, 47742, 47873, 48631]
+	goodss_2 = [2383, 4505, 7457, 8422, 9704, 10436, 13369, 13628, 14152, 14335, 14747, 15214, 16769, 16814, 24308, 26139, 27881, 29407, 29652, 29900, 31397, 32048, 32783, 33912, 34491, 34519, 34567, 35444, 36095, 39012, 39208, 39364, 40889, 41148, 42113, 42501, 42705, 42957, 43114, 44042, 44157, 48312]
+	goodss_3 = [1725, 2467, 4583, 6341, 7686, 8683, 11016, 14813, 15847, 16888, 22079, 22825, 28604, 29288, 30274, 30534, 39568, 40185, 41181, 42607, 43901, 45475, 48464, 49285, 49834]
+	uds_1 = [1123, 2393, 2394, 5126, 5924, 6299, 6852, 7071, 7783, 9261, 10758, 11533, 13482, 14152, 14854, 15063, 16239, 17879, 19765, 19954, 21513, 23590, 24953, 26552, 26875, 28773, 30057, 30192, 30255, 32077, 32256, 32691, 32777, 32921, 32986, 34353, 34641, 35071, 35356, 36013, 40631, 41412, 41671, 41835]
+	uds_2 = [922, 1513, 1831, 1854, 2294, 3445, 4721, 6590, 6764, 7258, 9073, 10237, 10604, 12441, 12778, 14723, 15270, 18803, 19572, 19703, 19708, 19850, 20529, 20917, 20941, 21031, 21267, 21665, 22480, 25206, 25394, 25630, 27672, 28791, 30133, 30737, 31684, 32468, 32707, 33422, 33527, 35616, 35829, 36010, 36685, 37182, 37775, 38246, 38288, 38631, 39349, 39487, 40420, 40472, 40849, 41302, 41456, 42319, 43367]
+	uds_3 = [190, 394, 1620, 2166, 2211, 4059, 4128, 4701, 4706, 5155, 7516, 9207, 9367, 11558, 12010, 13108, 14409, 14996, 15598, 16022, 16709, 17838, 19068, 19126, 20694, 20704, 20770, 21998, 22227, 22416, 22685, 23692, 26581, 28087, 29179, 29461, 30196, 30916, 31615, 32147, 32351, 32947, 34150, 34817, 36247, 38640, 39126, 39624, 42529, 42571, 42812, 43667]
+	
+	for i in aegis_1:
+		print "a" + str(i)
 
 
 
