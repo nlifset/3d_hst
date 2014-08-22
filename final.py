@@ -1878,8 +1878,10 @@ def wavelength():
 		"data2_a" + str(i) = ascii.read("%s..obs_sed" % (i))
 		"lam2_a" + str(i) = ("data2_a" + str(i))["lambda"]
 		"flux_2_a" + str(i) = ("data2_a" + str(i))["flux_cat"]
-		"flux2_a" + str(i) = (("flux_2_a" + str(i))*(("lam2_a" + str(i)**-2.0))*factor
+		"flux2_a" + str(i) = (("flux_2_a" + str(i))*(("lam2_a" + str(i))**-2.0))*factor
+	
 	for i in aegis_3:
+		
 		"data3_a" + str(i) = ascii.read("%s..obs_sed" % (i))
 		"lam3_a" + str(i) = ("data3_a" + str(i))["lambda"]
 		"flux_3_a" + str(i) = ("data3_a" + (i))["flux_cat"]
@@ -1894,7 +1896,7 @@ def wavelength():
 		"data2_c" + str(i) = ascii.read("%s..obs_sed" % (i))
 		"lam2_c" + str(i) = ("data2_c" + str(i))["lambda"]
 		"flux_2_c" + str(i) = ("data2_c" + str(i))["flux_cat"]
-		"flux2_c" + str(i) = (("flux_2_c" + str(i))*(("lam2_c" + str(i)**-2.0))*factor
+		"flux2_c" + str(i) = (("flux_2_c" + str(i))*(("lam2_c" + str(i))**-2.0))*factor
 	for i in cosmos_3:
 		"data3_c" + str(i) = ascii.read("%s..obs_sed" % (i))
 		"lam3_c" + str(i) = ("data3_c" + str(i))["lambda"]
@@ -1910,7 +1912,7 @@ def wavelength():
 		"data2_n" + str(i) = ascii.read("%s.obs_sed" % (i))
 		"lam2_n" + str(i) = ("data2_n" + str(i))["lambda"]
 		"flux_2_n" + str(i) = ("data2_n" + str(i))["flux_cat"]
-		"flux2_n" + str(i) = (("flux_2_n" + str(i))*(("lam2_n" + str(i)**-2.0))*factor
+		"flux2_n" + str(i) = (("flux_2_n" + str(i))*(("lam2_n" + str(i))**-2.0))*factor
 	for i in goodsn_3:
 		"data3_n" + str(i) = ascii.read("%s.obs_sed" % (i))
 		"lam3_n" + str(i) = ("data3_n" + str(i))["lambda"]
@@ -1926,7 +1928,7 @@ def wavelength():
 		"data2_s" + str(i) = ascii.read("%s.obs_sed" % (i))
 		"lam2_s" + str(i) = ("data2_s" + str(i))["lambda"]
 		"flux_2_s" + str(i) = ("data2_s" + str(i))["flux_cat"]
-		"flux2_s" + str(i) = (("flux_2_s" + str(i))*(("lam2_s" + str(i)**-2.0))*factor
+		"flux2_s" + str(i) = (("flux_2_s" + str(i))*(("lam2_s" + str(i))**-2.0))*factor
 	for i in goodss_3:
 		"data3_s" + str(i) = ascii.read("%s.obs_sed" % (i))
 		"lam3_s" + str(i) = ("data3_s" + str(i))["lambda"]
@@ -1942,7 +1944,7 @@ def wavelength():
 		"data2_u" + str(i) = ascii.read("%s.obs_sed" % (i))
 		"lam2_u" + str(i) = ("data2_u" + str(i))["lambda"]
 		"flux_2_u" + str(i) = ("data2_u" + str(i))["flux_cat"]
-		"flux2_u" + str(i) = (("flux_2_u" + str(i))*(("lam2_u" + str(i)**-2.0))*factor
+		"flux2_u" + str(i) = (("flux_2_u" + str(i))*(("lam2_u" + str(i))**-2.0))*factor
 	for i in uds_3:
 		"data3_u" + str(i) = ascii.read("%s.obs_sed" % (i))
 		"lam3_u" + str(i) = ("data3_u" + str(i))["lambda"]
@@ -2002,35 +2004,35 @@ def wavelength():
 	
 	
 	for i in aegis_1:
-		lam_1_ai = lam1_ai/(1+ dataz1_ai["z_peak"])
+		"lam_1_a" + str(i) = ("lam1_a" + str(i))/(1+ ("dataz1_a" + str(i))["z_peak"])
 	for i in aegis_2:
-		lam_2_ai = lam2_ai/(1+ dataz2_ai["z_peak"])
+		"lam_2_a" + str(i) = ("lam2_a" + str(i))/(1+ ("dataz2_a" + str(i))["z_peak"])
 	for i in aegis_3:
-		lam_3_ai = lam3_ai/(1+ dataz3_ai["z_peak"])
+		"lam_3_a" + str(i) = ("lam3_a" + str(i))/(1+ ("dataz3_a" + str(i))["z_peak"])
 	for i in cosmos_1:
-		lam_1_ci = lam1_ci/(1+ dataz1_ci["z_peak"])
+		"lam_1_c" + str(i) = ("lam1_c" + str(i))/(1+ ("dataz1_c" + str(i))["z_peak"])
 	for i in cosmos_2:
-		lam_2_ci = lam2_ci/(1+ dataz2_ci["z_peak"])
+		"lam_2_c" + str(i) = ("lam2_c" + str(i))/(1+ ("dataz2_c" + str(i))["z_peak"])
 	for i in cosmos_3:
-		lam_3_ci = lam3_ci/(1+ dataz3_ci["z_peak"])
+		"lam_3_c" + str(i) = ("lam3_c" + str(i))/(1+ ("dataz3_c" + str(i))["z_peak"])
 	for i in goodsn_1:
-		lam_1_ni = lam1_ni/(1+ dataz1_ni["z_peak"])
+		"lam_1_n" + str(i) = ("lam1_n" + str(i))/(1+ ("dataz1_n" + str(i))["z_peak"])
 	for i in goodsn_2:
-		lam_2_ni = lam2_ni/(1+ dataz2_ni["z_peak"])
+		"lam_2_n" + str(i) = ("lam2_n" + str(i))/(1+ ("dataz2_n" + str(i))["z_peak"])
 	for i in goodsn_3:
-		lam_3_ni = lam3_ni/(1+ dataz3_ni["z_peak"])
+		"lam_3_n" + str(i) = ("lam3_n" + str(i))/(1+ ("dataz3_n" + str(i))["z_peak"])
 	for i in goodss_1:
-		lam_1_si = lam1_si/(1+ dataz1_si["z_peak"])
+		"lam_1_s" + str(i) = ("lam1_s" + str(i))/(1+ ("dataz1_s" + str(i))["z_peak"])
 	for i in goodss_2:
-		lam_2_si = lam2_si/(1+ dataz2_si["z_peak"])
+		"lam_2_s" + str(i) = ("lam2_s" + str(i))/(1+ ("dataz2_s" + str(i))["z_peak"])
 	for i in goodss_3:
-		lam_3_si = lam3_si/(1+ dataz3_si["z_peak"])
+		"lam_3_s" + str(i) = ("lam3_s" + str(i))/(1+ ("dataz3_s" + str(i))["z_peak"])
 	for i in uds_1:
-		lam_1_ui = lam1_ui/(1+ dataz1_ui["z_peak"])
+		"lam_1_u" + str(i) = ("lam1_u" + str(i))/(1+ ("dataz1_u" + str(i))["z_peak"])
 	for i in uds_2:
-		lam_2_ui = lam2_ui/(1+ dataz2_ui["z_peak"])
+		"lam_2_u" + str(i) = ("lam2_u" + str(i))/(1+ ("dataz2_u" + str(i))["z_peak"])
 	for i in uds_3:
-		lam_3_ui = lam3_ui/(1+ dataz3_ui["z_peak"])
+		"lam_3_u" + str(i) = ("lam3_u" + str(i))/(1+ ("dataz3_u" + str(i))["z_peak"])
 	
 	
 	
@@ -2045,39 +2047,39 @@ def wavelength():
 	
 	
 	for i in aegis_1:
-		a1.plot(lam_1_ai, flux1_ai, color="g", alpha=0.7, markeredgecolor="none", linestyle="none", marker="o")
+		a1.plot(("lam_1_a" + str(i)), ("flux1_a" + str(i)), color="g", alpha=0.7, markeredgecolor="none", linestyle="none", marker="o")
 	for i in aegis_2:
-		a2.plot(lam_2_ai, flux2_ai, color="b", alpha=0.7, markeredgecolor="none", linestyle="none", marker="o")
+		a2.plot(("lam_2_a" + str(i)), ("flux2_a" + str(i)), color="b", alpha=0.7, markeredgecolor="none", linestyle="none", marker="o")
 	for i in aegis_3:
-		a3.plot(lam_3_ai, flux3_ai, color="purple", alpha=0.7, markeredgecolor="none", linestyle="none", marker="o")
+		a3.plot(("lam_3_a" + str(i)), ("flux3_a" + str(i)), color="purple", alpha=0.7, markeredgecolor="none", linestyle="none", marker="o")
 	
 	for i in cosmos_1:
-		a1.plot(lam_1_ci, flux1_ci, color="g", alpha=0.7, markeredgecolor="none", linestyle="none", marker="o")
+		a1.plot(("lam_1_c" + str(i)), ("flux1_c" + str(i)), color="g", alpha=0.7, markeredgecolor="none", linestyle="none", marker="o")
 	for i in cosmos_2:
-		a2.plot(lam_2_ci, flux2_ci, color="b", alpha=0.7, markeredgecolor="none", linestyle="none", marker="o")
+		a2.plot(("lam_2_c" + str(i)), ("flux2_c" + str(i)), color="b", alpha=0.7, markeredgecolor="none", linestyle="none", marker="o")
 	for i in cosmos_3:
-		a3.plot(lam_3_ci, flux3_ci, color="purple", alpha=0.7, markeredgecolor="none", linestyle="none", marker="o")
+		a3.plot(("lam_3_c" + str(i)), ("flux3_c" + str(i)), color="purple", alpha=0.7, markeredgecolor="none", linestyle="none", marker="o")
 	
 	for i in goodsn_1:
-		a1.plot(lam_1_ni, flux1_ni, color="g", alpha=0.7, markeredgecolor="none", linestyle="none", marker="o")
+		a1.plot(("lam_1_n" + str(i)), ("flux1_n" + str(i)), color="g", alpha=0.7, markeredgecolor="none", linestyle="none", marker="o")
 	for i in goodsn_2:
-		a2.plot(lam_2_ni, flux2_ni, color="b", alpha=0.7, markeredgecolor="none", linestyle="none", marker="o")
+		a2.plot(("lam_2_n" + str(i)), ("flux2_n" + str(i)), color="b", alpha=0.7, markeredgecolor="none", linestyle="none", marker="o")
 	for i in goodsn_3:
-		a3.plot(lam_3_ni, flux3_ni, color="purple", alpha=0.7, markeredgecolor="none", linestyle="none", marker="o")
+		a3.plot(("lam_3_n" + str(i)), ("flux3_n" + str(i)), color="purple", alpha=0.7, markeredgecolor="none", linestyle="none", marker="o")
 	
 	for i in goodss_1:
-		a1.plot(lam_1_si, flux1_si, color="g", alpha=0.7, markeredgecolor="none", linestyle="none", marker="o")
+		a1.plot(("lam_1_s" + str(i)), ("flux1_s" + str(i)), color="g", alpha=0.7, markeredgecolor="none", linestyle="none", marker="o")
 	for i in goodss_2:
-		a2.plot(lam_2_si, flux2_si, color="b", alpha=0.7, markeredgecolor="none", linestyle="none", marker="o")
+		a2.plot(("lam_2_s" + str(i)), ("flux2_s" + str(i)), color="b", alpha=0.7, markeredgecolor="none", linestyle="none", marker="o")
 	for i in goodss_3:
-		a3.plot(lam_3_si, flux3_si, color="purple", alpha=0.7, markeredgecolor="none", linestyle="none", marker="o")
+		a3.plot(("lam_3_s" + str(i)), ("flux3_s" + str(i)), color="purple", alpha=0.7, markeredgecolor="none", linestyle="none", marker="o")
 	
 	for i in uds_1:
-		a1.plot(lam_1_ui, flux1_ui, color="g", alpha=0.7, markeredgecolor="none", linestyle="none", marker="o")
+		a1.plot(("lam_1_u" + str(i)), ("flux1_u" + str(i)), color="g", alpha=0.7, markeredgecolor="none", linestyle="none", marker="o")
 	for i in uds_2:
-		a2.plot(lam_2_ui, flux2_ui, color="b", alpha=0.7, markeredgecolor="none", linestyle="none", marker="o")
+		a2.plot(("lam_2_u" + str(i)), ("flux2_u" + str(i)), color="b", alpha=0.7, markeredgecolor="none", linestyle="none", marker="o")
 	for i in uds_3:
-		a3.plot(lam_3_ui, flux3_ui, color="purple", alpha=0.7, markeredgecolor="none", linestyle="none", marker="o")
+		a3.plot(("lam_3_u" + str(i)), ("flux3_u" + str(i)), color="purple", alpha=0.7, markeredgecolor="none", linestyle="none", marker="o")
 	
 	
 	
@@ -2085,130 +2087,126 @@ def wavelength():
 	os.chdir("/Volumes/TOSHIBA EXT/3d_hst/noah_massive/aegis_massive")
 	
 	for i in aegis_1:
-		_data1_ai = ascii.read("%s..temp_sed" % (i))
-		_flux_1_ai = _data1_ai["tempflux"]
-		_lam1_ai = _data1_ai["lambda"]
-		_lam_1_ai = _lam1_ai/(1+ dataz1_ai["z_peak"])
-		_flux1_ai = (_flux_1_ai*(_lam_1_ai**-2.0))*factor
+		"_data1_a" + str(i) = ascii.read("%s..temp_sed" % (i))
+		"_flux_1_a" + str(i) = ("_data1_a" + str(i))["tempflux"]
+		"_lam1_a" + str(i) = ("_data1_a" + str(i))["lambda"]
+		"_lam_1_a" + str(i) = ("_lam1_a" + str(i))/(1+ ("dataz1_a" + str(i))["z_peak"])
+		"_flux1_a" + str(i) = (("_flux_1_a" + str(i))*(("_lam_1_a" + str(i))**-2.0))*factor
 		
 	for i in aegis_2:
-		_data2_ai = ascii.read("%s..temp_sed" % (i))
-		_flux_2_ai = _data2_ai["tempflux"]
-		_lam2_ai = _data2_ai["lambda"]
-		_lam_2_ai = _lam2_ai/(1+ dataz2_ai["z_peak"])
-		_flux2_ai = (_flux_2_ai*(_lam_2_ai**-2.0))*factor
+		"_data2_a" + str(i) = ascii.read("%s..temp_sed" % (i))
+		"_flux_2_a" + str(i) = ("_data2_a" + str(i))["tempflux"]
+		"_lam2_a" + str(i) = ("_data2_a" + str(i))["lambda"]
+		"_lam_2_a" + str(i) = ("_lam2_a" + str(i))/(1+ ("dataz2_a" + str(i))["z_peak"])
+		"_flux2_a" + str(i) = (("_flux_2_a" + str(i))*(("_lam_2_a" + str(i))**-2.0))*factor
 		
 		
 	for i in aegis_3:
-		_data3_ai = ascii.read("%s..temp_sed" % (i))
-		_flux_3_ai = _data3_ai["tempflux"]
-		_lam3_ai = _data3_ai["lambda"]
-		_lam_3_ai = _lam3_ai/(1+ dataz3_ai["z_peak"])
-		_flux3_ai = (_flux_3_ai*(_lam_3_ai**-2.0))*factor
+		"_data3_a" + str(i) = ascii.read("%s..temp_sed" % (i))
+		"_flux_3_a" + str(i) = ("_data3_a" + str(i))["tempflux"]
+		"_lam3_a" + str(i) = ("_data3_a" + str(i))["lambda"]
+		"_lam_3_a" + str(i) = ("_lam3_a" + str(i))/(1+ ("dataz3_a" + str(i))["z_peak"])
+		"_flux3_a" + str(i) = (("_flux_3_a" + str(i))*(("_lam_3_a" + str(i))**-2.0))*factor
 		
 		
 	os.chdir("/Volumes/TOSHIBA EXT/3d_hst/noah_massive/cosmos_massive")	
 		
 	for i in cosmos_1:
-		_data1_ci = ascii.read("%s..temp_sed" % (i))
-		_flux_1_ci = _data1_ci["tempflux"]
-		_lam1_ci = _data1_ci["lambda"]
-		_lam_1_ci = _lam1_ci/(1+ dataz1_ci["z_peak"])
-		_flux1_ci = (_flux_1_ci*(_lam_1_ci**-2.0))*factor
-		
+		"_data1_c" + str(i) = ascii.read("%s..temp_sed" % (i))
+		"_flux_1_c" + str(i) = ("_data1_c" + str(i))["tempflux"]
+		"_lam1_c" + str(i) = ("_data1_c" + str(i))["lambda"]
+		"_lam_1_c" + str(i) = ("_lam1_c" + str(i))/(1+ ("dataz1_c" + str(i))["z_peak"])
+		"_flux1_c" + str(i) = (("_flux_1_c" + str(i))*(("_lam_1_c" + str(i))**-2.0))*factor
 		
 	for i in cosmos_2:
-		_data2_ci = ascii.read("%s..temp_sed" % (i))
-		_flux_2_ci = _data2_ci["tempflux"]
-		_lam2_ci = _data2_ci["lambda"]
-		_lam_2_ci = _lam2_ci/(1+ dataz2_ci["z_peak"])
-		_flux2_ci = (_flux_2_ci*(_lam_2_ci**-2.0))*factor
+		"_data2_c" + str(i) = ascii.read("%s..temp_sed" % (i))
+		"_flux_2_c" + str(i) = ("_data2_c" + str(i))["tempflux"]
+		"_lam2_c" + str(i) = ("_data2_c" + str(i))["lambda"]
+		"_lam_2_c" + str(i) = ("_lam2_c" + str(i))/(1+ ("dataz2_c" + str(i))["z_peak"])
+		"_flux2_c" + str(i) = (("_flux_2_c" + str(i))*(("_lam_2_c" + str(i))**-2.0))*factor
 		
 		
 	for i in cosmos_3:
-		_data3_ci = ascii.read("%s..temp_sed" % (i))
-		_flux_3_ci = _data3_ci["tempflux"]
-		_lam3_ci = _data3_ci["lambda"]
-		_lam_3_ci = _lam3_ci/(1+ dataz3_ci["z_peak"])
-		_flux3_ci = (_flux_3_ci*(_lam_3_ci**-2.0))*factor
+		"_data3_c" + str(i) = ascii.read("%s..temp_sed" % (i))
+		"_flux_3_c" + str(i) = ("_data3_c" + str(i))["tempflux"]
+		"_lam3_c" + str(i) = ("_data3_c" + str(i))["lambda"]
+		"_lam_3_c" + str(i) = ("_lam3_c" + str(i))/(1+ ("dataz3_c" + str(i))["z_peak"])
+		"_flux3_c" + str(i) = (("_flux_3_c" + str(i))*(("_lam_3_c" + str(i))**-2.0))*factor
 		
 	
 	os.chdir("/Volumes/TOSHIBA EXT/3d_hst/noah_massive/goodsn_massive")
 		
 	for i in goodsn_1:
-		_data1_ni = ascii.read("%s.temp_sed" % (i))
-		_flux_1_ni = _data1_ni["tempflux"]
-		_lam1_ni = _data1_ni["lambda"]
-		_lam_1_ni = _lam1_ni/(1+ dataz1_ni["z_peak"])
-		_flux1_ni = (_flux_1_ni*(_lam_1_ni**-2.0))*factor
-		
+		"_data1_n" + str(i) = ascii.read("%s.temp_sed" % (i))
+		"_flux_1_n" + str(i) = ("_data1_n" + str(i))["tempflux"]
+		"_lam1_n" + str(i) = ("_data1_n" + str(i))["lambda"]
+		"_lam_1_n" + str(i) = ("_lam1_n" + str(i))/(1+ ("dataz1_n" + str(i))["z_peak"])
+		"_flux1_n" + str(i) = (("_flux_1_n" + str(i))*(("_lam_1_n" + str(i))**-2.0))*factor
 		
 	for i in goodsn_2:
-		_data2_ni = ascii.read("%s.temp_sed" % (i))
-		_flux_2_ni = _data2_ni["tempflux"]
-		_lam2_ni = _data2_ni["lambda"]
-		_lam_2_ni = _lam2_ni/(1+ dataz2_ni["z_peak"])
-		_flux2_ni = (_flux_2_ni*(_lam_2_ni**-2.0))*factor
+		"_data2_n" + str(i) = ascii.read("%s.temp_sed" % (i))
+		"_flux_2_n" + str(i) = ("_data2_n" + str(i))["tempflux"]
+		"_lam2_n" + str(i) = ("_data2_n" + str(i))["lambda"]
+		"_lam_2_n" + str(i) = ("_lam2_n" + str(i))/(1+ ("dataz2_n" + str(i))["z_peak"])
+		"_flux2_n" + str(i) = (("_flux_2_n" + str(i))*(("_lam_2_n" + str(i))**-2.0))*factor
 		
 		
 	for i in goodsn_3:
-		_data3_ni = ascii.read("%s.temp_sed" % (i))
-		_flux_3_ni = _data3_ni["tempflux"]
-		_lam3_ni = _data3_ni["lambda"]
-		_lam_3_ni = _lam3_ni/(1+ dataz3_ni["z_peak"])
-		_flux3_ni = (_flux_3_ni*(_lam_3_ni**-2.0))*factor
+		"_data3_n" + str(i) = ascii.read("%s.temp_sed" % (i))
+		"_flux_3_n" + str(i) = ("_data3_n" + str(i))["tempflux"]
+		"_lam3_n" + str(i) = ("_data3_n" + str(i))["lambda"]
+		"_lam_3_n" + str(i) = ("_lam3_n" + str(i))/(1+ ("dataz3_n" + str(i))["z_peak"])
+		"_flux3_n" + str(i) = (("_flux_3_n" + str(i))*(("_lam_3_n" + str(i))**-2.0))*factor
 		
 	
 	os.chdir("/Volumes/TOSHIBA EXT/3d_hst/noah_massive/goodss_massive")
 		
 	for i in goodss_1:
-		_data1_si = ascii.read("%s.temp_sed" % (i))
-		_flux_1_si = _data1_si["tempflux"]
-		_lam1_si = _data1_si["lambda"]
-		_lam_1_si = _lam1_si/(1+ dataz1_si["z_peak"])
-		_flux1_si = (_flux_1_si*(_lam_1_si**-2.0))*factor
-		
+		"_data1_s" + str(i) = ascii.read("%s.temp_sed" % (i))
+		"_flux_1_s" + str(i) = ("_data1_s" + str(i))["tempflux"]
+		"_lam1_s" + str(i) = ("_data1_s" + str(i))["lambda"]
+		"_lam_1_s" + str(i) = ("_lam1_s" + str(i))/(1+ ("dataz1_s" + str(i))["z_peak"])
+		"_flux1_s" + str(i) = (("_flux_1_s" + str(i))*(("_lam_1_s" + str(i))**-2.0))*factor
 		
 	for i in goodss_2:
-		_data2_si = ascii.read("%s.temp_sed" % (i))
-		_flux_2_si = _data2_si["tempflux"]
-		_lam2_si = _data2_si["lambda"]
-		_lam_2_si = _lam2_si/(1+ dataz2_si["z_peak"])
-		_flux2_si = (_flux_2_si*(_lam_2_si**-2.0))*factor
+		"_data2_s" + str(i) = ascii.read("%s.temp_sed" % (i))
+		"_flux_2_s" + str(i) = ("_data2_s" + str(i))["tempflux"]
+		"_lam2_s" + str(i) = ("_data2_s" + str(i))["lambda"]
+		"_lam_2_s" + str(i) = ("_lam2_s" + str(i))/(1+ ("dataz2_s" + str(i))["z_peak"])
+		"_flux2_s" + str(i) = (("_flux_2_s" + str(i))*(("_lam_2_s" + str(i))**-2.0))*factor
 		
 		
 	for i in goodss_3:
-		_data3_si = ascii.read("%s.temp_sed" % (i))
-		_flux_3_si = _data3_si["tempflux"]
-		_lam3_si = _data3_si["lambda"]
-		_lam_3_si = _lam3_si/(1+ dataz3_si["z_peak"])
-		_flux3_si = (_flux_3_si*(_lam_3_si**-2.0))*factor
+		"_data3_s" + str(i) = ascii.read("%s.temp_sed" % (i))
+		"_flux_3_s" + str(i) = ("_data3_s" + str(i))["tempflux"]
+		"_lam3_s" + str(i) = ("_data3_s" + str(i))["lambda"]
+		"_lam_3_s" + str(i) = ("_lam3_s" + str(i))/(1+ ("dataz3_s" + str(i))["z_peak"])
+		"_flux3_s" + str(i) = (("_flux_3_s" + str(i))*(("_lam_3_s" + str(i))**-2.0))*factor
 		
 	
 	os.chdir("/Volumes/TOSHIBA EXT/3d_hst/noah_massive/uds_massive")
 		
 	for i in uds_1:
-		_data1_ui = ascii.read("%s.temp_sed" % (i))
-		_flux_1_ui = _data1_ui["tempflux"]
-		_lam1_ui = _data1_ui["lambda"]
-		_lam_1_ui = _lam1_ui/(1+ dataz1_ui["z_peak"])
-		_flux1_ui = (_flux_1_ui*(_lam_1_ui**-2.0))*factor
-		
+		"_data1_u" + str(i) = ascii.read("%s.temp_sed" % (i))
+		"_flux_1_u" + str(i) = ("_data1_u" + str(i))["tempflux"]
+		"_lam1_u" + str(i) = ("_data1_u" + str(i))["lambda"]
+		"_lam_1_u" + str(i) = ("_lam1_u" + str(i))/(1+ ("dataz1_u" + str(i))["z_peak"])
+		"_flux1_u" + str(i) = (("_flux_1_u" + str(i))*(("_lam_1_u" + str(i))**-2.0))*factor
 		
 	for i in uds_2:
-		_data2_ui = ascii.read("%s.temp_sed" % (i))
-		_flux_2_ui = _data2_ui["tempflux"]
-		_lam2_ui = _data2_ui["lambda"]
-		_lam_2_ui = _lam2_ui/(1+ dataz2_ui["z_peak"])
-		_flux2_ui = (_flux_2_ui*(_lam_2_ui**-2.0))*factor
+		"_data2_u" + str(i) = ascii.read("%s.temp_sed" % (i))
+		"_flux_2_u" + str(i) = ("_data2_u" + str(i))["tempflux"]
+		"_lam2_u" + str(i) = ("_data2_u" + str(i))["lambda"]
+		"_lam_2_u" + str(i) = ("_lam2_u" + str(i))/(1+ ("dataz2_u" + str(i))["z_peak"])
+		"_flux2_u" + str(i) = (("_flux_2_u" + str(i))*(("_lam_2_u" + str(i))**-2.0))*factor
 		
 		
 	for i in uds_3:
-		_data3_ui = ascii.read("%s.temp_sed" % (i))
-		_flux_3_ui = _data3_ui["tempflux"]
-		_lam3_ui = _data3_ui["lambda"]
-		_lam_3_ui = _lam3_ui/(1+ dataz3_ui["z_peak"])
-		_flux3_ui = (_flux_3_ui*(_lam_3_ui**-2.0))*factor
+		"_data3_u" + str(i) = ascii.read("%s.temp_sed" % (i))
+		"_flux_3_u" + str(i) = ("_data3_u" + str(i))["tempflux"]
+		"_lam3_u" + str(i) = ("_data3_u" + str(i))["lambda"]
+		"_lam_3_u" + str(i) = ("_lam3_u" + str(i))/(1+ ("dataz3_u" + str(i))["z_peak"])
+		"_flux3_u" + str(i) = (("_flux_3_u" + str(i))*(("_lam_3_u" + str(i))**-2.0))*factor
 		
 	
 	chunk1 = zip(_flux1_a2250, _flux1_a2481, _flux1_a6115, _flux1_a6234, _flux1_a6424, _flux1_a6691, _flux1_a7771, _flux1_a8838, _flux1_a11022, _flux1_a13524, _flux1_a14012, _flux1_a14056, _flux1_a14499, _flux1_a14609, _flux1_a16238, _flux1_a17297, _flux1_a17570, _flux1_a17775, _flux1_a18045, _flux1_a18257, _flux1_a19970, _flux1_a20106, _flux1_a20250, _flux1_a20794, _flux1_a21028, _flux1_a21357, _flux1_a22126, _flux1_a22678, _flux1_a23011, _flux1_a23089, _flux1_a24456, _flux1_a26850, _flux1_a26884, _flux1_a27177, _flux1_a28328, _flux1_a29863, _flux1_a30393, _flux1_a30421, _flux1_a30735, _flux1_a30920, _flux1_a31326, _flux1_a32114, _flux1_a32425, _flux1_a33028, _flux1_a33158, _flux1_a34141, _flux1_a34254, _flux1_a34722, _flux1_a35604, _flux1_a37919, _flux1_a38065, _flux1_a38130, _flux1_a38167, _flux1_c796, _flux1_c2348, _flux1_c5238, _flux1_c9111, _flux1_c10703, _flux1_c11783, _flux1_c11871, _flux1_c12699, _flux1_c12767, _flux1_c13206, _flux1_c13890, _flux1_c15066, _flux1_c17263, _flux1_c18575, _flux1_c25627, _flux1_c27769, _flux1_c31555, _flux1_c32549, _flux1_n57, _flux1_n128, _flux1_n576, _flux1_n1749, _flux1_n2265, _flux1_n2868, _flux1_n3133, _flux1_n4711, _flux1_n7372, _flux1_n9056, _flux1_n10280, _flux1_n10606, _flux1_n11706, _flux1_n11826, _flux1_n12342, _flux1_n12561, _flux1_n13971, _flux1_n17270, _flux1_n21156, _flux1_n23564, _flux1_n25216, _flux1_n25813, _flux1_n32162, _flux1_n35090, _flux1_n35299, _flux1_s1523, _flux1_s1924, _flux1_s2707, _flux1_s4210, _flux1_s6098, _flux1_s6106, _flux1_s7444, _flux1_s7503, _flux1_s19186, _flux1_s27442, _flux1_s29928, _flux1_s30394, _flux1_s30997, _flux1_s33163, _flux1_s33164, _flux1_s38111, _flux1_s39170, _flux1_s43042, _flux1_s45775, _flux1_s46392, _flux1_s46846, _flux1_s47742, _flux1_s47873, _flux1_s48631, _flux1_u1123, _flux1_u2393, _flux1_u2394, _flux1_u5126, _flux1_u5924, _flux1_u6299, _flux1_u6852, _flux1_u7071, _flux1_u7783, _flux1_u9261, _flux1_u10758, _flux1_u11533, _flux1_u13482, _flux1_u14152, _flux1_u14854, _flux1_u15063, _flux1_u16239, _flux1_u17879, _flux1_u19765, _flux1_u19954, _flux1_u21513, _flux1_u23590, _flux1_u24953, _flux1_u26552, _flux1_u26875, _flux1_u28773, _flux1_u30057, _flux1_u30192, _flux1_u30255, _flux1_u32077, _flux1_u32256, _flux1_u32691, _flux1_u32777, _flux1_u32921, _flux1_u32986, _flux1_u34353, _flux1_u34641, _flux1_u35071, _flux1_u35356, _flux1_u36013, _flux1_u40631, _flux1_u41412, _flux1_u41671, _flux1_u41835)
